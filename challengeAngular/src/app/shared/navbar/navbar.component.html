@@ -15,7 +15,9 @@
       </ul>
 
       <ul class="nav navbar-nav ml-auto">
-        <button class="btn btn-secondary"  (click)='openLogin()'>Log in</button>
+        <li class="nav-item buttonMargin">
+          <button class="btn btn-secondary" data-toggle="modal" data-target="#loginModal"  >Log in</button>
+        </li>
         <li class="nav-item">
           <button class="btn btn-secondary" (click)='openRegister()'>Sign up</button>
         </li>
@@ -23,4 +25,8 @@
 
     </div>
   </div>
+</div>
+
+<div id="loginModal" class="modal fade" role="dialog">
+  <loginForm></loginForm>
 </div>

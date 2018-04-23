@@ -1,0 +1,76 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Monika",
+      "challenges": [
+        {
+          "id": 1,
+          "title": "Running"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "firstName": "Kristina",
+      "challenges": [
+        {
+          "id": 2,
+          "title": "Partying"
+        },
+        {
+          "id": 3,
+          "name": "Programming"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "firstName": "Ignas",
+      "inventory": []
+    }
+  ],
+  "challenges": [
+    {
+      "id": 1,
+      "title": "Running",
+      "days": 30,
+      "start": 5,
+	  "end": 1,
+	  "imgUrl": "http://www.sunshineandski.com/wp-content/uploads/2015/03/running-21.jpg",
+	  "category": 1
+    },
+    {
+      "id": 2,
+      "title": "Partying",
+      "days": 30,
+      "start": 5,
+	  "end": 1,
+	  "imgUrl": "",
+	  "category": 2
+    },
+    {
+      "id": 3,
+      "title": "Programming",
+      "days": 30,
+      "start": 5,
+	  "end": 1,
+	  "imgUrl": "",
+	  "category": 3
+    }
+  ],
+  "challenges-categories": [
+	{
+		"id": 1,
+		"title": "Sport"
+	},
+	{
+		"id": 2,
+		"title": "Fun"
+	},
+	{
+		"id": 3,
+		"title": "Education"
+	}
+  ]
+}
