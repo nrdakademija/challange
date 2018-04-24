@@ -9,9 +9,12 @@ import 'rxjs/add/operator/catch';
 export class ChallengeService {
 
   url = 'http://localhost:3000/challenges';
+  categoriesUrl = '';
+  subcategoriesUrl = '';
 
   constructor(private http: Http) { }
 
+//Challenges
   getChallengeList(): Observable<ChallengeModel[]> {
     return this.http.get(this.url)
       .map((res: Response) => res.json() as ChallengeModel[])
@@ -42,5 +45,9 @@ deleteChallenge(id): Observable<any[]> {
         .map((res: Response) => res.json() as any)
         .catch((error: any) => Observable.throw(error));
 }
+
+//Challenge categories
+
+//Challenge subcategories
 
 }

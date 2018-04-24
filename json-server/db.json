@@ -2,7 +2,9 @@
   "users": [
     {
       "id": 1,
-      "firstName": "Monika",
+      "fullName": "Monika",
+	  "username": "monika",
+	  "points": 0,
       "challenges": [
         {
           "id": 1,
@@ -12,7 +14,9 @@
     },
     {
       "id": 2,
-      "firstName": "Kristina",
+      "fullName": "Kristina",
+	  "username": "kriste",
+	  "points": 0,
       "challenges": [
         {
           "id": 2,
@@ -26,8 +30,10 @@
     },
     {
       "id": 3,
-      "firstName": "Ignas",
-      "inventory": []
+      "fullName": "Ignas",
+	  "username": "ignas",
+	  "points": 0,
+      "challenges": []
     }
   ],
   "challenges": [
@@ -38,7 +44,8 @@
       "start": 5,
 	  "end": 1,
 	  "imgUrl": "http://www.sunshineandski.com/wp-content/uploads/2015/03/running-21.jpg",
-	  "category": 1
+	  "category": 1,
+	  "subcategory": 2
     },
     {
       "id": 2,
@@ -47,7 +54,8 @@
       "start": 5,
 	  "end": 1,
 	  "imgUrl": "",
-	  "category": 2
+	  "category": 2,
+	  "subcategory": 2
     },
     {
       "id": 3,
@@ -56,21 +64,28 @@
       "start": 5,
 	  "end": 1,
 	  "imgUrl": "",
-	  "category": 3
+	  "category": 1,
+	  "subcategory": 2
     }
   ],
   "challenges-categories": [
 	{
 		"id": 1,
-		"title": "Sport"
+		"title": "Oficcial"
 	},
 	{
 		"id": 2,
-		"title": "Fun"
+		"title": "User Created"
+	}
+  ],
+  "challenges-subcategories": [
+	{
+		"id": 1,
+		"title": "Running"
 	},
 	{
-		"id": 3,
-		"title": "Education"
+		"id": 2,
+		"title": "Programming"
 	}
   ]
 }
