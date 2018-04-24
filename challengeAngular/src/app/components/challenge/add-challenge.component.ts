@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ChallengeModel } from '../../models/challenges/challenge.model';
 import { ChallengeService } from '../../services/challenge.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'add-challenge',
@@ -12,29 +13,32 @@ import { ChallengeService } from '../../services/challenge.service';
 
 export class AddChallengeComponent implements OnInit {
 
-  addChallengeForm : FormGroup;
+  challengeInfo: ChallengeModel = new ChallengeModel();
+  isPhoto = false;
+  triedToSave = false;
+  saving = false;
 
-  constructor(formBuilder: FormBuilder) {
+  constructor(private challengeService: ChallengeService, private router: Router) {
 
-    this.addChallengeForm = formBuilder.group({
-      'title' : "",
-      'days': "",
-      'start' : "",
-      'end' : "",
-      'imgUrl' : ""
-    })
 
   }
 
   ngOnInit() { }
 
-   addChallenge(value: any):void{
+  addChallenge(value: any) {
     console.log('Reactive Form Data:  ')
     console.log(value);
+    if (value.imgUrl.endsWith(".jpg") || value.imgUrl.endsWith(".jpeg") || value.imgUrl.endsWith(".png")) {
+      this.isPhoto = true;
+    }
+    else {
+      this.isPhoto = false;
+
+    }
   }
 
-  //TO DO check if user added correct img url:
-  checkUrl() {}
+  save(form) {};
+
 
 
 }

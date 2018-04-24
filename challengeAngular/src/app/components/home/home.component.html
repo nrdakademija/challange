@@ -4,17 +4,12 @@
     <div>
       <h2>Newest challenges</h2>
     </div>
-    <div class="challenge-box">
-      Challenges and etc.
-    </div>
+    <ngx-carousel [inputs]="carouselTile" (carouselLoad)="carouselTileLoad($event)">
+      <ngx-tile NgxCarouselItem *ngFor="let ch of challenges$ | async">
+        <img src="{{ch.imgUrl}}" (click)="redirectToChallenge(ch.id)">
+      </ngx-tile>
+      <button NgxCarouselPrev class='leftRs'>&lt;</button>
+      <button NgxCarouselNext class='rightRs'>&gt;</button>
+    </ngx-carousel>
   </div>
-
-  <ngx-carousel [inputs]="carouselTile" (carouselLoad)="carouselTileLoad($event)">
-    <ngx-tile NgxCarouselItem *ngFor="let ch of challenges$ | async">
-      <img src="{{ch.imgUrl}}" (click)="redirectToChallenge(ch.id)">
-    </ngx-tile>
-    <button NgxCarouselPrev class='leftRs'>&lt;</button>
-    <button NgxCarouselNext class='rightRs'>&gt;</button>
-  </ngx-carousel>
-
 </body>
