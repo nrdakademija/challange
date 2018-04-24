@@ -6,6 +6,7 @@ import { LoginComponent } from '../components/login/login.component';
 import { RegisterComponent } from '../components/register/register.component'
 import { AboutComponent } from '../components/about/about.component'
 import { ChallengeComponent } from '../components/challenge/challenge.component'
+import { ChallengeDetailsComponent } from '../components/challenge/details/challenge-details.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,9 @@ import { ChallengeComponent } from '../components/challenge/challenge.component'
           { path: 'login' , component: LoginComponent},
           { path: 'register' , component: RegisterComponent},
           { path: 'about' , component: AboutComponent},
-          { path: 'challenge' , component: ChallengeComponent},
+          { path: 'challenges' , component: ChallengeComponent},
+          { path: 'challenge/new', component: ChallengeDetailsComponent },
+          { path: 'challenge/:id', component: ChallengeDetailsComponent },
 
           // otherwise redirect to home
           { path: '**', redirectTo: '' }

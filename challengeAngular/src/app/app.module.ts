@@ -20,7 +20,8 @@ import { HttpModule } from '@angular/http';
 import { ChallengeCategoriesFilterPipe } from './pipes/challenge-filter.pipe';
 import { AddChallengeComponent } from './components/challenge/add-challenge.component';
 import { HomeComponent } from './components/home/home.component';
-import { Sample } from './components/home/slider.component';
+import { ChallengeDetailsComponent } from './components/challenge/details/challenge-details.component';
+
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { Sample } from './components/home/slider.component';
     FooterComponent,
     ChallengeCategoriesFilterPipe,
     AddChallengeComponent,
-    Sample
+    ChallengeDetailsComponent
   ],
   imports: [
     BrowserModule,

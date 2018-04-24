@@ -4,6 +4,7 @@ import { ChallengeModel } from '../../models/challenges/challenge.model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { NgxCarousel } from 'ngx-carousel';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './home.component.html',
@@ -11,7 +12,8 @@ import { NgxCarousel } from 'ngx-carousel';
 })
 export class HomeComponent {
 
-  constructor(private challengeService: ChallengeService) { }
+  constructor(private challengeService: ChallengeService,
+  private router: Router) { }
 
   challenges$: Observable<ChallengeModel[]>;
 
@@ -58,7 +60,7 @@ export class HomeComponent {
   }
 
   redirectToChallenge(id) {
-    console.log(id);
+    this.router.navigate(['challenge/' + id]);
   }
 
 
