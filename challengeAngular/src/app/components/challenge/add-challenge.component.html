@@ -10,6 +10,22 @@
           <h1>Add new challenge</h1>
           <div class="container">
 
+            <div class="form-group">
+              <label>Category</label>
+              <select class="form-control" name="category" [(ngModel)]="challengeInfo.category" id="1">
+                <option disabled [value]="'default'">Choose Category</option>
+                <option *ngFor="let category of categoriesList$ | async" [value]="category">{{category.title}}</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Sub Category</label>
+              <select class="form-control" name="subCategory" [(ngModel)]="challengeInfo.subCategory" id="2">
+                <option disabled [value]="'default'">Choose Category</option>
+                <option *ngFor="let subCategory of subCategoriesList$ | async" [value]="subCategory">{{subCategory.title}}</option>
+              </select>
+            </div>
+
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group" [class.has-danger]="title.invalid && triedToSave">
@@ -20,7 +36,7 @@
                 <div class="form-group" [class.has-danger]="imgUrl.invalid && triedToSave">
                   <label>Image URL</label>
                   <input #imgUrl="ngModel" class="form-control" type="text" name="imgUrl" required [(ngModel)]="challengeInfo.imgUrl" />
-                  <small class="text-danger" *ngIf="imgUrl.invalid && triedToSave"> Image URL is required </small>
+                  <small class="text-danger" *ngIf="imgUrl.invalid && triedToSave && isPhoto"> Image URL is required </small>
                 </div>
               </div>
             </div>

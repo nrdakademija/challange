@@ -11,8 +11,8 @@ import { SubCategoryModel } from '../models/subcategories/subcategories.model';
 export class ChallengeService {
 
   url = 'http://localhost:3000/challenges';
-  categoriesUrl = '';
-  subcategoriesUrl = '';
+  categoriesUrl = 'http://localhost:3000/challenges-categories';
+  subcategoriesUrl = 'http://localhost:3000/challenges-subcategories';
 
   constructor(private http: Http) { }
 
@@ -50,32 +50,34 @@ export class ChallengeService {
 
 
   //Challenge categories
-  getChallengeCategoriest(): Observable<CategoryModel[]> {
-    return this.http.get(this.url + '/' + 'challenges-categories')
+  getChallengeCategories(): Observable<CategoryModel[]> {
+    return this.http.get(this.categoriesUrl)
       .map((res: Response) => res.json() as CategoryModel[])
       .catch((error: any) => Observable.throw(error));
   }
 
   getChallengeCategoriesById(id): Observable<CategoryModel> {
-    return this.http.get(this.url + '/' + 'challenges-categories')
+    return this.http.get(this.categoriesUrl + '/' + id)
       .map((res: Response) => res.json() as CategoryModel)
       .catch((error: any) => Observable.throw(error));
   }
+
+
   //Challenge subcategories
-  getChallengeSubCategoriest(): Observable<SubCategoryModel[]> {
-    return this.http.get(this.url + '/' + 'challenges-subcategories')
+  getChallengeSubCategories(): Observable<SubCategoryModel[]> {
+    return this.http.get(this.subcategoriesUrl)
       .map((res: Response) => res.json() as SubCategoryModel[])
       .catch((error: any) => Observable.throw(error));
   }
 
   getChallengeSubCategoriesById(id): Observable<SubCategoryModel> {
-    return this.http.get(this.url + '/' + 'challenges-subcategories')
+    return this.http.get(this.subcategoriesUrl + '/' + id)
       .map((res: Response) => res.json() as SubCategoryModel)
       .catch((error: any) => Observable.throw(error));
   }
 
   postChallengeSubCategories(data): Observable<SubCategoryModel> {
-    return this.http.post(this.url, data)
+    return this.http.post(this.subcategoriesUrl, data)
       .map((res: Response) => res.json() as SubCategoryModel)
       .catch((error: any) => Observable.throw(error));
   }

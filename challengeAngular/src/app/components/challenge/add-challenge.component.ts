@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ChallengeModel } from '../../models/challenges/challenge.model';
 import { ChallengeService } from '../../services/challenge.service';
 import { Router } from '@angular/router';
+import { CategoryModel } from '../../models/categories/categories.model';
+import { SubCategoryModel } from '../../models/subcategories/subcategories.model';
 
 @Component({
   selector: 'add-challenge',
@@ -13,6 +15,8 @@ import { Router } from '@angular/router';
 
 export class AddChallengeComponent implements OnInit {
 
+  categoriesList$: Observable<CategoryModel[]>;
+  subCategoriesList$: Observable<SubCategoryModel[]>;
   challengeInfo: ChallengeModel = new ChallengeModel();
   isPhoto = false;
   triedToSave = false;
@@ -23,7 +27,25 @@ export class AddChallengeComponent implements OnInit {
 
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+    this.getCategoriesList();
+    this.getSubCategoriesList();
+
+   }
+
+  getCategoriesList() {
+    this.challengeService.getChallengeCategories().subscribe((response: CategoryModel[]) =>{
+       this.categoriesList$ = Observable.of(response);
+    });
+  }
+
+//TO DO filter subCategories according to chosen category
+  getSubCategoriesList() {
+    this.challengeService.getChallengeSubCategories().subscribe((response: CategoryModel[]) =>{
+       this.subCategoriesList$ = Observable.of(response);
+    });
+  }
 
   addChallenge(value: any) {
     console.log('Reactive Form Data:  ')
