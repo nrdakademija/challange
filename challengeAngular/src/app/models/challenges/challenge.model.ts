@@ -5,4 +5,7 @@ export class ChallengeModel {
   subCategory: String;
   daysNeeded: Number;
   imgUrl: String;
+  dateAdded: String;
+  Reward: Number;
+  Difficulty: Number;
 }

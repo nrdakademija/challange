@@ -1,15 +1,31 @@
 <body>
   <div class="no-overlap main">
     <h1 align="center">Improve yourself by taking fun challenges and competing with friends!</h1>
-    <div>
+    
+    
+  </div>
+  <div>
       <h2>Newest challenges</h2>
     </div>
-    <ngx-carousel [inputs]="carouselTile" (carouselLoad)="carouselTileLoad($event)">
+  <ngx-carousel [inputs]="carouselTile" (carouselLoad)="carouselTileLoad($event)">
       <ngx-tile NgxCarouselItem *ngFor="let ch of challenges$ | async">
-        <img src="{{ch.imgUrl}}" (click)="redirectToChallenge(ch.id)">
+        
+         <div style="text-align: center">
+           <div style="text-align: left">
+             <small> Duration: {{ch.days}} days</small> 
+           </div>
+           <div>
+             {{ch.title}}
+           </div>
+        <img src="{{ch.imgUrl}}"  (click)="redirectToChallenge(ch.id)" style="height: 150px; width: 150px">
+        <div>
+            aprasas
+          </div>
+      </div>
       </ngx-tile>
       <button NgxCarouselPrev class='leftRs'>&lt;</button>
       <button NgxCarouselNext class='rightRs'>&gt;</button>
     </ngx-carousel>
-  </div>
+  
+
 </body>
