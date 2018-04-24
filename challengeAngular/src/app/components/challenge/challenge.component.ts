@@ -12,6 +12,8 @@ export class ChallengeComponent {
   //loading = false;
   challenges$: Observable<ChallengeModel[]>;
 
+
+
   constructor(private router: Router,
     private challengeService: ChallengeService){}
 

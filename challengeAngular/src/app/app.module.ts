@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxCarouselModule } from 'ngx-carousel';
+import 'hammerjs';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './shared/app.routing';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -17,6 +19,9 @@ import { AuthenticationService } from './services/authentication.service';
 import { HttpModule } from '@angular/http';
 import { ChallengeCategoriesFilterPipe } from './pipes/challenge-filter.pipe';
 import { AddChallengeComponent } from './components/challenge/add-challenge.component';
+import { HomeComponent } from './components/home/home.component';
+import { Sample } from './components/home/slider.component';
+
 
 @NgModule({
   declarations: [
@@ -29,14 +34,17 @@ import { AddChallengeComponent } from './components/challenge/add-challenge.comp
     NavbarComponent,
     FooterComponent,
     ChallengeCategoriesFilterPipe,
-    AddChallengeComponent
+    AddChallengeComponent,
+    Sample
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRoutingModule
+    NgbModule.forRoot(),
+    AppRoutingModule,
+    NgxCarouselModule
   ],
   providers: [
     UserService,

@@ -46,6 +46,7 @@ deleteChallenge(id): Observable<any[]> {
         .catch((error: any) => Observable.throw(error));
 }
 
+
 //Challenge categories
 
 //Challenge subcategories
