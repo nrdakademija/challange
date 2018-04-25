@@ -1,7 +1,45 @@
 import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import { UserModel } from '../models/users/user.model';
 
 @Injectable()
 export class UserService {
 
-  constructor() { }
+  url = 'http://localhost:3000/users';
+
+  constructor(private http: Http) { }
+
+  //Users
+  getList(): Observable<UserModel[]> {
+    return this.http.get(this.url)
+      .map((res: Response) => res.json() as UserModel[])
+      .catch((error: any) => Observable.throw(error));
+  }
+
+  //Single user
+  getUser(id): Observable<UserModel[]> {
+    return this.http.get(this.url + '/' + id)
+      .map((res: Response) => res.json() as UserModel)
+      .catch((error: any) => Observable.throw(error));
+  }
+
+  editUser(data, id): Observable<UserModel> {
+    return this.http.put(this.url + '/' + id, data)
+      .map((res: Response) => res.json() as UserModel)
+      .catch((error: any) => Observable.throw(error));
+  }
+
+  addUser(data): Observable<UserModel> {
+    return this.http.post(this.url, data)
+      .map((res: Response) => res.json() as UserModel)
+      .catch((error: any) => Observable.throw(error));
+  }
+
+  //TO DO
+  authenticateUser() { }
+
+
 }
