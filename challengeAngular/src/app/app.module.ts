@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxCarouselModule } from 'ngx-carousel';
 import 'hammerjs';
-import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
-import {NgbProgressbarConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbRatingConfig, NgbProgressbarConfig,NgbDatepickerConfig, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';

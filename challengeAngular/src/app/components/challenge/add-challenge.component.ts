@@ -59,7 +59,10 @@ export class AddChallengeComponent implements OnInit {
     }
   }
 
-  save(form) {};
+  save(form) {
+    console.log(form);
+    console.log(this.challengeInfo);
+  };
 
 
 
