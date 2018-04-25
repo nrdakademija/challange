@@ -1,3 +1,7 @@
 .container {
   margin-top: 80px;
 }
+
+.ngb-progressbar {
+  margin-top: 5rem;
+}
