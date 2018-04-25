@@ -7,20 +7,19 @@
       </div>
       <div class="modal-body">
         <form #challengeForm="ngForm" novalidate>
-          <h1>Add new challenge</h1>
           <div class="container">
-
-            <div class="form-group">
+ <!-- Pridedant by default user created
+             <div class="form-group">
               <label>Category</label>
               <select class="form-control" name="category" [(ngModel)]="challengeInfo.category" id="1">
                 <option disabled [value]="'default'">Choose Category</option>
                 <option *ngFor="let category of categoriesList$ | async" [value]="category">{{category.title}}</option>
               </select>
-            </div>
+            </div> -->
 
             <div class="form-group">
-              <label>Sub Category</label>
-              <select class="form-control" name="subCategory" [(ngModel)]="challengeInfo.subCategory" id="2">
+              <label>Category</label>
+              <select #title="ngModel" class="form-control" name="subCategory" [(ngModel)]="challengeInfo.subCategory" >
                 <option disabled [value]="'default'">Choose Category</option>
                 <option *ngFor="let subCategory of subCategoriesList$ | async" [value]="subCategory">{{subCategory.title}}</option>
               </select>
@@ -33,6 +32,26 @@
                   <input #title="ngModel" class="form-control" type="text" name="title" required [(ngModel)]="challengeInfo.title" />
                   <small class="text-danger" *ngIf="title.invalid && triedToSave"> Title is required </small>
                 </div>
+
+                <div class="form-group" [class.has-danger]="daysNeeded.invalid && triedToSave">
+                  <label>Challenge duration</label>
+                  <input #daysNeeded="ngModel" class="form-control" type="text" name="daysNeeded" required [(ngModel)]="challengeInfo.daysNeeded" />
+                  <small class="text-danger" *ngIf="daysNeeded.invalid && triedToSave"> Needed days is required </small>
+                </div>
+
+                <div class="form-group" [class.has-danger]="Reward.invalid && triedToSave">
+                  <label>Rewards</label>
+                  <input #Reward="ngModel" class="form-control" type="text" name="Reward" required [(ngModel)]="challengeInfo.Reward" />
+                  <small class="text-danger" *ngIf="Reward.invalid && triedToSave"> Reward is required </small>
+                </div>
+
+                <div class="form-group" [class.has-danger]="triedToSave">
+                  <label>Difficulty</label>
+                  <ngb-rating  [(rate)]="challengeInfo.Difficulty" max="5" required></ngb-rating>
+                  <!-- <input #Difficulty="ngModel" class="form-control" type="text" name="Difficulty" required [(ngModel)]="challengeInfo.Difficulty" /> -->
+                  <small class="text-danger" *ngIf="triedToSave"> Difficulty is required </small>
+                </div>
+
                 <div class="form-group" [class.has-danger]="imgUrl.invalid && triedToSave">
                   <label>Image URL</label>
                   <input #imgUrl="ngModel" class="form-control" type="text" name="imgUrl" required [(ngModel)]="challengeInfo.imgUrl" />
