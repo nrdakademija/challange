@@ -3,46 +3,47 @@
     <div style="height: 150px"></div>
     <div class="row">
       <div class="col-6">
-        <h1 align="center">Challenge yourself</h1>
+        <h1 align="center" style="color: whitesmoke">Challenge yourself</h1>
       </div>
       <div class="col"></div>
       <div class="col"></div>
     </div>
     <div class="row">
       <div class="col-6">
-        <h1 align="center">Improve</h1>
+        <h1 align="center" style="color: whitesmoke">Improve</h1>
       </div>
       <div class="col"></div>
       <div class="col"></div>
     </div>
   </div>
 
-  <h2 class="text-primary">Newest challenges</h2>
+  <h2 class="text-primary" style="color: whitesmoke">Newest challenges</h2>
 
   <ngx-carousel [inputs]="carouselTile" (carouselLoad)="carouselTileLoad($event)">
     <ngx-tile NgxCarouselItem *ngFor="let ch of challenges$ | async">
-
-      <div class="card border-success" style="text-align: center">
-        <div class="row">
-          <div class="col" style="text-align: left">
-            <small> Duration: {{ch.daysNeeded}} days</small>
-          </div>
-          <div class="col" style="text-align: right">
-            <small> Reward: {{ch.Reward}} exp</small>
-          </div>
+      <div class="card border-success">
+        
+        
+        <div class="shadow" style="height: 160px">
+            <div class="middle">
+                <b style="font-size: 24px;">{{ch.title}}</b>
+                <br>
+                <b>+{{ch.Reward}} XP</b>
+                <br>
+                Completed by (number) challengers
+              </div>
+          <img class="rounded mx-auto d-block image" src="{{ch.imgUrl}}" (click)="redirectToChallenge(ch.id)" style="background-size: cover; height: 100%; width: 100%">
+          
         </div>
-        <h4 class="text-success">
-          {{ch.title}}
-        </h4>
-        <div class="text-center">
-          <img class="rounded mx-auto d-block" src="{{ch.imgUrl}}" (click)="redirectToChallenge(ch.id)" style="height: 150px; width: 150px">
 
-        </div>
         <div>
-          <div>
-            <h4>
-              <ngb-rating [readonly]="true" max="5" [rate]="ch.Difficulty"></ngb-rating>
-            </h4>
+          <div style="text-align: left; margin: 15px;">
+              <h5 class="text-success">
+                  {{ch.title}}
+                </h5>
+            <h5>
+              <ngb-rating style="color: white" [readonly]="true" max="5" [rate]="ch.Difficulty"></ngb-rating>
+            </h5>
           </div>
         </div>
       </div>

@@ -51,11 +51,41 @@ body {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #282828;
+  background-color: #1d1d1d;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+.shadow {
+  text-align: left;
+}
+.shadow:hover .image {
+  border-color: rgb(22, 121, 88) !important;
+  opacity: 0.15;
+}
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 70px;
+  color: rgb(255, 255, 255);
+}
+.shadow:hover .middle {
+  opacity: 1;
+}
+
+
+
 .border-success {
   border-color: #77B300 !important;
 }
