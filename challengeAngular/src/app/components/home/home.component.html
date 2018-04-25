@@ -1,10 +1,20 @@
 <body>
-  <div class="no-overlap main">
-    <h1 align="center">Improve yourself by taking fun challenges and competing with friends!</h1>
-
+  <div style="height: 100vh; background-image: url('../../assets/images/background.jpeg');background-repeat: no-repeat;background-size: 100% 100%;" >
+    <div style="height: 150px"></div>
+    <div class="row">
+    <div class="col-6"><h1 align="center">Challenge yourself</h1></div>
+    <div class="col"></div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+      <div class="col-6"><h1 align="center">Improve</h1></div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+</div>
 
       <h2>Newest challenges</h2>
-    </div>
+    
   <ngx-carousel [inputs]="carouselTile" (carouselLoad)="carouselTileLoad($event)">
       <ngx-tile NgxCarouselItem *ngFor="let ch of challenges$ | async">
 
@@ -27,7 +37,7 @@
           <div>
             Difficulty
             <div>
-                <ngb-rating [readonly]="true" max="5" [rate]="ch.Difficulty"></ngb-rating>
+                <ngb-rating [readonly]="true"  max="5" [rate]="ch.Difficulty"></ngb-rating>
             </div>
           </div>
       </div>
