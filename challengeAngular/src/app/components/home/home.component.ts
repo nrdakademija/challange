@@ -14,7 +14,7 @@ export class HomeComponent {
 
   constructor(private challengeService: ChallengeService,
   private router: Router) { }
-
+  currentRate = 3.14;
   challenges$: Observable<ChallengeModel[]>;
 
 
@@ -24,6 +24,7 @@ export class HomeComponent {
   public carouselTile: NgxCarousel;
 
   ngOnInit() {
+
    this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
       this.challenges$ = Observable.of(data);
     //  this.heroes.push(this.challenges$[1].imgUrl);

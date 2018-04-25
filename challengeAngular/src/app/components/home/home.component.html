@@ -1,20 +1,20 @@
 <body>
   <div class="no-overlap main">
     <h1 align="center">Improve yourself by taking fun challenges and competing with friends!</h1>
-    
+
 
       <h2>Newest challenges</h2>
     </div>
   <ngx-carousel [inputs]="carouselTile" (carouselLoad)="carouselTileLoad($event)">
       <ngx-tile NgxCarouselItem *ngFor="let ch of challenges$ | async">
-        
+
          <div style="text-align: center">
            <div class="row">
            <div class="col" style="text-align: left">
-             <small> Duration: {{ch.days}} days</small> 
+             <small> Duration: {{ch.daysNeeded}} days</small>
            </div>
            <div class="col" style="text-align: right">
-              <small> Reward: {{ch.reward}} exp</small> 
+              <small> Reward: {{ch.Reward}} exp</small>
             </div>
           </div>
            <div>
@@ -27,7 +27,7 @@
           <div>
             Difficulty
             <div>
-              *stars*
+                <ngb-rating [readonly]="true" max="5" [rate]="ch.Difficulty"></ngb-rating>
             </div>
           </div>
       </div>
@@ -35,6 +35,6 @@
       <button NgxCarouselPrev class='leftRs'>&lt;</button>
       <button NgxCarouselNext class='rightRs'>&gt;</button>
     </ngx-carousel>
-  
+
 
 </body>
