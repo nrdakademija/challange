@@ -5,7 +5,9 @@ export class UserModel {
     id: Number;
     fullName: String;
     username: String;
+    imgUrl: String;
     email: String;
-
-    //challenges: Challenges[];
+    points: Number;
+    level: Number;
+    challenges: ChallengeModel[];
 }
