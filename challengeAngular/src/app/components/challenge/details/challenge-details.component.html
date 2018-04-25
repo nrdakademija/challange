@@ -1,14 +1,81 @@
+<body>
+    <div class="no-overlap main">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div class="container">
 
-<h1>veikiaaa</h1>
+            <div class="row">
+                <div class="col-sm-9 bs-component">
+                    <h1 class="text-primary">{{challengeInfo.title}}</h1>
+                </div>
+                <div class="col-sm-3 bs-component text-right">
+                    <button class="btn btn-outline-success">TRY IT</button>
+                </div>
 
-<h1>veikiaaa</h1>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="{{challengeInfo.imgUrl}}" class="rounded float-left" alt="...">
+                </div>
+                <div class="col">
 
-<h1>veikiaaa</h1>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-sm-3 bs-component">
+                            <h4 class="label text-muted text-right">Category</h4>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col">
+                            <h4 class="label text-info">{{challengeInfo.category}}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 bs-component">
+                            <h4 class="label text-muted text-right">Sub category</h4>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col">
+                            <h4 class="label text-info">{{challengeInfo.subCategory}}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 bs-component">
+                            <h4 class="label text-muted text-right">Days needed</h4>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col">
+                            <h4 class="label text-info">{{challengeInfo.daysNeeded}}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 bs-component">
+                            <h4 class="label text-muted text-right">Reward</h4>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col">
+                            <h4 class="label text-info">{{challengeInfo.Reward}}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 bs-component">
+                            <h4 class="label text-muted text-right">Difficulty</h4>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col text-info">
+                            <h4>
+                                <ngb-rating [readonly]="true" max="5" [rate]="challengeInfo.Difficulty"></ngb-rating>
+                            </h4>
+                        </div>
+                    </div>
 
-<h1>veikiaaa</h1>
+                </div>
+            </div>
+            <br/>
 
-<h1>veikiaaa</h1>
+        </div>
 
-<h1>veikiaaa</h1>
-
-<h1>veikiaaa</h1>
+    </div>
+</body>

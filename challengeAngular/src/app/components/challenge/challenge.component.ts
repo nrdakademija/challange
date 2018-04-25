@@ -26,7 +26,8 @@ export class ChallengeComponent {
       });
   }
 
-
-
+  routeToChallenge(id){
+    this.router.navigate(['/challenges/' + id]);
+  }
 }
 

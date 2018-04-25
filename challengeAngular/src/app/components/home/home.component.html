@@ -1,50 +1,55 @@
 <body>
-  <div style="height: 100vh; background-image: url('../../assets/images/background.jpeg');background-repeat: no-repeat;background-size: 100% 100%;" >
+  <div style="height: 100vh; background-image: url('../../assets/images/background.jpeg');background-repeat: no-repeat;background-size: 100% 100%;">
     <div style="height: 150px"></div>
     <div class="row">
-    <div class="col-6"><h1 align="center">Challenge yourself</h1></div>
-    <div class="col"></div>
-    <div class="col"></div>
-  </div>
-  <div class="row">
-      <div class="col-6"><h1 align="center">Improve</h1></div>
+      <div class="col-6">
+        <h1 align="center">Challenge yourself</h1>
+      </div>
       <div class="col"></div>
       <div class="col"></div>
     </div>
-</div>
-
-      <h2>Newest challenges</h2>
-    
-  <ngx-carousel [inputs]="carouselTile" (carouselLoad)="carouselTileLoad($event)">
-      <ngx-tile NgxCarouselItem *ngFor="let ch of challenges$ | async">
-
-         <div style="text-align: center">
-           <div class="row">
-           <div class="col" style="text-align: left">
-             <small> Duration: {{ch.daysNeeded}} days</small>
-           </div>
-           <div class="col" style="text-align: right">
-              <small> Reward: {{ch.Reward}} exp</small>
-            </div>
-          </div>
-           <div>
-             {{ch.title}}
-           </div>
-        <img src="{{ch.imgUrl}}"  (click)="redirectToChallenge(ch.id)" style="height: 150px; width: 150px">
-        <div>
-            aprasas
-          </div>
-          <div>
-            Difficulty
-            <div>
-                <ngb-rating [readonly]="true"  max="5" [rate]="ch.Difficulty"></ngb-rating>
-            </div>
-          </div>
+    <div class="row">
+      <div class="col-6">
+        <h1 align="center">Improve</h1>
       </div>
-      </ngx-tile>
-      <button NgxCarouselPrev class='leftRs'>&lt;</button>
-      <button NgxCarouselNext class='rightRs'>&gt;</button>
-    </ngx-carousel>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+  </div>
+
+  <h2 class="text-primary">Newest challenges</h2>
+
+  <ngx-carousel [inputs]="carouselTile" (carouselLoad)="carouselTileLoad($event)">
+    <ngx-tile NgxCarouselItem *ngFor="let ch of challenges$ | async">
+
+      <div class="card border-success" style="text-align: center">
+        <div class="row">
+          <div class="col" style="text-align: left">
+            <small> Duration: {{ch.daysNeeded}} days</small>
+          </div>
+          <div class="col" style="text-align: right">
+            <small> Reward: {{ch.Reward}} exp</small>
+          </div>
+        </div>
+        <h4 class="text-success">
+          {{ch.title}}
+        </h4>
+        <div class="text-center">
+          <img class="rounded mx-auto d-block" src="{{ch.imgUrl}}" (click)="redirectToChallenge(ch.id)" style="height: 150px; width: 150px">
+
+        </div>
+        <div>
+          <div>
+            <h4>
+              <ngb-rating [readonly]="true" max="5" [rate]="ch.Difficulty"></ngb-rating>
+            </h4>
+          </div>
+        </div>
+      </div>
+    </ngx-tile>
+    <button NgxCarouselPrev class='leftRs'>&lt;</button>
+    <button NgxCarouselNext class='rightRs'>&gt;</button>
+  </ngx-carousel>
 
 
 </body>

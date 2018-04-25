@@ -8,13 +8,12 @@
           </tr>
       </thead>
       <tbody>
-          <tr *ngFor="let ch of challenges$ | async; let ind = index;">
+          <tr *ngFor="let ch of challenges$ | async; let ind = index;" >
               <th>{{ind+1}}</th>
               <th>{{ch.title}}</th>
               <img src="{{ch.imgUrl}}">
           </tr>
       </tbody>
-
   </table>
 </div>
 
