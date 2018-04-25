@@ -22,6 +22,8 @@ import { ChallengeCategoriesFilterPipe } from './pipes/challenge-filter.pipe';
 import { AddChallengeComponent } from './components/challenge/add-challenge.component';
 import { HomeComponent } from './components/home/home.component';
 import { ChallengeDetailsComponent } from './components/challenge/details/challenge-details.component';
+import { UserComponent } from './components/user/user.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 
 
@@ -37,7 +39,9 @@ import { ChallengeDetailsComponent } from './components/challenge/details/challe
     FooterComponent,
     ChallengeCategoriesFilterPipe,
     AddChallengeComponent,
-    ChallengeDetailsComponent
+    ChallengeDetailsComponent,
+    UserComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
