@@ -1,13 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
+#footer {
+  height: 40px;
   width: 100%;
   text-align: center;
   color: rgba(255,255,255,.5);
 }
-
+.content {
+  min-height: calc(100vh - 100px);
+}
 .register {
   margin-top: 80px;
 }
