@@ -8,4 +8,5 @@ export class ChallengeModel {
   dateAdded: String;
   Reward: Number;
   Difficulty: Number;
+  completedBy: Number;
 }

@@ -16,9 +16,9 @@
       <div class="col"></div>
     </div>
   </div>
-
+  <div style="padding-left: 20px; padding-right: 20px">
   <h2 class="text-primary" style="color: whitesmoke">Newest challenges</h2>
-
+  
   <ngx-carousel [inputs]="carouselTile" (carouselLoad)="carouselTileLoad($event)">
     <ngx-tile NgxCarouselItem *ngFor="let ch of challenges$ | async">
       <div class="card border-success">
@@ -26,22 +26,22 @@
         
         <div class="shadow" style="height: 160px">
             <div class="middle">
-                <b style="font-size: 24px;">{{ch.title}}</b>
+                <b style="font-size: 22px;">{{ch.title}}</b>
                 <br>
                 <b>+{{ch.Reward}} XP</b>
                 <br>
-                Completed by (number) challengers
+                Completed by {{ch.completedBy}} challengers
               </div>
           <img class="rounded mx-auto d-block image" src="{{ch.imgUrl}}" (click)="redirectToChallenge(ch.id)" style="background-size: cover; height: 100%; width: 100%">
           
         </div>
 
         <div>
-          <div style="text-align: left; margin: 15px;">
-              <h5 class="text-success">
-                  {{ch.title}}
+          <div style="text-align: left; margin-left: 18px; margin-top: 10px">
+              <h5 class="text-success" style="font-size: 15px">
+                  {{ch.subcategory}} (cia sub kategorija)
                 </h5>
-            <h5>
+            <h5 style="font-size: 15px">
               <ngb-rating style="color: white" [readonly]="true" max="5" [rate]="ch.Difficulty"></ngb-rating>
             </h5>
           </div>
@@ -51,6 +51,6 @@
     <button NgxCarouselPrev class='leftRs'>&lt;</button>
     <button NgxCarouselNext class='rightRs'>&gt;</button>
   </ngx-carousel>
-
+</div>
 
 </body>
