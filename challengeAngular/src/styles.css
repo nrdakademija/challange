@@ -22,7 +22,7 @@ body {
   background-color: #060606;
 }
 .text-primary {
-  color: #2A9FD6 !important;
+  color: rgba(42, 159, 214, 0.808) !important;
 }
 .text-info {
   color: #9933CC !important;
@@ -35,10 +35,9 @@ body {
   color: #555 !important;
 }
 .btn-outline-success {
-  color: #77B300;
   background-color: transparent;
   background-image: none;
-  border-color: #77B300;
+  border-color: rgba(119, 179, 0, 0.288);
 }
 .card {
   position: relative;
@@ -87,7 +86,7 @@ body {
 
 
 .border-success {
-  border-color: #77B300 !important;
+  border-color: rgb(54, 71, 104) !important;
 }
 .card-header:first-child {
   border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
@@ -97,8 +96,5 @@ body {
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-}
-.text-success {
-  color: #77B300 !important;
 }
 

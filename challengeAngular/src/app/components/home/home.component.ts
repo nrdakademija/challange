@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { NgxCarousel } from 'ngx-carousel';
 import { Router } from '@angular/router';
+import { groupBy, mergeMap, toArray } from 'rxjs/operators';
 
 @Component({
   templateUrl: './home.component.html',
@@ -16,7 +17,7 @@ export class HomeComponent {
   private router: Router) { }
   currentRate = 3.14;
   challenges$: Observable<ChallengeModel[]>;
-
+  challengesGrouped: ChallengeModel[];
 
 
 
@@ -27,10 +28,15 @@ export class HomeComponent {
 
    this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
       this.challenges$ = Observable.of(data);
-    //  this.heroes.push(this.challenges$[1].imgUrl);
-
-      // this.loading = false;
     });
+
+    this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
+      this.challengesGrouped = data;
+      this.challengesGrouped.sort(this.compare);
+    });
+
+    
+
 
     this.carouselTileItems = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
@@ -63,7 +69,13 @@ export class HomeComponent {
   redirectToChallenge(id) {
     this.router.navigate(['challenge/' + id]);
   }
-
+  compare(a,b) {
+    if (a.completedBy < b.completedBy)
+      return 1;
+    if (a.completedBy > b.completedBy)
+      return -1;
+    return 0;
+  }
 
 }
 
