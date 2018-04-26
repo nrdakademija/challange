@@ -51,6 +51,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     NgbModule.forRoot(),
     AppRoutingModule,
     NgxCarouselModule
+    
   ],
   providers: [
     UserService,

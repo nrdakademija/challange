@@ -50,6 +50,7 @@ export class HomeComponent {
       },
       load: 2,
       touch: true,
+      
       easing: 'ease'
     }
 
