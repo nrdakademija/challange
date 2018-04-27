@@ -671,11 +671,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Monika\\Desktop\\nrd Projektas\\challenge.Web\\challenge.EF\\challenge.EF.csproj",
+      "projectUniqueName": "C:\\Users\\Monika\\Desktop\\nrd Projektas\\challange\\backend\\challenge.Web\\challenge.EF\\challenge.EF.csproj",
       "projectName": "challenge.EF",
-      "projectPath": "C:\\Users\\Monika\\Desktop\\nrd Projektas\\challenge.Web\\challenge.EF\\challenge.EF.csproj",
+      "projectPath": "C:\\Users\\Monika\\Desktop\\nrd Projektas\\challange\\backend\\challenge.Web\\challenge.EF\\challenge.EF.csproj",
       "packagesPath": "C:\\Users\\Monika\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Monika\\Desktop\\nrd Projektas\\challenge.Web\\challenge.EF\\obj\\",
+      "outputPath": "C:\\Users\\Monika\\Desktop\\nrd Projektas\\challange\\backend\\challenge.Web\\challenge.EF\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",

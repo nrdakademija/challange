@@ -196,6 +196,16 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "challenge.EF/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/challenge.EF.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/challenge.EF.dll": {}
+        }
       }
     }
   },
@@ -656,11 +666,17 @@
         "netstandard.library.2.0.0.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "challenge.EF/1.0.0": {
+      "type": "project",
+      "path": "../challenge.EF/challenge.EF.csproj",
+      "msbuildProject": "../challenge.EF/challenge.EF.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
-      "Microsoft.NETCore.App >= 2.0.0"
+      "Microsoft.NETCore.App >= 2.0.0",
+      "challenge.EF >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -671,11 +687,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Monika\\Desktop\\nrd Projektas\\challenge.Web\\challenge.Application\\challenge.Application.csproj",
+      "projectUniqueName": "C:\\Users\\Monika\\Desktop\\nrd Projektas\\challange\\backend\\challenge.Web\\challenge.Application\\challenge.Application.csproj",
       "projectName": "challenge.Application",
-      "projectPath": "C:\\Users\\Monika\\Desktop\\nrd Projektas\\challenge.Web\\challenge.Application\\challenge.Application.csproj",
+      "projectPath": "C:\\Users\\Monika\\Desktop\\nrd Projektas\\challange\\backend\\challenge.Web\\challenge.Application\\challenge.Application.csproj",
       "packagesPath": "C:\\Users\\Monika\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Monika\\Desktop\\nrd Projektas\\challenge.Web\\challenge.Application\\obj\\",
+      "outputPath": "C:\\Users\\Monika\\Desktop\\nrd Projektas\\challange\\backend\\challenge.Web\\challenge.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
@@ -695,7 +711,11 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Monika\\Desktop\\nrd Projektas\\challange\\backend\\challenge.Web\\challenge.EF\\challenge.EF.csproj": {
+              "projectPath": "C:\\Users\\Monika\\Desktop\\nrd Projektas\\challange\\backend\\challenge.Web\\challenge.EF\\challenge.EF.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
