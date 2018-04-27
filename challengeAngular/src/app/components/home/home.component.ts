@@ -6,6 +6,7 @@ import 'rxjs/add/observable/of';
 import { NgxCarousel } from 'ngx-carousel';
 import { Router } from '@angular/router';
 import { groupBy, mergeMap, toArray } from 'rxjs/operators';
+import { SubCategoryModel } from '../../models/subcategories/subcategories.model';
 
 @Component({
   templateUrl: './home.component.html',
@@ -14,11 +15,11 @@ import { groupBy, mergeMap, toArray } from 'rxjs/operators';
 export class HomeComponent {
 
   constructor(private challengeService: ChallengeService,
-  private router: Router) { }
+    private router: Router) { }
   currentRate = 3.14;
   challenges$: Observable<ChallengeModel[]>;
   challengesGrouped: ChallengeModel[];
-
+  subCategories$: Observable<SubCategoryModel[]>;
 
 
   public carouselTileItems: Array<any>;
@@ -26,8 +27,12 @@ export class HomeComponent {
 
   ngOnInit() {
 
-   this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
+    this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
       this.challenges$ = Observable.of(data);
+    });
+
+    this.challengeService.getChallengeSubCategories().subscribe((data: SubCategoryModel[]) => {
+      this.subCategories$ = Observable.of(data);
     });
 
     this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
@@ -35,13 +40,13 @@ export class HomeComponent {
       this.challengesGrouped.sort(this.compare);
     });
 
-    
+
 
 
     this.carouselTileItems = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
     this.carouselTile = {
-      grid: {xs: 2, sm: 3, md: 3, lg: 5, all: 0},
+      grid: { xs: 2, sm: 3, md: 3, lg: 5, all: 0 },
       slide: 2,
       speed: 400,
       animation: 'lazy',
@@ -50,7 +55,7 @@ export class HomeComponent {
       },
       load: 2,
       touch: true,
-      
+
       easing: 'ease'
     }
 
@@ -70,7 +75,8 @@ export class HomeComponent {
   redirectToChallenge(id) {
     this.router.navigate(['challenge/' + id]);
   }
-  compare(a,b) {
+
+  compare(a, b) {
     if (a.completedBy < b.completedBy)
       return 1;
     if (a.completedBy > b.completedBy)

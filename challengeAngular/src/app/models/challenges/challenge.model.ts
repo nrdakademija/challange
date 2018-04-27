@@ -3,7 +3,7 @@ export class ChallengeModel {
   title: String;
   created_at: Date;
   category: String;
-  subCategory: String;
+  subcategory: String;
   daysNeeded: Number;
   imgUrl: String;
   dateAdded: String;
