@@ -1,6 +1,7 @@
 export class ChallengeModel {
   id: Number;
   title: String;
+  created_at: Date;
   category: String;
   subCategory: String;
   daysNeeded: Number;

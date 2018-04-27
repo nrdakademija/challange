@@ -6,6 +6,7 @@ import { ChallengeService } from '../../services/challenge.service';
 import { Router } from '@angular/router';
 import { CategoryModel } from '../../models/categories/categories.model';
 import { SubCategoryModel } from '../../models/subcategories/subcategories.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'add-challenge',
@@ -22,6 +23,8 @@ export class AddChallengeComponent implements OnInit {
   triedToSave = false;
   saving = false;
 
+
+
   constructor(private challengeService: ChallengeService, private router: Router) {
 
 
@@ -32,24 +35,22 @@ export class AddChallengeComponent implements OnInit {
     this.getCategoriesList();
     this.getSubCategoriesList();
 
-   }
+  }
 
   getCategoriesList() {
-    this.challengeService.getChallengeCategories().subscribe((response: CategoryModel[]) =>{
-       this.categoriesList$ = Observable.of(response);
+    this.challengeService.getChallengeCategories().subscribe((response: CategoryModel[]) => {
+      this.categoriesList$ = Observable.of(response);
     });
   }
 
-//TO DO filter subCategories according to chosen category
+  //TO DO filter subCategories according to chosen category
   getSubCategoriesList() {
-    this.challengeService.getChallengeSubCategories().subscribe((response: CategoryModel[]) =>{
-       this.subCategoriesList$ = Observable.of(response);
+    this.challengeService.getChallengeSubCategories().subscribe((response: CategoryModel[]) => {
+      this.subCategoriesList$ = Observable.of(response);
     });
   }
 
-  addChallenge(value: any) {
-    console.log('Reactive Form Data:  ')
-    console.log(value);
+  isImageUrl(value: any) {
     if (value.imgUrl.endsWith(".jpg") || value.imgUrl.endsWith(".jpeg") || value.imgUrl.endsWith(".png")) {
       this.isPhoto = true;
     }
@@ -59,10 +60,26 @@ export class AddChallengeComponent implements OnInit {
     }
   }
 
+
   save(form) {
-    console.log(form);
+    this.challengeInfo.category = "User created";
     console.log(this.challengeInfo);
-  };
+    if (!form.invalid) {
+      this.saving = true;
+      if (this.challengeInfo.imgUrl.endsWith(".jpg") || this.challengeInfo.imgUrl.endsWith(".jpeg") || this.challengeInfo.imgUrl.endsWith(".png")) {
+        this.isPhoto = true;
+        this.challengeService.postChallenge(this.challengeInfo).subscribe((response) => {
+          this.saving = false;
+          Swal('Yaaay!', 'Successfull', 'success');
+          this.router.navigate(['/challenges']);
+        });
+      }
+    }
+    else {
+      this.triedToSave = true;
+      Swal('Ooop!', 'Error', 'error');
+    }
+  }
 
 
 
