@@ -1,6 +1,6 @@
-﻿using akademij.Application.main.employee.dto;
-using akademij.Application.main.inventory;
-using akademij.EF.entities;
+﻿using challenge.Application.main.challenge.dto;
+using challenge.Application.main.challenge;
+using challenge.EF.entities;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -13,9 +13,9 @@ namespace akademij.Application.automapper
     {
         public MappingsProfile()
         {
-            CreateMap<Employee, EmployeeDto>()
-                .ForMember(dto => dto.EmployeeInventory, opt => opt.MapFrom(x => x.EmployeeInventory.Select(y => y.Inventory).ToList()));
-            CreateMap<Inventory, InventoryViewDto>();
+            //CreateMap<Employee, EmployeeDto>()
+            //    .ForMember(dto => dto.EmployeeInventory, opt => opt.MapFrom(x => x.EmployeeInventory.Select(y => y.Inventory).ToList()));
+            //CreateMap<Inventory, InventoryViewDto>();
            // CreateMap<Inventory, InventoryDto>().ReverseMap();
            // CreateMap<InventoryType, InventoryTypeDto>();
 

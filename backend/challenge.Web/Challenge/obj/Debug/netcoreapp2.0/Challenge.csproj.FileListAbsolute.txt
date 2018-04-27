@@ -1,0 +1,6 @@
+C:\Users\Monika\Desktop\nrd Projektas\challange\backend\challenge.Web\Challenge\bin\Debug\netcoreapp2.0\challenge.Application.dll
+C:\Users\Monika\Desktop\nrd Projektas\challange\backend\challenge.Web\Challenge\bin\Debug\netcoreapp2.0\challenge.EF.dll
+C:\Users\Monika\Desktop\nrd Projektas\challange\backend\challenge.Web\Challenge\obj\Debug\netcoreapp2.0\Challenge.csprojResolveAssemblyReference.cache
+C:\Users\Monika\Desktop\nrd Projektas\challange\backend\challenge.Web\Challenge\obj\Debug\netcoreapp2.0\Challenge.csproj.CoreCompileInputs.cache
+C:\Users\Monika\Desktop\nrd Projektas\challange\backend\challenge.Web\Challenge\obj\Debug\netcoreapp2.0\Challenge.AssemblyInfoInputs.cache
+C:\Users\Monika\Desktop\nrd Projektas\challange\backend\challenge.Web\Challenge\obj\Debug\netcoreapp2.0\Challenge.AssemblyInfo.cs
