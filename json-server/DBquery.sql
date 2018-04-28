@@ -23,7 +23,7 @@ title varchar(255) NOT NULL
 CREATE TABLE challenges (
 id int NOT NULL PRIMARY KEY IDENTITY,
 title varchar(255) NOT null,
-createdAt date NOT NULL,
+createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 daysNeeded int NOT NULL, 
 reward int NOT NULL, 
 difficulty tinyint NOT NULL, 
