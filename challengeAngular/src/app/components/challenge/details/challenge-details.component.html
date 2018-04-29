@@ -13,66 +13,77 @@
                 <div class="col-sm-3 bs-component text-right">
                     <button class="btn btn-outline-success">TRY IT</button>
                 </div>
-
             </div>
             <div class="row">
-                <div class="col-sm-4">
-                    <img src="{{challengeInfo.imgUrl}}" class="rounded float-left" alt="...">
+                <div class="col-sm-4 col-12">
+                    <img src="{{challengeInfo.imgUrl}}" class="rounded float-left img-challenge-details" alt="...">
                 </div>
-                <div class="col">
-
-                    <br/>
-                    <br/>
+                
+            
+                <div class="col-sm-8 col-12">
                     <div class="row">
-                        <div class="col-sm-3 bs-component">
+                        <div class="col-sm-3 col-6 bs-component">
                             <h4 class="label text-muted text-right">Category</h4>
                         </div>
-                        <div class="col-sm-1"></div>
                         <div class="col">
-                            <h4 class="label text-info">{{challengeInfo.category}}</h4>
+                            <h4 class="label" style="color: whitesmoke">{{challengeInfo.category}} Reiks keist į žodį</h4>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3 bs-component">
+                        <div class="col-sm-3 col-6 bs-component">
                             <h4 class="label text-muted text-right">Sub category</h4>
                         </div>
-                        <div class="col-sm-1"></div>
                         <div class="col">
-                            <h4 class="label text-info">{{challengeInfo.subCategory}}</h4>
+                            <h4 class="label "style="color: whitesmoke">{{challengeInfo.subCategory}} Reiks keist į žodį</h4>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3 bs-component">
+                        <div class="col-sm-3 col-6 bs-component">
                             <h4 class="label text-muted text-right">Days needed</h4>
                         </div>
-                        <div class="col-sm-1"></div>
                         <div class="col">
-                            <h4 class="label text-info">{{challengeInfo.daysNeeded}}</h4>
+                            <h4 class="label" style="color: whitesmoke">{{challengeInfo.daysNeeded}} Reiks keist į kažką</h4>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3 bs-component">
+                        <div class="col-sm-3 col-6 bs-component">
                             <h4 class="label text-muted text-right">Reward</h4>
                         </div>
-                        <div class="col-sm-1"></div>
                         <div class="col">
-                            <h4 class="label text-info">{{challengeInfo.Reward}}</h4>
+                            <h4 class="label" style="color: whitesmoke">{{challengeInfo.Reward}} keist į kažką</h4>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3 bs-component">
+                        <div class="col-sm-3 col-6 bs-component">
                             <h4 class="label text-muted text-right">Difficulty</h4>
                         </div>
-                        <div class="col-sm-1"></div>
-                        <div class="col text-info">
+                        <div class="col" style="color: whitesmoke">
                             <h4>
                                 <ngb-rating [readonly]="true" max="5" [rate]="challengeInfo.Difficulty"></ngb-rating>
                             </h4>
                         </div>
                     </div>
-
+                    
                 </div>
             </div>
+            <br/>
+                    <div class="row">
+                        <div class="col">
+                            <h4>Description</h4>
+                            <p>A1 Startup Campus is also the name for the A1 startup initiative. In addition to a free office location,
+                                    A1 also supports startups with the entire range of A1 business products. There are also around 40 A1
+                                    experts from various business areas who offer assistance and advice for A1 startups. A1 Startup Campus is also the name for the A1 startup initiative. In addition to a free office location,
+                                    A1 also supports startups with the entire range of A1 business products. There are also around 40 A1
+                                    experts from various business areas who offer assistance and advice for A1 startups. A1 Startup Campus is also the name for the A1 startup initiative. In addition to a free office location,
+                                    A1 also supports startups with the entire range of A1 business products. There are also around 40 A1
+                                    experts from various business areas who offer assistance and advice for A1 startups. A1 Startup Campus is also the name for the A1 startup initiative. In addition to a free office location,
+                                    A1 also supports startups with the entire range of A1 business products. There are also around 40 A1
+                                    experts from various business areas who offer assistance and advice for A1 startups. A1 Startup Campus is also the name for the A1 startup initiative. In addition to a free office location,
+                                    A1 also supports startups with the entire range of A1 business products. There are also around 40 A1
+                                    experts from various business areas who offer assistance and advice for A1 startups. </p>
+
+                        </div>
+                    </div>
             <br/>
 
         </div>
