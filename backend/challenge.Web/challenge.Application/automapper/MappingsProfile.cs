@@ -1,23 +1,24 @@
-﻿using challenge.Application.main.challenge.dto;
-using challenge.Application.main.challenge;
+﻿using challenge.Application.main.users.dto;
+using challenge.Application.main.challenges;
 using challenge.EF.entities;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using challenge.EF;
 
-namespace akademij.Application.automapper
+namespace challenge.Application.automapper
 {
     public class MappingsProfile : Profile
     {
         public MappingsProfile()
         {
-            //CreateMap<Employee, EmployeeDto>()
-            //    .ForMember(dto => dto.EmployeeInventory, opt => opt.MapFrom(x => x.EmployeeInventory.Select(y => y.Inventory).ToList()));
-            //CreateMap<Inventory, InventoryViewDto>();
-           // CreateMap<Inventory, InventoryDto>().ReverseMap();
-           // CreateMap<InventoryType, InventoryTypeDto>();
+            CreateMap<Users, UsersDto>()
+                .ForMember(dto => dto.UsersChallenges, opt => opt.MapFrom(x => x.UsersChallenges.Select(y => y.Challenge).ToList()));
+           // CreateMap<Users, UsersDto>();
+            // CreateMap<Inventory, InventoryDto>().ReverseMap();
+            // CreateMap<InventoryType, InventoryTypeDto>();
 
         }
     }
