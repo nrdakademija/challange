@@ -15,6 +15,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using challenge.EF.entities;
+using challenge.Application.main;
+using challenge.Application.main.categories;
+using challenge.Application.main.subcategories;
+using challenge.Application;
 
 namespace challenge.Web
 {
@@ -46,10 +50,18 @@ namespace challenge.Web
             //uzregistruojam konteksto klase
             services.AddDbContext<challengeContext>(options =>
             options.UseSqlServer(_configuration.GetConnectionString("ChallengeDatabase")));
+
             services.AddScoped<IUsersRepository, UsersRepository>();
             services.AddScoped<IUsersService, UsersService>();
-            services.AddCors();
 
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICategoryService, CategoryService>();
+
+            services.AddScoped<ISubcategoryRepository, SubcategoryRepository>();
+            services.AddScoped<ISubcategoryService, SubcategoryService>();
+
+
+            services.AddCors();
             services.AddMvc();
         }
 

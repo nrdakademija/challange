@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using challenge.EF;
+using challenge.Application.main.categories.dto;
+using challenge.Application.main.subcategories.dto;
 
 namespace challenge.Application.automapper
 {
@@ -16,9 +18,11 @@ namespace challenge.Application.automapper
         {
             CreateMap<Users, UsersDto>()
                 .ForMember(dto => dto.UsersChallenges, opt => opt.MapFrom(x => x.UsersChallenges.Select(y => y.Challenge).ToList()));
-           // CreateMap<Users, UsersDto>();
+            // CreateMap<Users, UsersDto>();
             // CreateMap<Inventory, InventoryDto>().ReverseMap();
             // CreateMap<InventoryType, InventoryTypeDto>();
+            CreateMap<ChallengeCategories, CategoryDto>();
+            CreateMap<ChallengeSubcategories, SubcategoryDto>();
 
         }
     }

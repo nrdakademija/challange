@@ -4,7 +4,10 @@ using System.Text;
 
 namespace challenge.Application.main.subcategories.dto
 {
-    class SubcategoryDto
+    public class SubcategoryDto
     {
+
+        public int Id { get; set; }
+        public string Title { get; set; }
     }
 }

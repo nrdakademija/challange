@@ -16,7 +16,7 @@ namespace challenge.EF.repositories
         {
             return challengeContext.Users
               .Include(p => p.UsersChallenges)
-              .ThenInclude(p => p.Challenge)
+             // .ThenInclude(p => p.Challenge)
               .ToList();
 
         }

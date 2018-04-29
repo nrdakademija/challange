@@ -1,5 +1,4 @@
 ﻿using challenge.EF.entities;
-using challenge.EF.entities;
 using System.Collections.Generic;
 
 namespace challenge.EF.repositories
