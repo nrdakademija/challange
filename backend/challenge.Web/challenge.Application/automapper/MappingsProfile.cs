@@ -9,6 +9,7 @@ using System.Text;
 using challenge.EF;
 using challenge.Application.main.categories.dto;
 using challenge.Application.main.subcategories.dto;
+using challenge.Application.main.challenges.dto;
 
 namespace challenge.Application.automapper
 {
@@ -23,7 +24,7 @@ namespace challenge.Application.automapper
             // CreateMap<InventoryType, InventoryTypeDto>();
             CreateMap<ChallengeCategories, CategoryDto>();
             CreateMap<ChallengeSubcategories, SubcategoryDto>();
-
+            CreateMap<Challenges, ChallengeDto>();
         }
     }
 }

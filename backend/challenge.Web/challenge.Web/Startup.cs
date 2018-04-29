@@ -19,6 +19,7 @@ using challenge.Application.main;
 using challenge.Application.main.categories;
 using challenge.Application.main.subcategories;
 using challenge.Application;
+using challenge.Application.main.challenges;
 
 namespace challenge.Web
 {
@@ -60,6 +61,8 @@ namespace challenge.Web
             services.AddScoped<ISubcategoryRepository, SubcategoryRepository>();
             services.AddScoped<ISubcategoryService, SubcategoryService>();
 
+            services.AddScoped<IChallengeRepository, ChallengeRepository>();
+            services.AddScoped<IChallengeService, ChallengeService>();
 
             services.AddCors();
             services.AddMvc();
