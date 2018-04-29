@@ -1,6 +1,26 @@
 <div class="content">
-<p>
-  user works!
-</p>
+  <div class="container">
+    <div class="row">
+      <div class="col bs-component">
+        <h1 class="text-primary">Leaderboard</h1>
+      </div>
+    </div>
+    <table class="table">
+      <tr>
+        <th>PLACE</th>
+        <th>USER</th>
+        <th>EXP</th>
+      </tr>
+      <tr *ngFor="let u of sortedUsers$; let i=index;">
+        <td>{{i+1}}</td>
+        <td>
+          {{u.username}}
+        </td>
+        <td>
+          {{u.points}}
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
 <app-footer></app-footer>

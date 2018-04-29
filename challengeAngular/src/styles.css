@@ -7,6 +7,7 @@
 }
 .content {
   min-height: calc(100vh - 100px);
+  margin-top: 60px;
 }
 .register {
   margin-top: 80px;
@@ -100,4 +101,27 @@ body {
 .img-challenge-details{
   height: auto;
   width: inherit;
+}
+.just-box {
+  margin: 10px;
+}
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+table {  
+  color: #fff;
+  border-collapse: collapse;
+  display: table;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: grey;
+}
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
 }

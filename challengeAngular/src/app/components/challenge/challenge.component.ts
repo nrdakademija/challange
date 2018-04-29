@@ -3,6 +3,8 @@ import { Observable, BehaviorSubject } from 'rxjs/';
 import { ChallengeService } from '../../services/challenge.service';
 import { ChallengeModel } from '../../models/challenges/challenge.model';
 import { Router } from '@angular/router';
+import { SubCategoryModel } from '../../models/subcategories/subcategories.model';
+import { CategoryModel } from '../../models/categories/categories.model';
 
 @Component({
     templateUrl: './challenge.component.html',
@@ -11,7 +13,8 @@ import { Router } from '@angular/router';
 export class ChallengeComponent {
   //loading = false;
   challenges$: Observable<ChallengeModel[]>;
-
+  subCategories$: Observable<SubCategoryModel[]>;
+  categories$: Observable<CategoryModel[]>;
 
 
   constructor(private router: Router,
@@ -24,10 +27,19 @@ export class ChallengeComponent {
           this.challenges$ = Observable.of(data);
          // this.loading = false;
       });
+      this.challengeService.getChallengeSubCategories().subscribe((data: SubCategoryModel[]) => {
+        this.subCategories$ = Observable.of(data);
+      });
+      this.challengeService.getChallengeCategories().subscribe((data: CategoryModel[]) => {
+        this.categories$ = Observable.of(data);
+      });
   }
 
   routeToChallenge(id){
-    this.router.navigate(['/challenges/' + id]);
+    this.router.navigate(['challenge/'+id]);
+  }
+  filterByCategory(){
+
   }
 }
 
