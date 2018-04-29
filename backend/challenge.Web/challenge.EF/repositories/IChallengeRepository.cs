@@ -1,7 +1,6 @@
 ﻿using challenge.EF.entities;
-using System;
+using challenge.EF.entities;
 using System.Collections.Generic;
-using System.Text;
 
 namespace challenge.EF.repositories
 {
