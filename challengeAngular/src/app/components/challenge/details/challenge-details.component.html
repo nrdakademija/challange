@@ -25,16 +25,16 @@
                         <div class="col-sm-3 col-6 bs-component">
                             <h4 class="label text-muted text-right">Category</h4>
                         </div>
-                        <div class="col">
-                            <h4 class="label" style="color: whitesmoke">{{challengeInfo.category}} Reiks keist į žodį</h4>
+                        <div *ngIf="categories$ | async; let categories$;" class="col">
+                            <h4 class="label" style="color: whitesmoke">{{categories$[challengeInfo.category-1].title}}</h4>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3 col-6 bs-component">
                             <h4 class="label text-muted text-right">Sub category</h4>
                         </div>
-                        <div class="col">
-                            <h4 class="label "style="color: whitesmoke">{{challengeInfo.subCategory}} Reiks keist į žodį</h4>
+                        <div *ngIf="subCategories$ | async; let subCategories$;" class="col">
+                            <h4 class="label "style="color: whitesmoke">{{subCategories$[challengeInfo.subcategory-1].title}}</h4>
                         </div>
                     </div>
                     <div class="row">
@@ -42,7 +42,7 @@
                             <h4 class="label text-muted text-right">Days needed</h4>
                         </div>
                         <div class="col">
-                            <h4 class="label" style="color: whitesmoke">{{challengeInfo.daysNeeded}} Reiks keist į kažką</h4>
+                            <h4 class="label" style="color: whitesmoke">{{challengeInfo.daysNeeded}} days</h4>
                         </div>
                     </div>
                     <div class="row">
@@ -50,7 +50,7 @@
                             <h4 class="label text-muted text-right">Reward</h4>
                         </div>
                         <div class="col">
-                            <h4 class="label" style="color: whitesmoke">{{challengeInfo.Reward}} keist į kažką</h4>
+                            <h4 class="label" style="color: whitesmoke">{{challengeInfo.Reward}} exp</h4>
                         </div>
                     </div>
                     <div class="row">

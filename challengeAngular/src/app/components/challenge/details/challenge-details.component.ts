@@ -5,6 +5,8 @@ import { ChallengeService } from '../../../services/challenge.service';
 import { UserModel } from '../../../models/users/user.model';
 import { UserService } from '../../../services/user.service';
 import { Observable } from 'rxjs/Observable';
+import { SubCategoryModel } from '../../../models/subcategories/subcategories.model';
+import { CategoryModel } from '../../../models/categories/categories.model';
 
 @Component({
   selector: './challenge-details.component.css',
@@ -15,7 +17,9 @@ export class ChallengeDetailsComponent implements OnInit {
 
   challengeInfo: ChallengeModel = new ChallengeModel();
   activeParameter: any;
-  usersList$: Observable<UserModel[]>;
+  usersList$: Observable<UserModel[]>;  
+  subCategories$: Observable<SubCategoryModel[]>;
+  categories$: Observable<CategoryModel[]>;
   constructor(private router: Router,
     private challengeService: ChallengeService,
     private activeRoute: ActivatedRoute,
@@ -33,7 +37,16 @@ export class ChallengeDetailsComponent implements OnInit {
     else {
       this.challengeInfo = new ChallengeModel();
     }
+    
+    this.challengeService.getChallengeSubCategories().subscribe((data: SubCategoryModel[]) => {
+      this.subCategories$ = Observable.of(data);
+    });
+    this.challengeService.getChallengeCategories().subscribe((data: CategoryModel[]) => {
+      this.categories$ = Observable.of(data);
+    });
     console.log(this.challengeInfo);
+    console.log(this.categories$);
+    console.log(this.subCategories$);
     // this.loading = false;
   }
   
