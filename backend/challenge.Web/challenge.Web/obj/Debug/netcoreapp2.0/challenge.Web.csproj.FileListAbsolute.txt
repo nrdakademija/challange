@@ -1,0 +1,16 @@
+C:\Users\Monika\Desktop\challenge.Web\challenge.Web\bin\Debug\netcoreapp2.0\challenge.Web.deps.json
+C:\Users\Monika\Desktop\challenge.Web\challenge.Web\bin\Debug\netcoreapp2.0\challenge.Web.runtimeconfig.json
+C:\Users\Monika\Desktop\challenge.Web\challenge.Web\bin\Debug\netcoreapp2.0\challenge.Web.runtimeconfig.dev.json
+C:\Users\Monika\Desktop\challenge.Web\challenge.Web\bin\Debug\netcoreapp2.0\challenge.Web.dll
+C:\Users\Monika\Desktop\challenge.Web\challenge.Web\bin\Debug\netcoreapp2.0\challenge.Web.pdb
+C:\Users\Monika\Desktop\challenge.Web\challenge.Web\obj\Debug\netcoreapp2.0\challenge.Web.csprojResolveAssemblyReference.cache
+C:\Users\Monika\Desktop\challenge.Web\challenge.Web\obj\Debug\netcoreapp2.0\challenge.Web.csproj.CoreCompileInputs.cache
+C:\Users\Monika\Desktop\challenge.Web\challenge.Web\obj\Debug\netcoreapp2.0\challenge.Web.AssemblyInfoInputs.cache
+C:\Users\Monika\Desktop\challenge.Web\challenge.Web\obj\Debug\netcoreapp2.0\challenge.Web.AssemblyInfo.cs
+C:\Users\Monika\Desktop\challenge.Web\challenge.Web\obj\Debug\netcoreapp2.0\challenge.Web.dll
+C:\Users\Monika\Desktop\challenge.Web\challenge.Web\obj\Debug\netcoreapp2.0\challenge.Web.pdb
+C:\Users\Monika\Desktop\challenge.Web\challenge.Web\bin\Debug\netcoreapp2.0\challenge.Application.dll
+C:\Users\Monika\Desktop\challenge.Web\challenge.Web\bin\Debug\netcoreapp2.0\challenge.EF.dll
+C:\Users\Monika\Desktop\challenge.Web\challenge.Web\bin\Debug\netcoreapp2.0\challenge.Application.pdb
+C:\Users\Monika\Desktop\challenge.Web\challenge.Web\bin\Debug\netcoreapp2.0\challenge.EF.pdb
+C:\Users\Monika\Desktop\challenge.Web\challenge.Web\obj\Debug\netcoreapp2.0\challenge.Web.csproj.CopyComplete
