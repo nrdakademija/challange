@@ -11,13 +11,12 @@ namespace challenge.EF.repositories
         public UsersRepository(challengeContext context) : base(context)
         {
         }
-        //  public List<Employee> GetEmployees()
-        //   public void GetEmployees()
+ 
         public List<Users> GetUsers()
         {
             return challengeContext.Users
               .Include(p => p.UsersChallenges)
-             // .ThenInclude(p => p.Challenges)
+              .ThenInclude(p => p.Challenge)
               .ToList();
 
         }
