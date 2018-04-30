@@ -7,7 +7,7 @@ import { RegisterComponent } from '../components/register/register.component'
 import { AboutComponent } from '../components/about/about.component'
 import { ChallengeComponent } from '../components/challenge/challenge.component'
 import { ChallengeDetailsComponent } from '../components/challenge/details/challenge-details.component';
-import { UserComponent } from '../components/user/user.component';
+import { UserComponent } from '../components/userList/user.component';
 import { UserDetailsComponent } from '../components/user-details/user-details.component';
 
 @NgModule({

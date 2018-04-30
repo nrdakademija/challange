@@ -10,6 +10,7 @@ import { UserService } from '../../services/user.service';
 })
 export class UserComponent implements OnInit {
 
+  page = 4;
   users$: Observable<UserModel[]>;
   sortedUsers$: UserModel[];
   constructor(private userService: UserService) { }
@@ -21,7 +22,7 @@ export class UserComponent implements OnInit {
       this.sortedUsers$.sort(this.compare);
     });
   }
-  
+
   compare(a, b) {
     if (a.level < b.level)
       return -1;

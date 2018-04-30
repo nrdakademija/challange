@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxCarouselModule } from 'ngx-carousel';
 import 'hammerjs';
-import {NgbRatingConfig, NgbProgressbarConfig,NgbDatepickerConfig, NgbDateStruct,NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbRatingConfig,NgbPaginationConfig, NgbProgressbarConfig,NgbDatepickerConfig, NgbDateStruct,NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
@@ -22,7 +22,7 @@ import { ChallengeCategoriesFilterPipe } from './pipes/challenge-filter.pipe';
 import { AddChallengeComponent } from './components/challenge/add-challenge.component';
 import { HomeComponent } from './components/home/home.component';
 import { ChallengeDetailsComponent } from './components/challenge/details/challenge-details.component';
-import { UserComponent } from './components/user/user.component';
+import { UserComponent } from './components/userList/user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 
@@ -56,7 +56,8 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
   providers: [
     UserService,
     ChallengeService,
-    AuthenticationService
+    AuthenticationService,
+    NgbPaginationConfig
   ],
   bootstrap: [AppComponent]
 })

@@ -12,7 +12,7 @@
 
             <div class="form-group">
               <label>Category</label>
-              <select #subCategory="ngModel" class="form-control" name="subCategory" [(ngModel)]="challengeInfo.subCategory" >
+              <select #subCategory="ngModel" class="form-control" name="subCategory" [(ngModel)]="challengeInfo.subcategory" >
                 <option disabled [value]="'default'">Choose Category</option>
                 <option *ngFor="let subCategory of subCategoriesList$ | async" [value]="subCategory.title">{{subCategory.title}}</option>
               </select>

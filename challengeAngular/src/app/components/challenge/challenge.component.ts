@@ -12,6 +12,7 @@ import { CategoryModel } from '../../models/categories/categories.model';
 })
 export class ChallengeComponent {
   //loading = false;
+  page = 4;
   challenges$: Observable<ChallengeModel[]>;
   subCategories$: Observable<SubCategoryModel[]>;
   categories$: Observable<CategoryModel[]>;
