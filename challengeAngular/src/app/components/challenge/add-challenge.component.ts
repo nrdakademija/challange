@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { ChallengeModel } from '../../models/challenges/challenge.model';
 import { ChallengeService } from '../../services/challenge.service';
 import { Router } from '@angular/router';
@@ -21,9 +21,6 @@ export class AddChallengeComponent implements OnInit {
   challengeInfo: ChallengeModel = new ChallengeModel();
   isPhoto = false;
   triedToSave = false;
-  saving = false;
-
-
 
   constructor(private challengeService: ChallengeService, private router: Router) {
 
@@ -50,30 +47,24 @@ export class AddChallengeComponent implements OnInit {
     });
   }
 
-  isImageUrl(value: any) {
-    if (value.imgUrl.endsWith(".jpg") || value.imgUrl.endsWith(".jpeg") || value.imgUrl.endsWith(".png")) {
-      this.isPhoto = true;
+  isImageUrl(url) {debugger;
+    if (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png")) {
+      return this.isPhoto = true;
     }
     else {
-      this.isPhoto = false;
-
+      return this.isPhoto = false;
     }
   }
 
 
-  save(form) {
+  save(form: NgForm) {
     this.challengeInfo.category = "User created";
-    console.log(this.challengeInfo);
-    if (!form.invalid) {
-      this.saving = true;
-      if (this.challengeInfo.imgUrl.endsWith(".jpg") || this.challengeInfo.imgUrl.endsWith(".jpeg") || this.challengeInfo.imgUrl.endsWith(".png")) {
-        this.isPhoto = true;
+    if (form.valid) {
+      this.triedToSave = false;
         this.challengeService.postChallenge(this.challengeInfo).subscribe((response) => {
-          this.saving = false;
           Swal('Yaaay!', 'Successfull', 'success');
           this.router.navigate(['/challenges']);
         });
-      }
     }
     else {
       this.triedToSave = true;

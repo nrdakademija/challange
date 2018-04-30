@@ -19,10 +19,10 @@ namespace challenge.Web.Controllers.users
         [HttpGet]
         public IActionResult Get()
         {
-            //  _employeeRepository.GetEmployees();
             var users = _usersService.GetAllUsers();
             return Ok(users);
 
         }
+
     }
 }

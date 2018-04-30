@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { UserModel } from '../models/users/user.model';
+import { UserChallengesModel } from '../models/userChallenges/userchallenges.model'
 
 @Injectable()
 export class UserService {
@@ -18,6 +19,14 @@ export class UserService {
       .map((res: Response) => res.json() as UserModel[])
       .catch((error: any) => Observable.throw(error));
   }
+
+  //TO DO add valid url
+  acceptChallenge(userId, challengeId): Observable<UserChallengesModel[]> {debugger;
+      return this.http.post(this.url + '/' + userId, challengeId)
+      .map((res: Response) => res.json() as UserChallengesModel)
+      .catch((error: any) => Observable.throw(error));
+  }
+
 
   //Single user
   getUser(id): Observable<UserModel[]> {

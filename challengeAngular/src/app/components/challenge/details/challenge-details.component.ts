@@ -46,21 +46,19 @@ export class ChallengeDetailsComponent implements OnInit {
     this.challengeService.getChallengeCategories().subscribe((data: CategoryModel[]) => {
       this.categories$ = Observable.of(data);
     });
-    console.log(this.challengeInfo);
-    console.log(this.categories$);
-    console.log(this.subCategories$);
     // this.loading = false;
   }
 
   //success message shown to user after he accepts the challenge
   succcesMessages = ['Only you can change your life', 'It always seems impossible until it\'s done!',
-   'Never give up!', 'If you can dream it you can do it!',
-   'Set your goals high and don\'t stop till you get there!',
-   'What you do today can improve all your tomorrows!', 'Aim for the moon. If you miss, you may hit a star!',
+    'Never give up!', 'If you can dream it you can do it!',
+    'Set your goals high and don\'t stop till you get there!',
+    'What you do today can improve all your tomorrows!', 'Aim for the moon. If you miss, you may hit a star!',
     'Go for it now. The future is promised to no one!', 'The more things you do, the more you can do!', 'You have to make it happen!'];
 
+  userId = 0;
   messageRnd = 0;
-  startChallenge(id, userId) {
+  startChallenge(challengeId) {
 
     Swal({
       title: 'Are you ready for a challenge?',
@@ -73,11 +71,15 @@ export class ChallengeDetailsComponent implements OnInit {
       if (result.value) {
         //Add challenge to users challenges
         this.messageRnd = Math.floor(Math.random() * 10);
-        Swal(
-          `${this.succcesMessages[this.messageRnd]}`
-        )
-        userId = 1;
-        this.router.navigate(['user/userId']); //<---navigate to user where he can see his challenges
+
+        this.userService.acceptChallenge(this.userId, challengeId).subscribe((response) => {debugger;
+          Swal(
+            `${this.succcesMessages[this.messageRnd]}`
+          );
+          this.userId = 1;
+          this.router.navigate(['user/userId']); //<---navigate to user where he can see his challenges
+        });
+
       }
     })
   }

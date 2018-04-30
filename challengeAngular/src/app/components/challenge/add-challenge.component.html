@@ -6,13 +6,13 @@
         <button type="button" class="close" data-dismiss="modal"> &times;</button>
       </div>
       <div class="modal-body">
-        <form #challengeForm="ngForm" novalidate>
+        <form (ngSubmit)="save(challengeForm)" #challengeForm="ngForm" novalidate>
           <div class="container">
 
 
             <div class="form-group">
               <label>Category</label>
-              <select #subCategory="ngModel" class="form-control" name="subCategory" [(ngModel)]="challengeInfo.subcategory" >
+              <select #subCategory="ngModel" class="form-control" name="subCategory" [(ngModel)]="challengeInfo.subcategory">
                 <option disabled [value]="'default'">Choose Category</option>
                 <option *ngFor="let subCategory of subCategoriesList$ | async" [value]="subCategory.title">{{subCategory.title}}</option>
               </select>
@@ -23,37 +23,41 @@
                 <div class="form-group" [class.has-danger]="title.invalid && triedToSave">
                   <label>Title</label>
                   <input #title="ngModel" class="form-control" type="text" name="title" required [(ngModel)]="challengeInfo.title" />
-                  <small class="text-danger" *ngIf="title.invalid && triedToSave"> Title is required </small>
+                  <small *ngIf="title.invalid && triedToSave " class="text-danger">Title is required</small>
                 </div>
 
                 <div class="form-group" [class.has-danger]="daysNeeded.invalid && triedToSave">
                   <label>Challenge duration</label>
-                  <input #daysNeeded="ngModel" class="form-control" type="number" name="daysNeeded" required [(ngModel)]="challengeInfo.daysNeeded" />
+                  <input #daysNeeded="ngModel" class="form-control" type="number" min="1" name="daysNeeded" required [(ngModel)]="challengeInfo.daysNeeded"
+                  />
                   <small class="text-danger" *ngIf="daysNeeded.invalid && triedToSave"> Needed days is required </small>
                 </div>
 
                 <div class="form-group" [class.has-danger]="Reward.invalid && triedToSave">
                   <label>Rewards</label>
-                  <input #Reward="ngModel" class="form-control" type="number" name="Reward" required [(ngModel)]="challengeInfo.Reward" ngbTooltip="How rewarding do you think your challenge is?" />
+                  <input #Reward="ngModel" class="form-control" type="number" min="1" name="Reward" required [(ngModel)]="challengeInfo.Reward" ngbTooltip="How rewarding do you think your challenge is?"
+                  />
                   <small class="text-danger" *ngIf="Reward.invalid && triedToSave"> Reward is required </small>
                 </div>
 
                 <div class="form-group" [class.has-danger]="triedToSave">
                   <label>Difficulty</label>
-                  <ngb-rating  [(rate)]="challengeInfo.Difficulty" max="5" required ngbTooltip="How much persistence your challenge requires?"></ngb-rating>
+                  <ngb-rating [(rate)]="challengeInfo.Difficulty" max="5" required ngbTooltip="How much persistence your challenge requires?"></ngb-rating>
                   <!-- <input #Difficulty="ngModel" class="form-control" type="text" name="Difficulty" required [(ngModel)]="challengeInfo.Difficulty" /> -->
                   <small class="text-danger" *ngIf="triedToSave"> Difficulty is required </small>
                 </div>
 
-                <div class="form-group" [class.has-danger]="imgUrl.invalid && triedToSave">
+                <div class="form-group" [class.has-danger]="imgUrl.invalid && triedToSave && !isImageUrl && !isPhoto">
                   <label>Image URL</label>
-                  <input #imgUrl="ngModel" class="form-control" type="text" name="imgUrl" required [(ngModel)]="challengeInfo.imgUrl" />
-                  <small class="text-danger" *ngIf="imgUrl.invalid && triedToSave && isPhoto"> Image URL is required </small>
+                  <input #imgUrl="ngModel" class="form-control" type="text" (change)="isImageUrl(challengeInfo.imgUrl)" name="imgUrl" required
+                    [(ngModel)]="challengeInfo.imgUrl" />
+                  <small class="text-danger" *ngIf="imgUrl.invalid && triedToSave && !isPhoto"> Image URL is required </small>
                 </div>
               </div>
             </div>
           </div>
           <button type="button" class="btn btn-primary" [disabled]="saving" (click)="save(challengeForm)">Save</button>
+          <button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Cancel</button>
         </form>
       </div>
     </div>
