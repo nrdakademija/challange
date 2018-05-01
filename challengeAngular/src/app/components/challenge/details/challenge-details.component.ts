@@ -78,7 +78,10 @@ export class ChallengeDetailsComponent implements OnInit {
           );
 
           this.router.navigate(['user/userId']); //<---navigate to user where he can see his challenges
-        });
+        }); this.router.navigate(['user/userId']);
+        Swal(
+          `${this.succcesMessages[this.messageRnd]}`
+        );
 
       }
     })

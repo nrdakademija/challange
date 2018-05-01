@@ -14,15 +14,22 @@
       <tr *ngFor="let u of sortedUsers$; let i=index;">
         <td>{{i+1}}</td>
         <td>
+            <img src="https://www.gravatar.com/avatar/{{u.imgUrl}}" />
+          </td>
+          <td>
+             j {{u.imgUrl}}
+          </td>
+        <td>
           {{u.username}}
         </td>
         <td>
           {{u.points}}
         </td>
+          <i (click)="routeToUser(u.id)" class="fa fa-eye" style="font-size:48px;color:green"></i>
       </tr>
     </table>
   </div>
-  <ngb-pagination [collectionSize]="70" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+  <!-- <ngb-pagination [collectionSize]="70" [(page)]="page" aria-label="Default pagination"></ngb-pagination> -->
 
 </div>
 <app-footer></app-footer>
