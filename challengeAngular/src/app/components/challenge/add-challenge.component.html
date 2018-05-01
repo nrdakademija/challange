@@ -14,10 +14,9 @@
               <label>Category</label>
               <select #subCategory="ngModel" class="form-control" name="subCategory" [(ngModel)]="challengeInfo.subcategory">
                 <option disabled [value]="'default'">Choose Category</option>
-                <option *ngFor="let subCategory of subCategoriesList$ | async" [value]="subCategory.title">{{subCategory.title}}</option>
+                <option  *ngFor="let subCategory of subCategoriesList$ | async" [value]="subCategory.id">{{subCategory.title}}</option>
               </select>
             </div>
-
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group" [class.has-danger]="title.invalid && triedToSave">

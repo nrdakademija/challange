@@ -68,10 +68,12 @@ export class AddChallengeComponent implements OnInit {
 
   save(form: NgForm) {
 
-    //this.challengeInfo.category = 2;
+    this.challengeInfo.category = 2;
+
     if (form.valid) {
+
       this.triedToSave = false;
-      console.log(this.challengeInfo);
+      console.log(form);
         this.challengeService.postChallenge(this.challengeInfo).subscribe((response) => {
           Swal('Yaaay!', 'Successfull', 'success');
           this.router.navigate(['/challenges']);

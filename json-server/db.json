@@ -143,6 +143,16 @@
       "imgUrl": "https://blog.codinghorror.com/content/images/uploads/2006/08/6a0120a85dcdae970b0120a86d6c5b970b-pi.gif",
       "category": 1,
       "subcategory": 2
+    },
+    {
+      "Difficulty": 3,
+      "subcategory": "1",
+      "title": "First 5k",
+      "daysNeeded": 30,
+      "Reward": 500,
+      "imgUrl": "https://cdn.thewirecutter.com/wp-content/uploads/2017/08/03-running-gear-tying-shoes-630.jpg",
+      "category": 2,
+      "id": 8
     }
   ],
   "challenges-categories": [
