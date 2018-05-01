@@ -27,9 +27,13 @@ export class RegisterComponent {
 
   }
 
+  openLogin() {
+    `<loginForm></loginForm>`
+  }
+
   submitForm(value: any):void{
-    console.log('Reactive Form Data:  ')
-    console.log(value);
+  //  console.log('Reactive Form Data:  ')
+  //  console.log(value);
   }
 
 

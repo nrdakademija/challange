@@ -71,12 +71,12 @@ export class ChallengeDetailsComponent implements OnInit {
       if (result.value) {
         //Add challenge to users challenges
         this.messageRnd = Math.floor(Math.random() * 10);
-
-        this.userService.acceptChallenge(this.userId, challengeId).subscribe((response) => {debugger;
+        this.userId = 1;
+        this.userService.acceptChallenge(this.userId, challengeId).subscribe((response) => {
           Swal(
             `${this.succcesMessages[this.messageRnd]}`
           );
-          this.userId = 1;
+
           this.router.navigate(['user/userId']); //<---navigate to user where he can see his challenges
         });
 

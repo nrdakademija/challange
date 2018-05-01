@@ -21,10 +21,9 @@ export class AddChallengeComponent implements OnInit {
   challengeInfo: ChallengeModel = new ChallengeModel();
   isPhoto = false;
   triedToSave = false;
+  subcategorySelectedError = false;
 
   constructor(private challengeService: ChallengeService, private router: Router) {
-
-
   }
 
   ngOnInit() {
@@ -44,29 +43,42 @@ export class AddChallengeComponent implements OnInit {
   getSubCategoriesList() {
     this.challengeService.getChallengeSubCategories().subscribe((response: CategoryModel[]) => {
       this.subCategoriesList$ = Observable.of(response);
+      console.log(this.subCategoriesList$);
     });
   }
 
   isImageUrl(url) {debugger;
     if (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png")) {
-      return this.isPhoto = true;
+       return this.isPhoto = true;
     }
     else {
       return this.isPhoto = false;
     }
   }
 
+  checkIfSubcategorySelected(value) {
+    console.log(value);
+    if (value === 'default') {
+        this.subcategorySelectedError = true;
+    } else {
+        this.subcategorySelectedError = false;
+    }
+}
+
 
   save(form: NgForm) {
-    this.challengeInfo.category = "User created";
+
+    //this.challengeInfo.category = 2;
     if (form.valid) {
       this.triedToSave = false;
+      console.log(this.challengeInfo);
         this.challengeService.postChallenge(this.challengeInfo).subscribe((response) => {
           Swal('Yaaay!', 'Successfull', 'success');
           this.router.navigate(['/challenges']);
         });
     }
     else {
+    this.checkIfSubcategorySelected(form.value['subcategory']);
       this.triedToSave = true;
       Swal('Ooop!', 'Error', 'error');
     }

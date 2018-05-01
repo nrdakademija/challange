@@ -1,6 +1,11 @@
-<div class="register container content">
-    <div class="col-md-6 col-md-offset-3">
-        <h2>Registration</h2>
+<div class="register">
+    <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h4 style="text-align: left">Register</h4>
+          <button type="button" class="close" data-dismiss="modal"> &times;</button>
+      </div>
+      <div class="modal-body">
         <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm.value)">
 
           <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['fullName'].valid && registerForm.controls['fullName'].touched}">
@@ -39,11 +44,16 @@
                 <a [routerLink]="['']" class="btn btn-link">Cancel</a>
             </div>
             <div class="foot-lnk">
-              <a [routerLink]="['/login']">Already a Member?</a>
+              <!-- <button (click)="openLogin()">Already a Member?</button> -->
+              <!-- <a href="#" (click)=" d('dismiss modal1'); open(modal2);">Already a Member?</a> -->
+
           </div>
         </form>
       </div>
-
     </div>
-    
+    </div>
+    </div>
+    <div class="registerForm text-center" >
+    </div>
+
 <app-footer></app-footer>
