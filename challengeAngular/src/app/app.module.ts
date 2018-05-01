@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxCarouselModule } from 'ngx-carousel';
 import 'hammerjs';
 import {NgbRatingConfig,NgbPaginationConfig, NgbProgressbarConfig,NgbDatepickerConfig, NgbDateStruct,NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
+import {Md5} from 'ts-md5/dist/md5';
+//C:\Users\Monika\Desktop\nrd Projektas\challange\challengeAngular\node_modules\ts-md5
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
@@ -24,8 +26,6 @@ import { HomeComponent } from './components/home/home.component';
 import { ChallengeDetailsComponent } from './components/challenge/details/challenge-details.component';
 import { UserComponent } from './components/userList/user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
-
-
 
 @NgModule({
   declarations: [

@@ -1,10 +1,17 @@
 <div class="container content">
+    <div *ngFor="let u of usersList$ | async; let ind = index;">
+      {{u.fullName}}
+      {{md5}}
+      <img src="https://www.gravatar.com/avatar/{{grav}}" />
+    </div>
   <div class="row">
     <div class="col-md-6">
       <p><ngb-progressbar showValue="true" type="success" [value]="100"></ngb-progressbar></p>
     </div>
 
-    <div class="col-md-6">bbb</div>
+    <div class="col-md-6">bbb
+
+    </div>
   </div>
 </div>
 <app-footer></app-footer>
