@@ -14,9 +14,14 @@ namespace challenge.EF.repositories
 
         public List<Challenges> GetChallenges()
         {
+     
             return challengeContext.Challenges
               .ToList();
+        }
 
+        public Challenges GetChallengeById(int id) {
+            return challengeContext.Challenges
+                .SingleOrDefault(p => p.Id == id);
         }
         public challengeContext challengeContext
         {

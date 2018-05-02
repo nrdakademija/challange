@@ -25,6 +25,18 @@ namespace challenge.Application.automapper
             CreateMap<ChallengeCategories, CategoryDto>();
             CreateMap<ChallengeSubcategories, SubcategoryDto>();
             CreateMap<Challenges, ChallengeDto>();
+
+          /*  IQueryable<Challenges> challenges = null;
+            CreateMap<ChallengeCategories, CategoryDto>()
+                .ForMember(x => x.Id, opt =>
+                    opt.MapFrom(src =>
+                        src.Challenges
+                            .Join(challenges, a => a.Id, b => b.Id, (a, b) => b.Category)
+                            .ToList()
+                    )
+                );
+*/
+
         }
     }
 }

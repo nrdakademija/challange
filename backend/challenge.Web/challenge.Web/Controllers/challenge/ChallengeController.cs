@@ -17,11 +17,40 @@ namespace challenge.Web.Controllers.challenge
         }
         // GET api/values
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetChallenges()
         {
-            var challenges = _challengeService.GetAllChallenges();
-            return Ok(challenges);
+            try
+            {
+                var challenges = _challengeService.GetAllChallenges();
+                if(challenges != null)
+                    return Ok(challenges);
+                return NotFound();
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err.Source);
+            }
+            return BadRequest();
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetChallengesById(int id)
+        {
+            try
+            {
+                var challenge = _challengeService.GetChallengeById(id);
+                if (challenge != null)
+                    return new ObjectResult(challenge);
+                return NotFound();
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err.Source);
+            }
+            return BadRequest();
 
         }
+
+
     }
 }

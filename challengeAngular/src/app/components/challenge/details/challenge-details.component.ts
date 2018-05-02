@@ -33,11 +33,12 @@ export class ChallengeDetailsComponent implements OnInit {
     });
     if (this.activeParameter) {
       this.challengeService.getChallengeById(this.activeParameter).subscribe((response: ChallengeModel) => {
-        this.challengeInfo = response;
+        this.challengeInfo = response;console.log(response);
+
       });
     }
     else {
-      this.challengeInfo = new ChallengeModel();
+    //  this.challengeInfo = new ChallengeModel();
     }
 
     this.challengeService.getChallengeSubCategories().subscribe((data: SubCategoryModel[]) => {
@@ -46,7 +47,7 @@ export class ChallengeDetailsComponent implements OnInit {
     this.challengeService.getChallengeCategories().subscribe((data: CategoryModel[]) => {
       this.categories$ = Observable.of(data);
     });
-    // this.loading = false;
+
   }
 
   //success message shown to user after he accepts the challenge

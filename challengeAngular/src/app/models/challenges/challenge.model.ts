@@ -7,8 +7,8 @@ export class ChallengeModel {
   daysNeeded: Number;
   imgUrl: String;
   dateAdded: String;
-  Reward: Number;
-  Difficulty: Number;
+  reward: Number;
+  difficulty: Number;
   completedBy: Number;
   description: String;
 }

@@ -10,9 +10,9 @@ import { SubCategoryModel } from '../models/subcategories/subcategories.model';
 @Injectable()
 export class ChallengeService {
 
-  url = 'http://localhost:3000/challenges';
-  categoriesUrl = 'http://localhost:3000/challenges-categories';
-  subcategoriesUrl = 'http://localhost:3000/challenges-subcategories';
+  url = 'http://localhost:59372/challenge';
+  categoriesUrl = 'http://localhost:59372/category';
+  subcategoriesUrl = 'http://localhost:59372/subcategory';
 
   constructor(private http: Http) { }
 
