@@ -1,7 +1,6 @@
 <div class="container content">
-    <div *ngFor="let u of usersList$ | async; let ind = index;">
-      {{u.fullName}}
-      {{md5}}
+    <div>
+      {{user.fullName}}
       <img src="https://www.gravatar.com/avatar/{{grav}}" />
     </div>
   <div class="row">

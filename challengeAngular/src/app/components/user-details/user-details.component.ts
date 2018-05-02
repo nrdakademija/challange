@@ -19,19 +19,26 @@ export class UserDetailsComponent implements OnInit {
 
   activeParameter: any;
   usersList$: Observable<UserModel[]>;
-  md5=  new Md5();
+  user: UserModel = new UserModel;
+  md5 = new Md5();
   grav = "";
   ngOnInit() {
 
     this.activateRoute.params.subscribe((params: Params) => {
       this.activeParameter = params['id'];
-  });
+    });
 
-    this.userService.getUsersList().subscribe((data: UserModel[]) => {
-      this.usersList$ = Observable.of(data);
-      this.grav = ( this.md5.appendStr(data[0].email.toString()).end()).toString();
+    this.userService.getUser(this.activeParameter).subscribe(data => {
+      this.user = data;
+      console.log(data);
+      this.grav = (this.md5.appendStr(data.email.toString()).end()).toString();
+    });
 
-  });
+    // this.userService.getUsersList().subscribe((data: UserModel[]) => {
+    //   this.usersList$ = Observable.of(data);
+    //   this.grav = (this.md5.appendStr(data[0].email.toString()).end()).toString();
+
+    // });
 
   }
 
