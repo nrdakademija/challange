@@ -9,7 +9,7 @@ import { UserChallengesModel } from '../models/userChallenges/userchallenges.mod
 @Injectable()
 export class UserService {
 
-  url = 'http://localhost:3000/users';
+  url = 'http://localhost:59372/users';
 
   constructor(private http: Http) { }
 

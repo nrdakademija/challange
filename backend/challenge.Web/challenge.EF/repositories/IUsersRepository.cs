@@ -6,5 +6,6 @@ namespace challenge.EF.repositories
     public interface IUsersRepository
     {
         List<Users> GetUsers();
+        Users GetUserById(int id);
     }
 }

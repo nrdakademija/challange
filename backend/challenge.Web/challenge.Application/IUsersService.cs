@@ -6,5 +6,6 @@ namespace challenge.Application.main.users
     public interface IUsersService
     {
         IEnumerable<UsersDto> GetAllUsers();
+       UsersDto GetUserById(int id);
     }
 }

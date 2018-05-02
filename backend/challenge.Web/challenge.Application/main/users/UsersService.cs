@@ -24,5 +24,11 @@ namespace challenge.Application.main.users
             var listDto = _mapper.Map<List<UsersDto>>(list);
             return listDto;
         }
+
+        public UsersDto GetUserById(int id) {
+            var user = _usersRepository.GetUserById(id);
+            var userDto = _mapper.Map<UsersDto>(user);
+            return userDto;
+        }
     }
 }
