@@ -35,14 +35,14 @@
 
                 <div class="form-group" [class.has-danger]="Reward.invalid && triedToSave">
                   <label>Rewards</label>
-                  <input #Reward="ngModel" class="form-control" type="number" min="1" name="Reward" required [(ngModel)]="challengeInfo.Reward"
+                  <input #Reward="ngModel" class="form-control" type="number" min="1" name="Reward" required [(ngModel)]="challengeInfo.reward"
                     ngbTooltip="How rewarding do you think your challenge is?" />
                   <small *ngIf="Reward.hasError('required') && Reward.touched || triedToSave" class="form-text text-muted text-danger"> Reward is required </small>
                 </div>
 
                 <div class="form-group" [class.has-danger]="triedToSave">
                   <label>Difficulty</label>
-                  <ngb-rating [(rate)]="challengeInfo.Difficulty" max="5" required ngbTooltip="How much persistence your challenge requires?"></ngb-rating>
+                  <ngb-rating [(rate)]="challengeInfo.difficulty" max="5" required ngbTooltip="How much persistence your challenge requires?"></ngb-rating>
                   <!-- <input #Difficulty="ngModel" class="form-control" type="text" name="Difficulty" required [(ngModel)]="challengeInfo.Difficulty" /> -->
                   <small class="text-danger" *ngIf="triedToSave" class="form-text text-muted text-danger"> Difficulty is required </small>
                 </div>
