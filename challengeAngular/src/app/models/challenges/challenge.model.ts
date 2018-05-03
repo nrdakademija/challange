@@ -10,5 +10,5 @@ export class ChallengeModel {
   reward: Number;
   difficulty: Number;
   completedBy: Number;
-  description: String;
+  instructions: String;
 }

@@ -58,7 +58,7 @@
 
                 <div class="form-group" [class.has-danger]="description.invalid && triedToSave">
                   <label>Description</label>
-                  <input #description="ngModel" class="form-control" type="text" name="description" required [(ngModel)]="challengeInfo.description"/>
+                  <input #description="ngModel" class="form-control" type="text" name="description" required [(ngModel)]="challengeInfo.instructions"/>
                   <small *ngIf="description.hasError('required') && description.touched || triedToSave" class="form-text text-muted text-danger">Description is required</small>
                 </div>
 

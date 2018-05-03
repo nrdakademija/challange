@@ -9,5 +9,7 @@ namespace challenge.EF.repositories
         //  IQueryable<Challenges> GetChallenges();
         List<Challenges> GetChallenges();
         Challenges GetChallengeById(int id);
+        void PostChallenge(Challenges challenge);
+
     }
 }

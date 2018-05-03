@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using challenge.Application.main.challenges.dto;
+using challenge.EF.entities;
 using challenge.EF.repositories;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,14 @@ namespace challenge.Application.main.challenges
             var listDto = _mapper.Map<List<ChallengeDto>>(list);
             return listDto;
         }
+
+        public void PostChallenge(ChallengeDto challenge)
+        {
+           // var ch = _challengeRepository.PostChallenge(challenge);
+            var challengeDto = _mapper.Map<Challenges>(challenge);
+            _challengeRepository.PostChallenge(challengeDto);
+        }
+
 
         public ChallengeDto GetChallengeById(int id) {
             var challenge = _challengeRepository.GetChallengeById(id);

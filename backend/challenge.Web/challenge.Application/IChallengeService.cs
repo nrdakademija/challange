@@ -9,5 +9,6 @@ namespace challenge.Application.main.challenges
     {
         IEnumerable<ChallengeDto> GetAllChallenges();
         ChallengeDto GetChallengeById(int id);
+        void PostChallenge(ChallengeDto challenge);
     }
 }

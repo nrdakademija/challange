@@ -21,7 +21,10 @@ namespace challenge.Application.automapper
                 .ForMember(dto => dto.UsersChallenges, opt => opt.MapFrom(x => x.UsersChallenges.Select(y => y.Challenge).ToList()));
             CreateMap<ChallengeCategories, CategoryDto>();
             CreateMap<ChallengeSubcategories, SubcategoryDto>();
+
             CreateMap<Challenges, ChallengeDto>();
+
+            CreateMap<ChallengeDto, Challenges>();
 
         }
     }

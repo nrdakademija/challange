@@ -12,15 +12,23 @@ namespace challenge.EF.repositories
         {
         }
 
+
         public List<Challenges> GetChallenges()
         {
             return challengeContext.Challenges
               .ToList();
         }
-
+        
         public Challenges GetChallengeById(int id) {
             return challengeContext.Challenges
                 .SingleOrDefault(p => p.Id == id);
+        }
+
+        public void PostChallenge(Challenges challenge)
+        {
+            challengeContext.Challenges.Add(challenge);
+            challengeContext.SaveChanges();
+
         }
         public challengeContext challengeContext
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using challenge.Application.main.challenges;
+using challenge.Application.main.challenges.dto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace challenge.Web.Controllers.challenge
@@ -51,6 +52,25 @@ namespace challenge.Web.Controllers.challenge
 
         }
 
+        [HttpPost]
+        public IActionResult PostChallenge([FromBody] ChallengeDto challenge)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            try
+            {
+                _challengeService.PostChallenge(challenge);
+                string newUri = Url.Link("GetChallenges", new { id = challenge.Id });
+                return Created(newUri, challenge);
+                
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err);
+            }
+            return BadRequest();
+        }
 
     }
+
 }
