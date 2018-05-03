@@ -22,6 +22,8 @@ export class UserService {
 
   //TO DO add valid url
   acceptChallenge(userId, challengeId): Observable<UserChallengesModel[]> {debugger;
+    console.log(this.url+'/'+userId,challengeId);
+
       return this.http.post(this.url + '/' + userId, challengeId)
       .map((res: Response) => res.json() as UserChallengesModel)
       .catch((error: any) => Observable.throw(error));

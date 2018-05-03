@@ -14,7 +14,6 @@ namespace challenge.EF.repositories
 
         public List<Challenges> GetChallenges()
         {
-     
             return challengeContext.Challenges
               .ToList();
         }
@@ -29,3 +28,34 @@ namespace challenge.EF.repositories
         }
     }
 }
+
+
+/*       public IQueryable<Challenges> GetChallenges()
+        {
+
+            DbSet<Challenges> challenges = challengeContext.Challenges;
+            DbSet<ChallengeCategories> categories = challengeContext.ChallengeCategories;
+
+            return challenges.Join(
+                categories,
+                ch => ch.Category,
+                cc => cc.Id,
+                (ch, cc) => new Challenges()
+                {
+                    Id = ch.Id,
+                    Title = ch.Title,
+                    CreatedAt = ch.CreatedAt,
+                    DaysNeeded = ch.DaysNeeded,
+                    Reward = ch.Reward,
+                    Difficulty = ch.Difficulty,
+                    CompletedBy = ch.CompletedBy,
+                    ImgUrl = ch.ImgUrl,
+                    Subcategory = cc.Id,
+                    Category = cc.Id,
+                  //  Subcategory = cc.Title,
+                 //   Category = cc.Title,
+                    Instructions = ch.Instructions
+                });
+
+        }
+*/

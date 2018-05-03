@@ -19,23 +19,9 @@ namespace challenge.Application.automapper
         {
             CreateMap<Users, UsersDto>()
                 .ForMember(dto => dto.UsersChallenges, opt => opt.MapFrom(x => x.UsersChallenges.Select(y => y.Challenge).ToList()));
-            // CreateMap<Users, UsersDto>();
-            // CreateMap<Inventory, InventoryDto>().ReverseMap();
-            // CreateMap<InventoryType, InventoryTypeDto>();
             CreateMap<ChallengeCategories, CategoryDto>();
             CreateMap<ChallengeSubcategories, SubcategoryDto>();
             CreateMap<Challenges, ChallengeDto>();
-
-          /*  IQueryable<Challenges> challenges = null;
-            CreateMap<ChallengeCategories, CategoryDto>()
-                .ForMember(x => x.Id, opt =>
-                    opt.MapFrom(src =>
-                        src.Challenges
-                            .Join(challenges, a => a.Id, b => b.Id, (a, b) => b.Category)
-                            .ToList()
-                    )
-                );
-*/
 
         }
     }

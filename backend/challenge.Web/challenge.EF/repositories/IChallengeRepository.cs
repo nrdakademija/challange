@@ -6,8 +6,8 @@ namespace challenge.EF.repositories
 {
     public interface IChallengeRepository
     {
+        //  IQueryable<Challenges> GetChallenges();
         List<Challenges> GetChallenges();
-     //   IQueryable<Challenges> GetChallenges();
         Challenges GetChallengeById(int id);
     }
 }
