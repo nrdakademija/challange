@@ -25,7 +25,7 @@ import {
 import { Router } from "@angular/router";
 import { UserService } from '../../services/user.service';
 import { ChallengeService } from '../../services/challenge.service';
-
+import Swal from 'sweetalert2';
 
 const colors: any = {
   red: {
@@ -50,11 +50,11 @@ const colors: any = {
 })
 
 export class CalendarComponent implements OnInit{
+  @ViewChild('modalContent') modalContent: TemplateRef<any>;
+
+  constructor(private modal: NgbModal,private router: Router,private userService: UserService) {}
 
   ngOnInit() {}
-
-
-  @ViewChild('modalContent') modalContent: TemplateRef<any>;
 
   view: string = 'month';
 
@@ -119,7 +119,6 @@ export class CalendarComponent implements OnInit{
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {

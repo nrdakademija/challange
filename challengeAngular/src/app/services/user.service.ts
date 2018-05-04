@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { UserModel } from '../models/users/user.model';
 import { UserChallengesModel } from '../models/userChallenges/userchallenges.model'
+import { ChallengeModel } from '../models/challenges/challenge.model';
 
 @Injectable()
 export class UserService {
@@ -23,7 +24,6 @@ export class UserService {
   //TO DO add valid url
   acceptChallenge(userId, challengeId): Observable<UserChallengesModel[]> {debugger;
     console.log(this.url+'/'+userId,challengeId);
-
       return this.http.post(this.url + '/' + userId, challengeId)
       .map((res: Response) => res.json() as UserChallengesModel)
       .catch((error: any) => Observable.throw(error));
@@ -46,6 +46,12 @@ export class UserService {
   addUser(data): Observable<UserModel> {
     return this.http.post(this.url, data)
       .map((res: Response) => res.json() as UserModel)
+      .catch((error: any) => Observable.throw(error));
+  }
+
+  deleteUserChallenge(userId, challengeId): Observable<UserChallengesModel[]> {
+    return this.http.delete(this.url + '/' + userId,challengeId)
+      .map((res: Response) => res.json() as UserChallengesModel)
       .catch((error: any) => Observable.throw(error));
   }
 

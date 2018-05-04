@@ -24,7 +24,6 @@ namespace challenge.EF.repositories
             return challengeContext.Users
                 .Include(p => p.UsersChallenges)
                 .ThenInclude(p => p.Challenge)
-                // .Where(p => p.Id == id)
                 .SingleOrDefault(p => p.Id == id);
         }
         public challengeContext challengeContext

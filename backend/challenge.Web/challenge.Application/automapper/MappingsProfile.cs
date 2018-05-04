@@ -26,6 +26,11 @@ namespace challenge.Application.automapper
                 .ForMember(dto => dto.UsersChallenges,
                 opt => opt.MapFrom(x => x.UsersChallenges));
 
+         
+            CreateMap<Challenges, UsersDto>()
+                .ForMember(dto => dto.UsersChallenges,
+                opt => opt.MapFrom(x => x.UsersChallenges));
+  
             CreateMap<ChallengeViewDto, UsersChallenges>()
                 .ForMember(dto => dto.ChallengeId,
                 opt => opt.MapFrom(x => x.Id));

@@ -43,6 +43,22 @@ namespace challenge.Web.Controllers.users
 
         }
 
+        /* public IActionResult Del(int id)
+         {
+             try
+             {
+                 var employee = _service.GetEmployee(id);
+                 if (employee == null) return NotFound($"Darbuotojas, kurio id yra {id} nerastas");
+                 _service.DeleteEmployee(id);
+                 return new NoContentResult();
+             }
+             catch (System.Exception)
+             {          } return BadRequest();
+         }*/
+
+       
+
+
         [HttpPut("{id}")]
         public void PutUser(int id, [FromBody] UsersDto user) {
 
