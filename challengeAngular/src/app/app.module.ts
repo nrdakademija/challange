@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgbModule, NgbRatingConfig, NgbPaginationConfig, NgbProgressbarConfig,NgbDatepickerConfig, NgbDateStruct,NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NgxCarouselModule } from 'ngx-carousel';
 import 'hammerjs';
-import {NgbRatingConfig,NgbPaginationConfig, NgbProgressbarConfig,NgbDatepickerConfig, NgbDateStruct,NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {Md5} from 'ts-md5/dist/md5';
-//C:\Users\Monika\Desktop\nrd Projektas\challange\challengeAngular\node_modules\ts-md5
+import { CalendarModule } from 'angular-calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './shared/app.routing';
 import { LoginComponent } from './components/login/login.component';
@@ -26,6 +27,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ChallengeDetailsComponent } from './components/challenge/details/challenge-details.component';
 import { UserComponent } from './components/userList/user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -41,17 +43,20 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     AddChallengeComponent,
     ChallengeDetailsComponent,
     UserComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    AngularFontAwesomeModule,
     ReactiveFormsModule,
     HttpModule,
     NgbModule.forRoot(),
     AppRoutingModule,
-    NgxCarouselModule
-
+    NgxCarouselModule,
+    CalendarModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [
     UserService,
