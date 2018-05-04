@@ -18,13 +18,26 @@ namespace challenge.Application.automapper
         public MappingsProfile()
         {
             CreateMap<Users, UsersDto>()
-                .ForMember(dto => dto.UsersChallenges, opt => opt.MapFrom(x => x.UsersChallenges.Select(y => y.Challenge).ToList()));
+                .ForMember(dto => dto.UsersChallenges, 
+                opt => opt.MapFrom(x => x.UsersChallenges
+                .Select(y => y.Challenge).ToList()));
+
+            CreateMap<UsersDto, Users>()
+                .ForMember(dto => dto.UsersChallenges,
+                opt => opt.MapFrom(x => x.UsersChallenges));
+
+            CreateMap<ChallengeViewDto, UsersChallenges>()
+                .ForMember(dto => dto.ChallengeId,
+                opt => opt.MapFrom(x => x.Id));
+
             CreateMap<ChallengeCategories, CategoryDto>();
             CreateMap<ChallengeSubcategories, SubcategoryDto>();
 
             CreateMap<Challenges, ChallengeDto>();
 
             CreateMap<ChallengeDto, Challenges>();
+
+            CreateMap<Challenges, ChallengeViewDto>();
 
         }
     }

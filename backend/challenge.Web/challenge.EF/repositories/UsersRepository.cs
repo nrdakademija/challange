@@ -16,13 +16,15 @@ namespace challenge.EF.repositories
         {
             return challengeContext.Users
               .Include(p => p.UsersChallenges)
-             // .ThenInclude(p => p.Challenge)
+             .ThenInclude(p => p.Challenge)
               .ToList();
         }
 
         public Users GetUserById(int id) {
             return challengeContext.Users
-               // .Where(p => p.Id == id)
+                .Include(p => p.UsersChallenges)
+                .ThenInclude(p => p.Challenge)
+                // .Where(p => p.Id == id)
                 .SingleOrDefault(p => p.Id == id);
         }
         public challengeContext challengeContext

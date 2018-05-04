@@ -9,7 +9,7 @@ namespace challenge.Application.main.users.dto
     {
         public UsersDto()
         {
-           // UsersChallenges = new HashSet<ChallengeViewDto>();
+           UsersChallenges = new HashSet<ChallengeViewDto>();
         }
 
         public int Id { get; set; }

@@ -18,7 +18,7 @@ namespace challenge.Web.Controllers.users
         }
         // GET api/values
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetUsers()
         {
             var users = _usersService.GetAllUsers();
             return Ok(users);
@@ -28,11 +28,19 @@ namespace challenge.Web.Controllers.users
         [HttpGet("{id}")]
         public IActionResult GetUserById(int id)
         {
-            var user = _usersService.GetUserById(id);
-            if (user == null) {
-                return NotFound();
+            try
+            {
+                var user = _usersService.GetUserById(id);
+                if (user == null)
+                    return NotFound();
+                return new ObjectResult(user);
             }
-            return Ok(user);
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return BadRequest();
+
         }
 
         [HttpPut("{id}")]
