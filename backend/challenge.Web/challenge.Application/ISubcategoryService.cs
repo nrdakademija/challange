@@ -8,5 +8,7 @@ namespace challenge.Application
     public interface ISubcategoryService
     {
         IEnumerable<SubcategoryDto> GetAllSubCategories();
+
+        
     }
 }
