@@ -12,7 +12,7 @@ import { SubCategoryModel } from '../../models/subcategories/subcategories.model
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   constructor(private challengeService: ChallengeService,
     private router: Router) { }
@@ -26,7 +26,6 @@ export class HomeComponent {
   public carouselTile: NgxCarousel;
 
   ngOnInit() {
-
     this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
       this.challenges$ = Observable.of(data);
     });
@@ -57,7 +56,7 @@ export class HomeComponent {
       touch: true,
 
       easing: 'ease'
-    }
+    };
 
   }
 
@@ -77,10 +76,12 @@ export class HomeComponent {
   }
 
   compare(a, b) {
-    if (a.completedBy < b.completedBy)
+    if (a.completedBy < b.completedBy) {
       return 1;
-    if (a.completedBy > b.completedBy)
+    }
+    if (a.completedBy > b.completedBy) {
       return -1;
+    }
     return 0;
   }
 

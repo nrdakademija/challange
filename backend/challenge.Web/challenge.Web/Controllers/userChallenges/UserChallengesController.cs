@@ -14,7 +14,7 @@ namespace challenge.Web.Controllers.userChallenges
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetUserChallengeById(int id)
+        public IActionResult GetUserChallengesById(int id)
         {
             try
             {

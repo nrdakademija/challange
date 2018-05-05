@@ -1,15 +1,70 @@
 <div class="container content">
-    <div>
-      <img src="https://www.gravatar.com/avatar/{{grav}}" />
-    </div>
   <div class="row">
     <div class="col-md-6">
-      <p><ngb-progressbar showValue="true" type="success" [value]="100"></ngb-progressbar></p>
+      <div class="row ">
+        <img class="img" src="https://www.gravatar.com/avatar/{{grav}}" />
+      </div>
     </div>
 
     <div class="col-md-6">
-      <div>{{user.username}}</div>
+
+      <div class="row">
+        <div class="col-sm-3 col-6 bs-component">
+          <h4 class="label text-muted text-right">Username</h4>
+        </div>
+        <div class="col">
+          <h4 class="label " style="color: whitesmoke">{{user.username}}</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3 col-6 bs-component">
+          <h4 class="label text-muted text-right">XP</h4>
+        </div>
+        <div class="col">
+          <h4 class="label " style="color: whitesmoke">{{user.points}}</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3 col-6 bs-component">
+          <h4 class="label text-muted text-right">Level</h4>
+        </div>
+        <div class="col">
+          <p>
+            <ngb-progressbar showValue="true" type="success" [value]="100"></ngb-progressbar>
+          </p>
+        </div>
+      </div>
+
     </div>
+    <div></div>
+    <div class="row">
+      <div class="col-md-12">
+        <div style="padding-left: 20px; padding-right: 20px">
+          <h2 class="text-primary" style="color: whitesmoke">Accepted challenges</h2>
+
+          <ngx-carousel [inputs]="carouselTile" (carouselLoad)="carouselTileLoad($event)">
+            <ngx-tile NgxCarouselItem *ngFor="let ch of userChallengesList$ | async">
+              <div class="card border-success">
+
+                <a href="javascript:;">
+                  <div class="shadow" style="height: 160px">
+                    <div class="middle">
+                      <b style="font-size: 23px;">{{ch.challenge_id}}</b>
+                      <br>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </ngx-tile>
+            <button NgxCarouselPrev class='leftRs'>&lt;</button>
+            <button NgxCarouselNext class='rightRs'>&gt;</button>
+          </ngx-carousel>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 <app-footer></app-footer>

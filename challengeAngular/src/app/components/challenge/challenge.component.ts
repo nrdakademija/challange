@@ -10,8 +10,8 @@ import { CategoryModel } from '../../models/categories/categories.model';
     templateUrl: './challenge.component.html',
     styleUrls: ['./challenge.component.css']
 })
-export class ChallengeComponent {
-  //loading = false;
+export class ChallengeComponent implements OnInit {
+  // loading = false;
   page = 4;
   challenges$: Observable<ChallengeModel[]>;
   subCategories$: Observable<SubCategoryModel[]>;
@@ -36,10 +36,10 @@ export class ChallengeComponent {
       });
   }
 
-  routeToChallenge(id){
-    this.router.navigate(['challenge/'+id]);
+  routeToChallenge(id) {
+    this.router.navigate(['challenge/' + id]);
   }
-  filterByCategory(){
+  filterByCategory() {
 
   }
 }

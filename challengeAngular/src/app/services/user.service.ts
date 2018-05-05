@@ -1,37 +1,38 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { UserModel } from '../models/users/user.model';
-import { UserChallengesModel } from '../models/userChallenges/userchallenges.model'
+import { UserChallengesModel } from '../models/userChallenges/userchallenges.model';
 import { ChallengeModel } from '../models/challenges/challenge.model';
 
 @Injectable()
 export class UserService {
 
   url = 'http://localhost:59372/users';
-  urlUserChallenges="http://localhost:59372/userchallenges/";
+  urlUserChallenges = 'http://localhost:59372/userchallenges/';
 
   constructor(private http: Http) { }
 
-  //Users
+  // Users
   getUsersList(): Observable<UserModel[]> {
     return this.http.get(this.url)
       .map((res: Response) => res.json() as UserModel[])
       .catch((error: any) => Observable.throw(error));
   }
 
-  //TO DO add valid url
-  acceptChallenge(userId, challengeId): Observable<UserChallengesModel[]> {debugger;
-    console.log(this.url+'/'+userId,challengeId);
+  // TO DO add valid url
+  acceptChallenge(userId, challengeId): Observable<UserChallengesModel[]> {
+    console.log(this.url + '/' + userId , challengeId);
       return this.http.post(this.url + '/' + userId, challengeId)
       .map((res: Response) => res.json() as UserChallengesModel)
       .catch((error: any) => Observable.throw(error));
   }
 
 
-  //Single user
+  // Single user
   getUser(id): Observable<UserModel> {
     return this.http.get(this.url + '/' + id)
       .map((res: Response) => res.json() as UserModel)
@@ -51,7 +52,7 @@ export class UserService {
   }
 
   deleteUserChallenge(userId, challengeId): Observable<UserChallengesModel[]> {
-    return this.http.delete(this.url + '/' + userId,challengeId)
+    return this.http.delete(this.url + '/' + userId, challengeId)
       .map((res: Response) => res.json() as UserChallengesModel)
       .catch((error: any) => Observable.throw(error));
   }
@@ -62,7 +63,7 @@ export class UserService {
       .catch((error: any) => Observable.throw(error));
   }
 
-  //TO DO
+  // TO DO
   authenticateUser() { }
 
 

@@ -14,7 +14,7 @@ export class UserComponent implements OnInit {
 
   page = 4;
   md5 = new Md5();
-  gravatar = "";
+  gravatar = '' ;
   users$: Observable<UserModel[]>;
   sortedUsers$: UserModel[];
   constructor(private userService: UserService,
@@ -24,8 +24,8 @@ export class UserComponent implements OnInit {
     this.userService.getUsersList().subscribe((data: UserModel[]) => {
       this.users$ = Observable.of(data);
       let i;
-      for (i =0; i< data.length; i++){
-        data[i].imgUrl = ( this.md5.appendStr(data[i].email.toString()).end()).toString();
+      for (i = 0; i < data.length; i++) {
+        data[i].imgUrl = (this.md5.appendStr(data[i].email.toString()).end()).toString();
       }
       this.sortedUsers$ = data;
       this.sortedUsers$.sort(this.compare);
@@ -33,10 +33,12 @@ export class UserComponent implements OnInit {
   }
 
   compare(a, b) {
-    if (a.level < b.level)
+    if (a.level < b.level) {
       return -1;
-    if (a.level > b.level)
+    }
+    if (a.level > b.level) {
       return 1;
+    }
     return 0;
   }
 
