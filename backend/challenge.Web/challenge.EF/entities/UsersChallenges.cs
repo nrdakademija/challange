@@ -5,6 +5,8 @@ namespace challenge.EF.entities
 {
     public partial class UsersChallenges
     {
+       
+
         public int UserId { get; set; }
         public int ChallengeId { get; set; }
         public int State { get; set; }

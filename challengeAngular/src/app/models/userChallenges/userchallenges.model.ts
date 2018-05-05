@@ -1,6 +1,6 @@
 export class UserChallengesModel {
     user_id: Number;
-    challenge_id: String;
+    challenge_id: Number;
     startDate: Date;
     endDate: Date;
 

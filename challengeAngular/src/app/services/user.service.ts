@@ -11,6 +11,7 @@ import { ChallengeModel } from '../models/challenges/challenge.model';
 export class UserService {
 
   url = 'http://localhost:59372/users';
+  urlUserChallenges="http://localhost:59372/userchallenges/";
 
   constructor(private http: Http) { }
 
@@ -56,7 +57,7 @@ export class UserService {
   }
 
   getUserChallenges(id): Observable<UserChallengesModel[]> {
-    return this.http.get(this.url + '/' + id)
+    return this.http.get(this.urlUserChallenges + id)
       .map((res: Response) => res.json() as UserChallengesModel[])
       .catch((error: any) => Observable.throw(error));
   }

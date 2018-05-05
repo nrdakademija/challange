@@ -39,18 +39,18 @@ namespace challenge.Application.automapper
             CreateMap<ChallengeCategories, CategoryDto>();
             CreateMap<ChallengeSubcategories, SubcategoryDto>();
 
-            CreateMap<Challenges, ChallengeDto>();
+            CreateMap<Challenges, ChallengeDto>().ReverseMap();
 
-            CreateMap<ChallengeDto, Challenges>();
+          //  CreateMap<ChallengeDto, Challenges>();
 
             CreateMap<Challenges, ChallengeViewDto>();
 
             //-------------
             CreateMap<UsersChallenges, UserChallengesDto>();
-            CreateMap<ChallengeDto, UsersChallenges>()
+           /* CreateMap<ChallengeDto, UsersChallenges>()
                 .ForMember(dto => dto.Challenge,
-                opt => opt.MapFrom(x => x.Id));
-            CreateMap<UserChallengesDto, UsersChallenges>();
+                opt => opt.MapFrom(x => x.Id));*/
+          //  CreateMap<UserChallengesDto, UsersChallenges>();
 
         }
     }

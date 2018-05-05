@@ -16,6 +16,7 @@ namespace challenge.EF.repositories
         public List<Challenges> GetChallenges()
         {
             return challengeContext.Challenges
+           //   .Include(p => p.SubcategoryNavigation)
               .ToList();
         }
         

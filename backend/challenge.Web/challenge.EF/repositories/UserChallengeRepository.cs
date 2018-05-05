@@ -1,4 +1,5 @@
 ﻿using challenge.EF.entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +18,11 @@ WHERE uc.user_id = 2;*/
         public List<UsersChallenges> GetUserChallengesById(int id)
         {
             return challengeContext.UsersChallenges
-  
+              //  .Include(p => p.Challenge)
+            //    .ThenInclude (p => p.UsersChallenges)
+               .Where(p => p.UserId == id)
               .ToList();
         }
-
 
         public challengeContext challengeContext
         {

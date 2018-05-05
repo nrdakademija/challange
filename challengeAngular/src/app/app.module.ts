@@ -1,12 +1,15 @@
+
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CalendarModule } from "ap-angular2-fullcalendar";
 import {NgbModule, NgbRatingConfig, NgbPaginationConfig, NgbProgressbarConfig,NgbDatepickerConfig, NgbDateStruct,NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NgxCarouselModule } from 'ngx-carousel';
 import 'hammerjs';
 import {Md5} from 'ts-md5/dist/md5';
-import { CalendarModule } from 'angular-calendar';
+//import { CalendarModule } from 'angular-calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -27,7 +30,9 @@ import { HomeComponent } from './components/home/home.component';
 import { ChallengeDetailsComponent } from './components/challenge/details/challenge-details.component';
 import { UserComponent } from './components/userList/user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
-import { CalendarComponent } from './components/calendar/calendar.component';
+import { ChallengeCalendarComponent } from './components/calendar/challengeCalendar.component';
+
+
 
 @NgModule({
   declarations: [
@@ -44,10 +49,12 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     ChallengeDetailsComponent,
     UserComponent,
     UserDetailsComponent,
-    CalendarComponent
+    ChallengeCalendarComponent
+     
   ],
   imports: [
     BrowserModule,
+    CalendarModule,
     FormsModule,
     AngularFontAwesomeModule,
     ReactiveFormsModule,
@@ -55,8 +62,8 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     NgbModule.forRoot(),
     AppRoutingModule,
     NgxCarouselModule,
-    CalendarModule.forRoot(),
-    BrowserAnimationsModule,
+   // CalendarModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [
     UserService,
