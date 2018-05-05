@@ -1,10 +1,10 @@
 import { ChallengeModel } from '../challenges/challenge.model';
 
 export class UserChallengesModel {
-    user_id: Number;
-    challenge_id: Number;
+    user_id: number;
+    challengeId: number;
     startDate: Date;
     endDate: Date;
-    challenges: ChallengeModel[];
+    challenge: ChallengeModel[];
 
 }
