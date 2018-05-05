@@ -28,7 +28,7 @@ namespace challenge.Application.main.challenges
 
         public void PostChallenge(ChallengeDto challenge)
         {
-           // var ch = _challengeRepository.PostChallenge(challenge);
+            // var ch = _challengeRepository.PostChallenge(challenge);
             var challengeDto = _mapper.Map<Challenges>(challenge);
             _challengeRepository.PostChallenge(challengeDto);
         }

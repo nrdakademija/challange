@@ -62,7 +62,7 @@ namespace challenge.Web.Controllers.challenge
                 _challengeService.PostChallenge(challenge);
                 string newUri = Url.Link("GetChallenges", new { id = challenge.Id });
                 return Created(newUri, challenge);
-                
+
             }
             catch (Exception err)
             {
@@ -70,7 +70,6 @@ namespace challenge.Web.Controllers.challenge
             }
             return BadRequest();
         }
-
     }
 
 }
