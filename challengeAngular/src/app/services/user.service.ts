@@ -55,6 +55,12 @@ export class UserService {
       .catch((error: any) => Observable.throw(error));
   }
 
+  getUserChallenges(id): Observable<UserChallengesModel[]> {
+    return this.http.get(this.url + '/' + id)
+      .map((res: Response) => res.json() as UserChallengesModel[])
+      .catch((error: any) => Observable.throw(error));
+  }
+
   //TO DO
   authenticateUser() { }
 

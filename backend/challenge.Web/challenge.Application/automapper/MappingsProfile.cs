@@ -10,6 +10,7 @@ using challenge.EF;
 using challenge.Application.main.categories.dto;
 using challenge.Application.main.subcategories.dto;
 using challenge.Application.main.challenges.dto;
+using challenge.Application.main.userChallenges.dto;
 
 namespace challenge.Application.automapper
 {
@@ -43,6 +44,13 @@ namespace challenge.Application.automapper
             CreateMap<ChallengeDto, Challenges>();
 
             CreateMap<Challenges, ChallengeViewDto>();
+
+            //-------------
+            CreateMap<UsersChallenges, UserChallengesDto>();
+            CreateMap<ChallengeDto, UsersChallenges>()
+                .ForMember(dto => dto.Challenge,
+                opt => opt.MapFrom(x => x.Id));
+            CreateMap<UserChallengesDto, UsersChallenges>();
 
         }
     }

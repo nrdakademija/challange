@@ -1,6 +1,5 @@
 import {
-  Component,
-  ChangeDetectionStrategy,
+ Component,ChangeDetectionStrategy,
   ViewChild,
   TemplateRef,
   OnInit
@@ -26,6 +25,8 @@ import { Router } from "@angular/router";
 import { UserService } from '../../services/user.service';
 import { ChallengeService } from '../../services/challenge.service';
 import Swal from 'sweetalert2';
+import { UserChallengesModel } from '../../models/userChallenges/userchallenges.model';
+import { Observable } from 'rxjs/Observable';
 
 const colors: any = {
   red: {
@@ -49,12 +50,14 @@ const colors: any = {
   styleUrls: ['./calendar.component.css']
 })
 
-export class CalendarComponent implements OnInit{
+export class CalendarComponent implements OnInit {
   @ViewChild('modalContent') modalContent: TemplateRef<any>;
 
-  constructor(private modal: NgbModal,private router: Router,private userService: UserService) {}
+  constructor(private modal: NgbModal, private router: Router, private userService: UserService) { }
+  isLoading: boolean = false;
+  id = 1;
+  userChallenges$: Observable<UserChallengesModel[]>;
 
-  ngOnInit() {}
 
   view: string = 'month';
 
@@ -119,6 +122,20 @@ export class CalendarComponent implements OnInit{
 
   activeDayIsOpen: boolean = true;
 
+  ngOnInit() {
+    this.getUserChallenges(this.id);
+  }
+
+  refreshList() {
+
+  }
+
+  getUserChallenges(id) {
+    this.userService.getUserChallenges(id).subscribe((response: UserChallengesModel[]) => {
+      this.userChallenges$ = Observable.of(response);
+    });
+  }
+
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -150,6 +167,10 @@ export class CalendarComponent implements OnInit{
     this.modal.open(this.modalContent, { size: 'lg' });
   }
 
+  formEvents() {
+
+  }
+
   addEvent(): void {
     this.events.push({
       title: 'New event',
@@ -165,4 +186,3 @@ export class CalendarComponent implements OnInit{
     this.refresh.next();
   }
 }
-
