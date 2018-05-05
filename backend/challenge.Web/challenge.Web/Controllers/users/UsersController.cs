@@ -43,6 +43,14 @@ namespace challenge.Web.Controllers.users
 
         }
 
+        [HttpPost]
+        public IActionResult Save([FromBody] UsersDto user)
+        {
+
+                _usersService.Save(user);
+                return Ok(user);
+        }
+
         /* public IActionResult Del(int id)
          {
              try
@@ -56,7 +64,7 @@ namespace challenge.Web.Controllers.users
              {          } return BadRequest();
          }*/
 
-       
+
 
 
         [HttpPut("{id}")]

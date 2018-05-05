@@ -5,6 +5,7 @@ export class UserModel {
     id: Number;
     fullName: String;
     username: String;
+    password: String;
     imgUrl: String;
     email: String;
     points: Number;

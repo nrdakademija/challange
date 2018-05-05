@@ -26,6 +26,12 @@ namespace challenge.EF.repositories
                 .ThenInclude(p => p.Challenge)
                 .SingleOrDefault(p => p.Id == id);
         }
+
+        public void Save (Users user)
+        {
+            challengeContext.Add(user);
+            challengeContext.SaveChanges();
+        }
         public challengeContext challengeContext
         {
             get { return Context as challengeContext; }
