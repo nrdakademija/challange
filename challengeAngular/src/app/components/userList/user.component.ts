@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { UserModel } from '../../models/users/user.model';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { Md5 } from 'ts-md5';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-user',
@@ -40,5 +40,17 @@ export class UserComponent implements OnInit {
   routeToUser(id) {
     this.router.navigate(['user/' + id]);
   }
+
+  getPoints(id) {
+    return this.sortedUsers$[id].points + '%';
+  }
+
+
+
+
+
+  // progress stats
+
+
 
 }

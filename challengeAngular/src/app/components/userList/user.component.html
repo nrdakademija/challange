@@ -1,5 +1,27 @@
 <div class="content">
   <div class="container">
+
+    <div class="user">
+      <ul id="jogadores" *ngFor="let u of sortedUsers$; let i=index;" (click)="routeToUser(u.id)">
+        <li class="user">
+          <img class="gravatar" src="https://www.gravatar.com/avatar/{{u.imgUrl}}?d=https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png"
+          />
+          <div class="progressBar">
+
+            <span class="user" [ngStyle]="{ 'height': getPoints(i)}">
+              <i></i>
+              <b>{{u.points}}</b>
+            </span>
+          </div>
+          <span class="username">
+            <strong>{{u.username}}</strong>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+
+
     <div class="row">
       <div class="col bs-component">
         <h1 class="text-primary">Leaderboard</h1>
@@ -14,7 +36,8 @@
       <tr *ngFor="let u of sortedUsers$; let i=index;">
         <td>{{i+1}}</td>
         <td>
-          <img class="gravatar" src="https://www.gravatar.com/avatar/{{u.imgUrl}}?d=https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png" />
+          <img class="gravatar" src="https://www.gravatar.com/avatar/{{u.imgUrl}}?d=https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png"
+          />
         </td>
         <td>
           {{u.username}}
@@ -30,3 +53,7 @@
 
 </div>
 <app-footer></app-footer>
+<script>
+
+
+</script>
