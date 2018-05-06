@@ -5786,17 +5786,17 @@
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
-      "sha512": "HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
+      "sha512": "Vnhepn8aG6Bjqz4d3sBiMoDnjJtp516kAKH/NvV0XMyh7E8gaHuopQcZ0fCFpcG/SG2v6287xdEYL4bWnjQIGw==",
       "type": "package",
       "path": "microsoft.codeanalysis.analyzers/1.1.0",
       "files": [
+        "Microsoft.CodeAnalysis.Analyzers.1.1.0.nupkg.sha512",
+        "Microsoft.CodeAnalysis.Analyzers.nuspec",
         "ThirdPartyNotices.rtf",
         "analyzers/dotnet/cs/Microsoft.CodeAnalysis.Analyzers.dll",
         "analyzers/dotnet/cs/Microsoft.CodeAnalysis.CSharp.Analyzers.dll",
         "analyzers/dotnet/vb/Microsoft.CodeAnalysis.Analyzers.dll",
         "analyzers/dotnet/vb/Microsoft.CodeAnalysis.VisualBasic.Analyzers.dll",
-        "microsoft.codeanalysis.analyzers.1.1.0.nupkg.sha512",
-        "microsoft.codeanalysis.analyzers.nuspec",
         "tools/install.ps1",
         "tools/uninstall.ps1"
       ]
@@ -9598,10 +9598,12 @@
       ]
     },
     "System.Linq.Queryable/4.0.1": {
-      "sha512": "Yn/WfYe9RoRfmSLvUt2JerP0BTGGykCZkQPgojaxgzF2N0oPo+/AhB8TXOpdCcNlrG3VRtsamtK2uzsp3cqRVw==",
+      "sha512": "SjpNAGwxv5KHtF78RJOi1nJBaMPmWGsWTdu6SJ5K7YPkbgLxfcf2zuFLzUQ7kdb7ZpjZg3p5MDINL1X4gwxN8g==",
       "type": "package",
       "path": "system.linq.queryable/4.0.1",
       "files": [
+        "System.Linq.Queryable.4.0.1.nupkg.sha512",
+        "System.Linq.Queryable.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/monoandroid10/_._",
@@ -9649,9 +9651,7 @@
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.linq.queryable.4.0.1.nupkg.sha512",
-        "system.linq.queryable.nuspec"
+        "ref/xamarinwatchos10/_._"
       ]
     },
     "System.Net.Http/4.3.0": {
@@ -12538,24 +12538,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ingas\\.nuget\\packages\\": {},
+    "C:\\Users\\Monika\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ingas\\Desktop\\NRD Challenge\\challange\\backend\\challenge.Web\\challenge.EF\\challenge.EF.csproj",
+      "projectUniqueName": "C:\\Users\\Monika\\Desktop\\PROJEKTAS\\challange\\backend\\challenge.Web\\challenge.EF\\challenge.EF.csproj",
       "projectName": "challenge.EF",
-      "projectPath": "C:\\Users\\Ingas\\Desktop\\NRD Challenge\\challange\\backend\\challenge.Web\\challenge.EF\\challenge.EF.csproj",
-      "packagesPath": "C:\\Users\\Ingas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ingas\\Desktop\\NRD Challenge\\challange\\backend\\challenge.Web\\challenge.EF\\obj\\",
+      "projectPath": "C:\\Users\\Monika\\Desktop\\PROJEKTAS\\challange\\backend\\challenge.Web\\challenge.EF\\challenge.EF.csproj",
+      "packagesPath": "C:\\Users\\Monika\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Monika\\Desktop\\PROJEKTAS\\challange\\backend\\challenge.Web\\challenge.EF\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Ingas\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Monika\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"

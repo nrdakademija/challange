@@ -33,18 +33,17 @@ export class ChallengeCalendarComponent implements OnInit {
   calendarChallenges: ChallengeModel[] = new Array<ChallengeModel>();
   title = 'app';
 
-  constructor(private router: Router, private userService: UserService, private challengeService: ChallengeService) { }
+  constructor(private router: Router, private userService: UserService, private challengeService: ChallengeService) {}
   id = 1;
   userChallenges$: Observable<UserChallengesModel[]>;
   challengesList$: Observable<ChallengeModel[]>;
   challenges: ChallengeModel[] = new Array<ChallengeModel>();
 
-// KALENDORIUI
+  // KALENDORIUI
   userChallenges: UserChallengesModel[];
   calendarEvents: Event[] = [];
 
-
-  calendarOptions: Object = {
+  calendarOptions: any = {
     height: 'parent',
     header: {
       left: 'title',
@@ -69,12 +68,14 @@ export class ChallengeCalendarComponent implements OnInit {
     this.loadInfo();
   }
 
+
+
   loadInfo() {
     this.userService.getChallengesByUserId(2).then(data => {
       this.userChallenges = data;
       this.userChallenges.forEach(ch => {
         var obj = {
-          id: ch.user_id,
+          id: ch.challengeId,
           title: 'plz work'.toString(),
           start: ch.startDate,
           end: ch.endDate
@@ -87,44 +88,12 @@ export class ChallengeCalendarComponent implements OnInit {
   }
 
   alertOnEventClick(obj, jsEvent, view) {
-
+    console.log(obj.id);
+    this.router.navigate(['/challenges/' + obj.id]);
   }
 
   onCalendarInit(initialized: boolean) {
     console.log('Calendar initialized');
   }
-
-
-  //   formEventsData(challenges, userCh) {debugger;
-  //     this.calendarChallenges.length = challenges.length;
-  //     for (let i = 0; i < challenges.length; i++) {
-  //       this.obj = {
-  //         id: challenges[i].id,
-  //         title: "challenges[i].title",
-  //         created_at: challenges[i].created_at,
-  //         reward: challenges[i].reward,
-  //         start: '2018-05-05'
-  //       };
-  //       this.calendarChallenges.push(this.obj);
-  //     }
-
-  //   //  this.eventSources = this.calendarChallenges;
-  //   //  this.calendarOptions.events = eventSources;
-
-  // //    $('#myCalendar').fullCalendar('addEventSource', this.eventSources);
-  //       //  eventSources = null;
-  //   }
-
-  // getUserChallenges(id) {
-  //   this.userService.getUserChallenges(id).subscribe((response: UserChallengesModel[]) => {
-  //     this.userChallenges$ = Observable.of(response);
-  //     response.forEach(element => {
-  //       this.challengeService.getChallengeById(element.challengeId).subscribe((data: ChallengeModel) => {
-  //         this.challenges.push(data);
-  //       });
-  //     });
-  //     //   this.formEventsData(this.challenges, this.userChallenges$);
-  //   });
-  // }
 
 }

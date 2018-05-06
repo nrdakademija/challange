@@ -70,22 +70,24 @@ export class ChallengeDetailsComponent implements OnInit {
       confirmButtonText: 'Yes, let\'s go!'
     }).then((result) => {
       if (result.value) {
-        //Add challenge to users challenges
+        // Add challenge to users challenges
+        let obj = {
+          userId: this.userId,
+          challengeId: challengeId,
+          startDate: Date.now(),
+          endDate: Date
+        };
         this.messageRnd = Math.floor(Math.random() * 10);
         this.userId = 1;
-        this.userService.acceptChallenge(this.userId, challengeId).subscribe((response) => {
+        this.userService.acceptChallenge(this.userId, obj).subscribe((response) => {
           Swal(
             `${this.succcesMessages[this.messageRnd]}`
           );
-
           this.router.navigate(['user/userId']); //<---navigate to user where he can see his challenges
-        }); this.router.navigate(['user/userId']);
-        Swal(
-          `${this.succcesMessages[this.messageRnd]}`
-        );
+        });
 
       }
-    })
+    });
   }
 
 }
