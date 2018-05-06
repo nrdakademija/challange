@@ -43,6 +43,50 @@ namespace challenge.Web.Controllers.users
 
         }
 
+        [HttpGet("username={username}")]
+        public IActionResult GetUserByUsername(string username)
+        {
+            try
+            {
+                var user = _usersService.GetUserByUsername(username);
+                if (user == null)
+                    return NotFound();
+                return new ObjectResult(user);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return BadRequest();
+
+        }
+
+        [HttpGet("email={email}")]
+        public IActionResult GetUserByEmail(string email)
+        {
+            try
+            {
+                var user = _usersService.GetUserByEmail(email);
+                if (user == null)
+                    return NotFound();
+                return new ObjectResult(user);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return BadRequest();
+
+        }
+
+        [HttpPost]
+        public IActionResult Save([FromBody] UsersDto user)
+        {
+
+                _usersService.Save(user);
+                return Ok(user);
+        }
+
         /* public IActionResult Del(int id)
          {
              try
@@ -56,7 +100,7 @@ namespace challenge.Web.Controllers.users
              {          } return BadRequest();
          }*/
 
-       
+
 
 
         [HttpPut("{id}")]
