@@ -41,9 +41,21 @@ export class UserService {
   }
 
 
-  // Single user
-  getUser(id): Observable<UserModel> {
+  // Single user by id
+  getUserById(id): Observable<UserModel> {
     return this.http.get(this.url + '/' + id)
+      .map((res: Response) => res.json() as UserModel)
+      .catch((error: any) => Observable.throw(error));
+  }
+  // Single user by username
+  getUserByUsername(username): Observable<UserModel> {
+    return this.http.get(this.url + '/username=' + username)
+      .map((res: Response) => res.json() as UserModel)
+      .catch((error: any) => Observable.throw(error));
+  }
+  // Single user by email
+  getUserByEmail(email): Observable<UserModel> {
+    return this.http.get(this.url + '/email=' + email)
       .map((res: Response) => res.json() as UserModel)
       .catch((error: any) => Observable.throw(error));
   }

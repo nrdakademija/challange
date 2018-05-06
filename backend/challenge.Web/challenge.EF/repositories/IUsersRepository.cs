@@ -7,7 +7,8 @@ namespace challenge.EF.repositories
     {
         List<Users> GetUsers();
         Users GetUserById(int id);
-
+        Users GetUserByUsername(string username);
+        Users GetUserByEmail(string email);
         void Save(Users user);
     }
 }

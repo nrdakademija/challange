@@ -55,7 +55,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   getUserInfo() {
-    this.userService.getUser(this.activeParameter).subscribe(data => {
+    this.userService.getUserById(this.activeParameter).subscribe(data => {
       this.user = data;
       this.grav = (this.md5.appendStr(data.email.toString()).end()).toString();
     });
