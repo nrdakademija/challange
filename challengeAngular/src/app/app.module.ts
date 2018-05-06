@@ -2,14 +2,14 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { CalendarModule } from "ap-angular2-fullcalendar";
-import {NgbModule, NgbRatingConfig, NgbPaginationConfig, NgbProgressbarConfig,NgbDatepickerConfig, NgbDateStruct,NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
+import { CalendarModule } from 'ap-angular2-fullcalendar';
+import {NgbModule, NgbRatingConfig, NgbPaginationConfig, NgbProgressbarConfig,NgbDatepickerConfig,
+   NgbDateStruct, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NgxCarouselModule } from 'ngx-carousel';
 import 'hammerjs';
 import {Md5} from 'ts-md5/dist/md5';
-//import { CalendarModule } from 'angular-calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -50,10 +50,10 @@ import { ChallengeCalendarComponent } from './components/calendar/challengeCalen
     UserComponent,
     UserDetailsComponent,
     ChallengeCalendarComponent
-     
   ],
   imports: [
     BrowserModule,
+    NgxCarouselModule,
     CalendarModule,
     FormsModule,
     AngularFontAwesomeModule,
@@ -61,8 +61,6 @@ import { ChallengeCalendarComponent } from './components/calendar/challengeCalen
     HttpModule,
     NgbModule.forRoot(),
     AppRoutingModule,
-    NgxCarouselModule,
-   // CalendarModule.forRoot(),
     BrowserAnimationsModule
   ],
   providers: [

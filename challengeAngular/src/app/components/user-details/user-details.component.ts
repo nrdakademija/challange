@@ -58,6 +58,7 @@ export class UserDetailsComponent implements OnInit {
     this.userService.getUserById(this.activeParameter).subscribe(data => {
       this.user = data;
       this.grav = (this.md5.appendStr(data.email.toString()).end()).toString();
+      console.log(data);
     });
   }
 
@@ -72,7 +73,7 @@ export class UserDetailsComponent implements OnInit {
 
   public carouselTileLoad(evt: any) {
 
-    const len = this.carouselTileItems.length
+    const len = this.carouselTileItems.length;
     if (len <= 30) {
       for (let i = len; i < len + 10; i++) {
         this.carouselTileItems.push(i);

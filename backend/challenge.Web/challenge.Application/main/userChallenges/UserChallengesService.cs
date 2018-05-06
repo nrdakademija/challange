@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using challenge.Application.main.userChallenges.dto;
+using challenge.EF.entities;
 using challenge.EF.repositories;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,13 @@ namespace challenge.Application.main.userChallenges
             var list = _repository.GetUserChallengesById(id);
             var listDto = _mapper.Map<List<UserChallengesDto>>(list);
             return listDto;
+        }
+
+        public void AcceptChallenge(UserChallengesDto challenge)
+        {
+            var challengeDto = _mapper.Map<UsersChallenges>(challenge);
+               _repository.AcceptChallenge(challengeDto);
+
         }
     }
 }

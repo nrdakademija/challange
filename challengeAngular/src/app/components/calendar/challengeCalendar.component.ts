@@ -82,13 +82,12 @@ export class ChallengeCalendarComponent implements OnInit {
         };
         this.calendarEvents.push(obj);
       });
-      //this.calendarOptions.events = this.calendarEvents;
+      this.calendarOptions.events = this.calendarEvents;
       $('#myCalendar').fullCalendar('renderEvents', this.calendarEvents, true);
     });
   }
 
   alertOnEventClick(obj, jsEvent, view) {
-    console.log(obj.id);
     this.router.navigate(['/challenges/' + obj.id]);
   }
 

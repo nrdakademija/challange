@@ -24,6 +24,21 @@ WHERE uc.user_id = 2;*/
               .ToList();
         }
 
+        public void AcceptChallenge(UsersChallenges challenge)
+        {
+           
+                var userCh = new UsersChallenges()
+                {
+                    UserId = challenge.UserId,
+                    ChallengeId = challenge.ChallengeId,
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now,
+                    Challenge = challenge.Challenge
+                };
+            challengeContext.UsersChallenges.Add(userCh);
+            challengeContext.SaveChanges();
+        }
+
         public challengeContext challengeContext
         {
             get { return Context as challengeContext; }

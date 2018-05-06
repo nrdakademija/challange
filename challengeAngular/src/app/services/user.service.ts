@@ -32,9 +32,8 @@ export class UserService {
     });
   }
 
-  // TO DO add valid url
-  acceptChallenge(userId, data): Observable<UserChallengesModel> {debugger;
-      return this.http.post(this.url + '/' + userId, data)
+  acceptChallenge(userId, data): Observable<UserChallengesModel> {
+      return this.http.post(this.urlUserChallenges + userId, data)
       .map((res: Response) => res.json() as UserChallengesModel)
       .catch((error: any) => Observable.throw(error));
   }
