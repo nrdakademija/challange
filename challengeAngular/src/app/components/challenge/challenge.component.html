@@ -1,5 +1,9 @@
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+        crossorigin="anonymous">
+</head>
 <div class="content">
-    <div class="container">
+    <div  style="margin-left: 50px; margin-right: 50px;">
         <div class="row">
             <div class="col-sm-2">
                 <button class="challenge btn btn-primary" data-toggle="modal" data-target="#challengeModal">Add challenge</button>
@@ -22,21 +26,23 @@
         </div>
         <div class="row">
             <div *ngFor="let ch of challenges$ | async; let ind = index;">
-                <div class="card border-success just-box" style="height: 300px;width: 200px">
+                <div class="card border-success just-box" style="height: 260px;width: 220px">
                     <a href="javascript:;">
                         <div class="shadow">
                             <div class="middle">
-                                <b style="font-size: 23px;">{{ch.title}}</b>
+                                <b style="font-size: 20px;">{{ch.title}}</b>
                                 <br>
-                                <b>
-                                    <i class="fas fa-star" style="font-size:0.9em"></i>+{{ch.reward}} XP</b>
-                                <br>
-                                <b>
-                                    <i class="fas fa-clock"></i> {{ch.daysNeeded}} days </b>
-                                <br>
-                                <i class="fas fa-user"></i> Completed by {{ch.completedBy}} challengers
+                                <div style="font-size: 12px">
+                                        <b>
+                                          <i class="fas fa-star" style="font-size:0.9em"></i>+{{ch.reward}} XP</b>
+                                        <br>
+                                        <b>
+                                           <i class="fas fa-clock"></i> {{ch.daysNeeded}} days </b>
+                                        <br>
+                                        <i class="fas fa-user"></i> Completed by {{ch.completedBy}} challengers 
+                                </div>
                             </div>
-                            <img class="rounded mx-auto d-block image" src="{{ch.imgUrl}}" (click)="routeToChallenge(ch.id)" style="background-size: cover; height: 220px; width: 200px">
+                            <img class="rounded mx-auto d-block image" src="{{ch.imgUrl}}" (click)="routeToChallenge(ch.id)" style="background-size: cover; height: 190px; width: 220px">
 
                         </div>
                     </a>
