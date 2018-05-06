@@ -8,7 +8,7 @@ export class UserModel {
     password: String;
     imgUrl: String;
     email: String;
-    points: Number;
+    points: number;
     level: Number;
     challenges: ChallengeModel[];
 }

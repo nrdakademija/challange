@@ -27,11 +27,20 @@ export class UserComponent implements OnInit {
     });
   }
 
+  public getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
   compare(a, b) {
-    if (a.level < b.level) {
+    if (a.points > b.points) {
       return -1;
     }
-    if (a.level > b.level) {
+    if (a.points < b.points) {
       return 1;
     }
     return 0;
@@ -41,8 +50,9 @@ export class UserComponent implements OnInit {
     this.router.navigate(['user/' + id]);
   }
 
-  getPoints(id) {
-    return this.sortedUsers$[id].points + '%';
+  getPoints(id, max) {
+    let x = this.sortedUsers$[id].points * 100 / (max + 100);
+    return x + '%';
   }
 
 

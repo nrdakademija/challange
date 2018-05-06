@@ -8,7 +8,7 @@
           />
           <div class="progressBar">
 
-            <span class="user" [ngStyle]="{ 'height': getPoints(i)}">
+            <span class="user" [ngStyle]="{ 'height': getPoints(i, sortedUsers$[0].points)}">
               <i></i>
               <b>{{u.points}}</b>
             </span>
