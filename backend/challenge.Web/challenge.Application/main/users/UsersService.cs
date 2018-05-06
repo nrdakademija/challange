@@ -31,19 +31,6 @@ namespace challenge.Application.main.users
             var userDto = _mapper.Map<UsersDto>(user);
             return userDto;
         }
-        public UsersDto GetUserByUsername(string username)
-        {
-            var user = _usersRepository.GetUserByUsername(username);
-            var userDto = _mapper.Map<UsersDto>(user);
-            return userDto;
-        }
-
-        public UsersDto GetUserByEmail(string email)
-        {
-            var user = _usersRepository.GetUserByEmail(email);
-            var userDto = _mapper.Map<UsersDto>(user);
-            return userDto;
-        }
 
         public void Save (UsersDto user)
         {

@@ -26,21 +26,6 @@ namespace challenge.EF.repositories
                 .ThenInclude(p => p.Challenge)
                 .SingleOrDefault(p => p.Id == id);
         }
-        public Users GetUserByUsername(string username)
-        {
-            return challengeContext.Users
-                .Include(p => p.UsersChallenges)
-                .ThenInclude(p => p.Challenge)
-                .SingleOrDefault(p => p.Username == username);
-        }
-
-        public Users GetUserByEmail(string email)
-        {
-            return challengeContext.Users
-                .Include(p => p.UsersChallenges)
-                .ThenInclude(p => p.Challenge)
-                .SingleOrDefault(p => p.Email == email);
-        }
 
         public void Save (Users user)
         {
