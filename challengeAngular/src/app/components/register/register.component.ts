@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
+    selector: 'registerForm',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css']
 })
