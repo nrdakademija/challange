@@ -13,6 +13,7 @@ import { UserChallengesModel } from '../../models/userChallenges/userchallenges.
 import { Observable } from 'rxjs/Observable';
 import { ChallengeModel } from '../../models/challenges/challenge.model';
 import { Calendar } from 'fullcalendar';
+import swal from 'sweetalert2';
 
 interface Event {
   id: number;
@@ -73,6 +74,7 @@ export class ChallengeCalendarComponent implements OnInit {
   loadInfo() {
     this.userService.getChallengesByUserId(2).then(data => {
       this.userChallenges = data;
+      console.log(data);
       this.userChallenges.forEach(ch => {
         var obj = {
           id: ch.challengeId,
@@ -88,6 +90,10 @@ export class ChallengeCalendarComponent implements OnInit {
   }
 
   alertOnEventClick(obj, jsEvent, view) {
+    swal({
+      title: obj.title,
+
+    });
     this.router.navigate(['/challenges/' + obj.id]);
   }
 

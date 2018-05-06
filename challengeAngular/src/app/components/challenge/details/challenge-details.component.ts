@@ -61,8 +61,8 @@ export class ChallengeDetailsComponent implements OnInit {
     });
 
   }
-
-  userId = 0;
+// TO DO GET USERS ID after he's logged in
+  userId = 1;
   startChallenge(challengeId) {
 
     Swal({

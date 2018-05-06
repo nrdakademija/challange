@@ -48,9 +48,9 @@ namespace challenge.Application.automapper
             //-------------
             CreateMap<UsersChallenges, UserChallengesDto>();
             CreateMap<UserChallengesDto, UsersChallenges>();
-            /* CreateMap<ChallengeDto, UsersChallenges>()
-                 .ForMember(dto => dto.Challenge,
-                 opt => opt.MapFrom(x => x.Id));*/
+          //   CreateMap<ChallengeDto, UsersChallenges>()
+            //     .ForMember(dto => dto.Challenge,
+              //   opt => opt.MapFrom(x => x.Id));
             //  CreateMap<UserChallengesDto, UsersChallenges>();
 
         }

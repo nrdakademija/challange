@@ -16,9 +16,15 @@ export class ChallengeService {
 
   constructor(private http: Http) { }
 
-  //Challenges
+  // Challenges
   getChallengeList(): Observable<ChallengeModel[]> {
     return this.http.get(this.url)
+      .map((res: Response) => res.json() as ChallengeModel[])
+      .catch((error: any) => Observable.throw(error));
+  }
+
+  getUserChallengesListById(id): Observable<ChallengeModel[]> {
+    return this.http.get('http://localhost:59372/userchallenges' + '/' + '/userId=' + id)
       .map((res: Response) => res.json() as ChallengeModel[])
       .catch((error: any) => Observable.throw(error));
   }

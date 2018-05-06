@@ -18,8 +18,8 @@ WHERE uc.user_id = 2;*/
         public List<UsersChallenges> GetUserChallengesById(int id)
         {
             return challengeContext.UsersChallenges
-              //  .Include(p => p.Challenge)
-            //    .ThenInclude (p => p.UsersChallenges)
+             //  .Include(p => p.Challenge)
+             //  .ThenInclude (p => p.UsersChallenges)
                .Where(p => p.UserId == id)
               .ToList();
         }
