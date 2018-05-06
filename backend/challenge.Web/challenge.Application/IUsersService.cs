@@ -7,8 +7,6 @@ namespace challenge.Application.main.users
     {
         IEnumerable<UsersDto> GetAllUsers();
         UsersDto GetUserById(int id);
-        UsersDto GetUserByUsername(string username);
-        UsersDto GetUserByEmail(string email);
         void Save(UsersDto user);
     }
 }

@@ -40,8 +40,8 @@ FOREIGN KEY (subcategory) REFERENCES challenge_subcategories(id)
 CREATE TABLE users (
 id int NOT NULL PRIMARY KEY IDENTITY, 
 fullName varchar(255) NOT NULL,
-username VARCHAR(255) NOT NULL,
-email VARCHAR(255) NOT NULL,
+username VARCHAR(255) NOT NULL UNIQUE,
+email VARCHAR(255) NOT NULL UNIQUE,
 password VARCHAR(255) NOT NULL,
 imgUrl VARCHAR(255) NOT NULL, 
 points INT NOT NULL DEFAULT 0,
