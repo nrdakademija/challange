@@ -16,6 +16,7 @@ export class RegisterComponent {
  // user: UserModel = new UserModel;
   registerForm : FormGroup;
   user: UserModel = new UserModel;
+  temp: any;
 
   constructor(private formBuilder: FormBuilder, 
     private userService: UserService, 
@@ -42,11 +43,11 @@ export class RegisterComponent {
     this.user.password = value.password;
     this.user.email = value.email;
     this.user.imgUrl = "";
+    this.temp = this.userService.getUserByUsername(this.user.username).isEmpty;
       if (this.router.url.match('register')) {
-          
-           this.userService.addUser(this.user).subscribe(res => {
-            Swal('Registration successful!', 'You can login now', 'success');
-              this.router.navigate(['']);
+          this.userService.addUser(this.user).subscribe(res => {
+          Swal('Registration successful!', 'You can login now', 'success');
+          this.router.navigate(['']);
           },
               (err) => {
                   console.log(err);

@@ -41,8 +41,8 @@ export class UserService {
   }
 
 
-  // Single user
-  getUser(id): Observable<UserModel> {
+  // Single user by id
+  getUserById(id): Observable<UserModel> {
     return this.http.get(this.url + '/' + id)
       .map((res: Response) => res.json() as UserModel)
       .catch((error: any) => Observable.throw(error));
