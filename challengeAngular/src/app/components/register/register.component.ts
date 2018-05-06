@@ -6,7 +6,10 @@ import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs/';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { ViewChild, ElementRef} from '@angular/core';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
+declare var $: any;
 @Component({
     selector: 'registerForm',
     templateUrl: './register.component.html',
@@ -17,7 +20,7 @@ export class RegisterComponent {
  // user: UserModel = new UserModel;
   registerForm : FormGroup;
   user: UserModel = new UserModel;
-  temp: any;
+  @ViewChild('registerModal') public modal: ModalDirective;
 
   constructor(private formBuilder: FormBuilder, 
     private userService: UserService, 
@@ -44,16 +47,19 @@ export class RegisterComponent {
     this.user.password = value.password;
     this.user.email = value.email;
     this.user.imgUrl = "";
-    this.temp = this.userService.getUserByUsername(this.user.username).isEmpty;
-      if (this.router.url.match('register')) {
+
           this.userService.addUser(this.user).subscribe(res => {
-          Swal('Registration successful!', 'You can login now', 'success');
+          Swal({ 
+            title: "Registration successful!",
+             text: "You can login now",
+              type: "success" 
+            });
+          $("#registerModal").modal('hide');
           this.router.navigate(['']);
           },
               (err) => {
                   console.log(err);
               });
-      }
   }
 
 
