@@ -24,6 +24,11 @@ WHERE uc.user_id = 2;*/
               .ToList();
         }
 
+        public List<Challenges> GetUserChallengesListById(int id)
+        {
+            return challengeContext.Challenges.Where(p => p.Id == id).ToList();
+        }
+
         public void AcceptChallenge(UsersChallenges challenge)
         {
            

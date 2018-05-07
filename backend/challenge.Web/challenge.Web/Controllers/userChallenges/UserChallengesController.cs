@@ -31,6 +31,24 @@ namespace challenge.Web.Controllers.userChallenges
             return BadRequest();
         }
 
+        [HttpGet("userId={id}")]
+        public IActionResult GetUserChallengesListById(int id)
+        {
+            if (id == 0) return NotFound();
+            try
+            {
+                var userChallenges = _service.GetUserChallengesListById(id);
+                if (userChallenges == null)
+                    return NotFound();
+                return new ObjectResult(userChallenges);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return BadRequest();
+        }
+
         [HttpPost("{userId}")]
         public IActionResult AcceptChallenge(int userId, [FromBody] UserChallengesDto challenge)
         {

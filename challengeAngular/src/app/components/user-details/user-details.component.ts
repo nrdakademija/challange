@@ -82,6 +82,10 @@ export class UserDetailsComponent implements OnInit {
 
   }
 
+  getPoints(p) {
+    return p * 100 / (p + 50);
+  }
+
   redirectToChallenge(id) {
     this.router.navigate(['challenge/' + id]);
   }

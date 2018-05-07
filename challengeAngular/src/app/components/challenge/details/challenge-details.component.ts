@@ -76,11 +76,12 @@ export class ChallengeDetailsComponent implements OnInit {
       if (result.value) {
         // Add challenge to users challenges
         this.obj = {
-          user_id: this.userId,
+          userId: this.userId,
           challengeId: challengeId,
           startDate: new Date(2018, 5, 23),
           endDate: new Date(2018, 5, 23),
-          challenge: null
+          challenge: null,
+          user: null
         };
         this.messageRnd = Math.floor(Math.random() * 10);
         this.userId = 1; debugger;

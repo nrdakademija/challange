@@ -19,7 +19,8 @@ namespace challenge.EF.repositories
            //   .Include(p => p.SubcategoryNavigation)
               .ToList();
         }
-        
+
+
         public Challenges GetChallengeById(int id) {
             return challengeContext.Challenges
                 .SingleOrDefault(p => p.Id == id);

@@ -7,6 +7,7 @@ namespace challenge.EF.repositories
     {
         List<UsersChallenges> GetUserChallengesById(int id);
         void AcceptChallenge(UsersChallenges challengeDto);
+        List<Challenges> GetUserChallengesListById(int id);
     }
     
 }

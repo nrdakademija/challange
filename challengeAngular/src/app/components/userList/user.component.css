@@ -85,6 +85,10 @@ span {
   display: inline-block;
 }
 
+ul {
+  color: #000;
+}
+
 #jogadores li .username {
     display:block;
     width:75px;

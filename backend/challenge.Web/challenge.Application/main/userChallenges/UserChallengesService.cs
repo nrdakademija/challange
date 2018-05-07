@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using challenge.Application.main.challenges.dto;
 using challenge.Application.main.userChallenges.dto;
 using challenge.EF.entities;
 using challenge.EF.repositories;
@@ -23,6 +24,13 @@ namespace challenge.Application.main.userChallenges
         {
             var list = _repository.GetUserChallengesById(id);
             var listDto = _mapper.Map<List<UserChallengesDto>>(list);
+            return listDto;
+        }
+
+        public IEnumerable<ChallengeDto> GetUserChallengesListById(int id)
+        {
+            var list = _repository.GetUserChallengesListById(id);
+            var listDto = _mapper.Map<List<ChallengeDto>>(list);
             return listDto;
         }
 

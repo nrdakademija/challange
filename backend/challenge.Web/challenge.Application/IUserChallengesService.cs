@@ -1,4 +1,5 @@
-﻿using challenge.Application.main.userChallenges.dto;
+﻿using challenge.Application.main.challenges.dto;
+using challenge.Application.main.userChallenges.dto;
 using System.Collections.Generic;
 
 namespace challenge.Application.main.userChallenges
@@ -7,5 +8,6 @@ namespace challenge.Application.main.userChallenges
     {
         IEnumerable<UserChallengesDto> GetUserChallengesById(int id);
         void AcceptChallenge(UserChallengesDto challenge);
+        IEnumerable<ChallengeDto> GetUserChallengesListById(int id);
     }
 }

@@ -22,7 +22,7 @@
           <h4 class="label text-muted text-right">XP</h4>
         </div>
         <div class="col">
-          <h4 class="label " style="color: whitesmoke">{{user.points}}</h4>
+            <ngb-progressbar  type="success" [value]="getPoints(user.points)"></ngb-progressbar>
         </div>
       </div>
 
@@ -32,7 +32,7 @@
         </div>
         <div class="col">
           <p>
-            <ngb-progressbar showValue="true" type="success" [value]="100"></ngb-progressbar>
+
           </p>
         </div>
       </div>
