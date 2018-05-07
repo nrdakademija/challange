@@ -10,7 +10,7 @@ export class AppComponent {
 
   constructor() {}
 
-  public openLogin() {
+  public openLogin() {debugger;
     //show modal
     console.log("kazkas vyksta");
 

@@ -3,13 +3,14 @@ import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from '../components/home/home.component';
 import { LoginComponent } from '../components/login/login.component';
-import { RegisterComponent } from '../components/register/register.component'
-import { AboutComponent } from '../components/about/about.component'
-import { ChallengeComponent } from '../components/challenge/challenge.component'
+import { RegisterComponent } from '../components/register/register.component';
+import { AboutComponent } from '../components/about/about.component';
+import { ChallengeComponent } from '../components/challenge/challenge.component';
 import { ChallengeDetailsComponent } from '../components/challenge/details/challenge-details.component';
 import { UserComponent } from '../components/userList/user.component';
 import { UserDetailsComponent } from '../components/user-details/user-details.component';
 import { ChallengeCalendarComponent } from '../components/calendar/challengeCalendar.component';
+import { AuthGuard } from '../services/guards/auth.guard';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { ChallengeCalendarComponent } from '../components/calendar/challengeCale
           { path: 'challenge/:id', component: ChallengeDetailsComponent },
           { path: 'user/:id', component: UserDetailsComponent },
           { path: 'users', component: UserComponent },
-          { path: 'calendar', component: ChallengeCalendarComponent}  ,
+          { path: 'calendar', component: ChallengeCalendarComponent, canActivate: [AuthGuard]}  ,
 
           // otherwise redirect to home
           { path: '**', redirectTo: '' }

@@ -32,6 +32,8 @@ import { UserComponent } from './components/userList/user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ChallengeCalendarComponent } from './components/calendar/challengeCalendar.component';
 import { AuthGuard } from './services/guards/auth.guard';
+import { Alert } from 'selenium-webdriver';
+import { AlertService } from './services/alert.service';
 
 
 
@@ -69,7 +71,8 @@ import { AuthGuard } from './services/guards/auth.guard';
     ChallengeService,
     AuthenticationService,
     AuthGuard,
-    NgbPaginationConfig
+    NgbPaginationConfig,
+    AlertService
   ],
   bootstrap: [AppComponent]
 })

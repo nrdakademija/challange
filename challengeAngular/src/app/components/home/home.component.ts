@@ -1,21 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { ChallengeService } from '../../services/challenge.service';
 import { ChallengeModel } from '../../models/challenges/challenge.model';
+import { UserModel } from '../../models/users/user.model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { NgxCarousel } from 'ngx-carousel';
 import { Router } from '@angular/router';
 import { groupBy, mergeMap, toArray } from 'rxjs/operators';
 import { SubCategoryModel } from '../../models/subcategories/subcategories.model';
+import { UserService } from '../../services/user.service';
 
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  currentUser: UserModel;
 
   constructor(private challengeService: ChallengeService,
-    private router: Router) { }
+    private userService: UserService,
+    private router: Router) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
   currentRate = 3.14;
   challenges$: Observable<ChallengeModel[]>;
   challengesGrouped: ChallengeModel[];

@@ -29,24 +29,17 @@ export class UserService {
   // Users
   getAll() {
     return this.http.get(this.url, this.jwt())
-    .map((response: Response) => response.json());
+      .map((response: Response) => response.json());
   }
 
- /* getById(_id: string) {
-    return this.http.get(this.url + '/users/' + _id, this.jwt()).map((response: Response) => response.json());
-}
+  /* getById(_id: string) {
+     return this.http.get(this.url + '/users/' + _id, this.jwt()).map((response: Response) => response.json());
+ }
 
-create(user: UserModel) {
-    return this.http.post(this.url + '/users/register', user, this.jwt());
-}
 
-update(user: UserModel) {
-    return this.http.put(this.url + '/users/' + user.id, user, this.jwt());
-}
 
-delete(_id: string) {
-    return this.http.delete(this.url + '/users/' + _id, this.jwt());
-}*/
+
+ }*/
 
 
   getUsersList(): Observable<UserModel[]> {
@@ -89,17 +82,22 @@ delete(_id: string) {
       .catch((error: any) => Observable.throw(error));
   }
 
-  editUser(data, id): Observable<UserModel> {
-    return this.http.put(this.url + '/' + id, data)
+  delete(id: string) {
+    return this.http.delete(this.url + '/users/' + id, this.jwt());
+  }
+
+  updateUser(user): Observable<UserModel> {
+    return this.http.put(this.url + '/' + user.id, user, this.jwt())
       .map((res: Response) => res.json() as UserModel)
       .catch((error: any) => Observable.throw(error));
   }
 
-  addUser(data): Observable<UserModel> {
-    return this.http.post(this.url, data)
+  createUser(user): Observable<UserModel> {
+    return this.http.post(this.url, user, this.jwt())
       .map((res: Response) => res.json() as UserModel)
       .catch((error: any) => Observable.throw(error));
   }
+
 
   deleteUserChallenge(userId, challengeId): Observable<UserChallengesModel[]> {
     return this.http.delete(this.url + '/' + userId, challengeId)
