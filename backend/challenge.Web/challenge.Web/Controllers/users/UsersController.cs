@@ -69,7 +69,7 @@ namespace challenge.Web.Controllers.users
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.ToString())
+                    new Claim(ClaimTypes.Name, user.Id.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -83,13 +83,23 @@ namespace challenge.Web.Controllers.users
 
 
 
-
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Save([FromBody] UsersDto user)
         {
-
+            try
+            {
+                // save 
                 _usersService.Save(user);
                 return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                // return error message if there was an exception
+                return BadRequest(ex.Message);
+            }
+            
+                
         }
 
         /* public IActionResult Del(int id)

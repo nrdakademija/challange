@@ -49,6 +49,15 @@ namespace challenge.EF.repositories
 
         public void Save (Users user)
         {
+            if (challengeContext.Users.Any(x => x.Username == user.Username))
+                throw new Exception("Username " + user.Username + " is already taken");
+
+            byte[] passwordHash, passwordSalt;
+            CreatePasswordHash(user.Password, out passwordHash, out passwordSalt);
+
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+
             var u = new Users()
             {
                 Id = user.Id,

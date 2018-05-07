@@ -22,6 +22,10 @@ using challenge.Application;
 using challenge.Application.main.challenges;
 using challenge.Application.main.userChallenges;
 using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using challenge.Application.helpers;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
 
 namespace challenge.Web
 {
@@ -54,6 +58,32 @@ namespace challenge.Web
             services.AddDbContext<challengeContext>(options =>
             options.UseSqlServer(_configuration.GetConnectionString("ChallengeDatabase")));
 
+            // configure strongly typed settings objects
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            // configure jwt authentication
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+
+
             services.AddScoped<IUsersRepository, UsersRepository>();
             services.AddScoped<IUsersService, UsersService>();
 
@@ -85,15 +115,14 @@ namespace challenge.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+
             app.UseCors(builder =>
                 builder.WithOrigins("http://localhost:4200")
            .AllowAnyHeader()
-           .AllowAnyMethod());
-            /*app.UseCors(x => x
-                 .AllowAnyOrigin()
-                 .AllowAnyMethod()
-                 .AllowAnyHeader()
-                 .AllowCredentials());*/
+           .AllowAnyMethod()
+           .AllowCredentials());
+
+            app.UseAuthentication();
 
             app.UseMvc();
             app.UseSwagger();
