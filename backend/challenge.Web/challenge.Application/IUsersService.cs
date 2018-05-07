@@ -8,5 +8,7 @@ namespace challenge.Application.main.users
         IEnumerable<UsersDto> GetAllUsers();
         UsersDto GetUserById(int id);
         void Save(UsersDto user);
+        void UpdateUser(UsersDto user, string password = null);
+        UsersDto Authenticate(string username, string password);
     }
 }

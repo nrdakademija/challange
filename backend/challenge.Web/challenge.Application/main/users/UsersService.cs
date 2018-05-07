@@ -19,6 +19,25 @@ namespace challenge.Application.main.users
             _mapper = mapper;
         }
 
+        public UsersDto Authenticate(string username, string password)
+        {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                return null;
+            var user = _usersRepository.Authenticate(username, password);
+
+            // check if username exists
+            if (user == null)
+                return null;
+
+            var userDto = _mapper.Map<UsersDto>(user);
+            // authentication successful
+            return userDto;
+        }
+
+        public void UpdateUser(UsersDto user, string password = null)
+        {
+
+        }
         public IEnumerable<UsersDto> GetAllUsers()
         {
             var list = _usersRepository.GetUsers();
