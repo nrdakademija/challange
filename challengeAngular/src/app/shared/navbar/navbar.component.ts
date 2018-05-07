@@ -14,8 +14,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  logIn() {
-    console.log("bla");
+  logIn() {debugger;
   }
 
   openRegister() {
