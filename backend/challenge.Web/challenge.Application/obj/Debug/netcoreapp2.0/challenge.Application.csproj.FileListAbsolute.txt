@@ -46,3 +46,14 @@ C:\Users\Ingas\Desktop\NRD Challenge\challange\backend\challenge.Web\challenge.A
 C:\Users\Ingas\Desktop\NRD Challenge\challange\backend\challenge.Web\challenge.Application\obj\Debug\netcoreapp2.0\challenge.Application.csproj.CopyComplete
 C:\Users\Ingas\Desktop\NRD Challenge\challange\backend\challenge.Web\challenge.Application\obj\Debug\netcoreapp2.0\challenge.Application.dll
 C:\Users\Ingas\Desktop\NRD Challenge\challange\backend\challenge.Web\challenge.Application\obj\Debug\netcoreapp2.0\challenge.Application.pdb
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.Application\bin\Debug\netcoreapp2.0\challenge.Application.deps.json
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.Application\bin\Debug\netcoreapp2.0\challenge.Application.dll
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.Application\bin\Debug\netcoreapp2.0\challenge.Application.pdb
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.Application\bin\Debug\netcoreapp2.0\challenge.EF.dll
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.Application\bin\Debug\netcoreapp2.0\challenge.EF.pdb
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.Application\obj\Debug\netcoreapp2.0\challenge.Application.csprojResolveAssemblyReference.cache
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.Application\obj\Debug\netcoreapp2.0\challenge.Application.csproj.CoreCompileInputs.cache
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.Application\obj\Debug\netcoreapp2.0\challenge.Application.AssemblyInfoInputs.cache
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.Application\obj\Debug\netcoreapp2.0\challenge.Application.AssemblyInfo.cs
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.Application\obj\Debug\netcoreapp2.0\challenge.Application.dll
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.Application\obj\Debug\netcoreapp2.0\challenge.Application.pdb

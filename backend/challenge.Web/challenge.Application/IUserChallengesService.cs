@@ -8,6 +8,5 @@ namespace challenge.Application.main.userChallenges
     {
         IEnumerable<UserChallengesDto> GetUserChallengesById(int id);
         void AcceptChallenge(UserChallengesDto challenge);
-        IEnumerable<ChallengeDto> GetUserChallengesListById(int id);
     }
 }

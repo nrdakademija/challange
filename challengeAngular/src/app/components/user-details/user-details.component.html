@@ -1,12 +1,11 @@
 <div class="container content">
   <div class="row">
-    <div class="col-md-6">
-      <div class="row ">
-        <img class="img" src="https://www.gravatar.com/avatar/{{grav}}?d=https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png" />
-      </div>
+    <div class="col-md-3">
+      <img class="img" src="https://www.gravatar.com/avatar/{{grav}}?d=https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png"
+      />
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-9">
 
       <div class="row">
         <div class="col-sm-3 col-6 bs-component">
@@ -22,7 +21,7 @@
           <h4 class="label text-muted text-right">XP</h4>
         </div>
         <div class="col">
-            <ngb-progressbar  type="success" [value]="getPoints(user.points)"></ngb-progressbar>
+          <ngb-progressbar type="success" [value]="getPoints(user.points)"></ngb-progressbar>
         </div>
       </div>
 
@@ -36,35 +35,81 @@
           </p>
         </div>
       </div>
-
     </div>
-    <div></div>
-    <div class="row">
-      <div class="col-md-12">
-        <div style="padding-left: 20px; padding-right: 20px">
-          <h2 class="text-primary" style="color: whitesmoke">Accepted challenges</h2>
+  </div>
+  <br/>
 
-          <ngx-carousel [inputs]="carouselTile" (carouselLoad)="carouselTileLoad($event)">
-            <ngx-tile NgxCarouselItem *ngFor="let ch of userChallengesList$ | async">
-              <div class="card border-success">
+  <!--<div class="row">
+    <div class="col">
+      <div style="padding-left: 20px; padding-right: 20px">
+        <h2 class="text-primary" style="color: whitesmoke">Accepted challenges</h2>
 
-                <a href="javascript:;">
-                  <div class="shadow" style="height: 160px">
-                    <div class="middle">
-                      <b style="font-size: 23px;">{{ch.challenge_id}}</b>
-                      <br>
-                    </div>
+        <ngx-carousel [inputs]="carouselTile" (carouselLoad)="carouselTileLoad($event)">
+          <ngx-tile NgxCarouselItem *ngFor="let ch of userChallengesList$ | async">
+            <div class="card border-success">
+
+              <a href="javascript:;">
+                <div class="shadow" style="height: 160px">
+                  <div class="middle">
+                    <b style="font-size: 23px;">{{ch.challenge_id}}</b>
+                    <br>
                   </div>
-                </a>
-              </div>
-            </ngx-tile>
-            <button NgxCarouselPrev class='leftRs'>&lt;</button>
-            <button NgxCarouselNext class='rightRs'>&gt;</button>
-          </ngx-carousel>
-        </div>
+                </div>
+              </a>
+            </div>
+          </ngx-tile>
+          <button NgxCarouselPrev class='leftRs'>&lt;</button>
+          <button NgxCarouselNext class='rightRs'>&gt;</button>
+        </ngx-carousel>
       </div>
     </div>
+  </div>-->
+  <!--userId: number;
+    challengeId: number;
+    startDate: Date;
+    endDate: Date;
+    challenge: ChallengeModel[];
+    user: UserModel[];-->
+  <div class="row">
+    <h4>Accepted challeges</h4>
+  </div>
+  <div class="row">
 
+    <div *ngFor="let ch of userChallengesList$ | async; let ind = index;">
+      <div class="card border-success just-box" style="height: 260px;width: 220px">
+        <a href="javascript:;">
+          <div class="shadow">
+            <div class="middle">
+              <b style="font-size: 20px;">{{ch.challenge.title}}</b>
+              <br>
+              <div style="font-size: 12px">
+                <b>
+                  <i class="fas fa-star" style="font-size:0.9em"></i>+{{ch.challenge.reward}} XP</b>
+                <br>
+                <b>
+                  <i class="fas fa-clock"></i> {{ch.challenge.daysNeeded}} days </b>
+                <br>
+                <i class="fas fa-user"></i> Completed by {{ch.challenge.completedBy}} challengers
+              </div>
+            </div>
+            <img class="rounded mx-auto d-block image" src="{{ch.challenge.imgUrl}}" (click)="redirectToChallenge(ch.challenge.id)" style="background-size: cover; height: 190px; width: 220px">
+
+          </div>
+        </a>
+        <div>
+          <div *ngIf="subCategories$ | async; let subCategories$;" style="text-align: left; margin-left: 18px; margin-top: 10px">
+            <h5 class="text-success" style="font-size: 15px">
+              {{subCategories$[ch.challenge.subcategory-1].title}}
+            </h5>
+            <h5 style="font-size: 15px">
+              <ngb-rating style="color: white" [readonly]="true" max="5" [rate]="ch.challenge.difficulty"></ngb-rating>
+            </h5>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
   </div>
 </div>
 <app-footer></app-footer>

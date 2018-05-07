@@ -34,3 +34,12 @@ C:\Users\Ingas\Desktop\NRD Challenge\challange\backend\challenge.Web\challenge.E
 C:\Users\Ingas\Desktop\NRD Challenge\challange\backend\challenge.Web\challenge.EF\obj\Debug\netcoreapp2.0\challenge.EF.AssemblyInfo.cs
 C:\Users\Ingas\Desktop\NRD Challenge\challange\backend\challenge.Web\challenge.EF\obj\Debug\netcoreapp2.0\challenge.EF.dll
 C:\Users\Ingas\Desktop\NRD Challenge\challange\backend\challenge.Web\challenge.EF\obj\Debug\netcoreapp2.0\challenge.EF.pdb
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.EF\bin\Debug\netcoreapp2.0\challenge.EF.deps.json
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.EF\bin\Debug\netcoreapp2.0\challenge.EF.dll
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.EF\bin\Debug\netcoreapp2.0\challenge.EF.pdb
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.EF\obj\Debug\netcoreapp2.0\challenge.EF.csprojResolveAssemblyReference.cache
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.EF\obj\Debug\netcoreapp2.0\challenge.EF.csproj.CoreCompileInputs.cache
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.EF\obj\Debug\netcoreapp2.0\challenge.EF.AssemblyInfoInputs.cache
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.EF\obj\Debug\netcoreapp2.0\challenge.EF.AssemblyInfo.cs
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.EF\obj\Debug\netcoreapp2.0\challenge.EF.dll
+D:\NRD_akademija\nrd_akademija\challange\backend\challenge.Web\challenge.EF\obj\Debug\netcoreapp2.0\challenge.EF.pdb

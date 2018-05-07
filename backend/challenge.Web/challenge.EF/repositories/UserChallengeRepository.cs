@@ -12,22 +12,25 @@ namespace challenge.EF.repositories
         public UserChallengeRepository(challengeContext context) : base(context)
         {
         }
-       /* SELECT* FROM dbo.users_challenges AS uc JOIN dbo.challenges AS ch
-ON uc.challenge_id = ch.id
-WHERE uc.user_id = 2;*/
+
         public List<UsersChallenges> GetUserChallengesById(int id)
         {
-            return challengeContext.UsersChallenges
-             //  .Include(p => p.Challenge)
-             //  .ThenInclude (p => p.UsersChallenges)
-               .Where(p => p.UserId == id)
-              .ToList();
+
+            var userChallanges = challengeContext.UsersChallenges.Where(p => id == p.UserId).ToList();
+
+            foreach(var uc in userChallanges)
+            {
+                foreach(var ch in challengeContext.Challenges)
+                {
+                    if(uc.ChallengeId == ch.Id)
+                    {
+                        uc.Challenge = ch;
+                    }
+                }
+            }
+            return userChallanges;
         }
 
-        public List<Challenges> GetUserChallengesListById(int id)
-        {
-            return challengeContext.Challenges.Where(p => p.Id == id).ToList();
-        }
 
         public void AcceptChallenge(UsersChallenges challenge)
         {

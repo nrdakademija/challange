@@ -89,7 +89,11 @@ namespace challenge.Web
                 builder.WithOrigins("http://localhost:4200")
            .AllowAnyHeader()
            .AllowAnyMethod());
-
+            /*app.UseCors(x => x
+                 .AllowAnyOrigin()
+                 .AllowAnyMethod()
+                 .AllowAnyHeader()
+                 .AllowCredentials());*/
 
             app.UseMvc();
             app.UseSwagger();

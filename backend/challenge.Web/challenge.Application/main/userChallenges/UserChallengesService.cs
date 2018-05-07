@@ -27,13 +27,6 @@ namespace challenge.Application.main.userChallenges
             return listDto;
         }
 
-        public IEnumerable<ChallengeDto> GetUserChallengesListById(int id)
-        {
-            var list = _repository.GetUserChallengesListById(id);
-            var listDto = _mapper.Map<List<ChallengeDto>>(list);
-            return listDto;
-        }
-
         public void AcceptChallenge(UserChallengesDto challenge)
         {
             var challengeDto = _mapper.Map<UsersChallenges>(challenge);

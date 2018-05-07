@@ -1,4 +1,5 @@
-﻿using challenge.EF.entities;
+﻿using challenge.Application.main.challenges.dto;
+using challenge.EF.entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +14,7 @@ namespace challenge.Application.main.userChallenges.dto
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
-        public Challenges Challenge { get; set; }
+        public ChallengeDto Challenge { get; set; }
         public Users User { get; set; }
     }
 }

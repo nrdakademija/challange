@@ -46,7 +46,8 @@ namespace challenge.Application.automapper
             CreateMap<Challenges, ChallengeViewDto>();
 
             //-------------
-            CreateMap<UsersChallenges, UserChallengesDto>();
+            CreateMap<UsersChallenges, UserChallengesDto>()
+                .ForMember(dto=>dto.Challenge, opt => opt.MapFrom(x => x.Challenge));
             CreateMap<UserChallengesDto, UsersChallenges>();
           //   CreateMap<ChallengeDto, UsersChallenges>()
             //     .ForMember(dto => dto.Challenge,
