@@ -58,14 +58,14 @@ export class UserDetailsComponent implements OnInit {
     this.userService.getUserById(this.activeParameter).subscribe(data => {
       this.user = data;
       this.grav = (this.md5.appendStr(data.email.toString()).end()).toString();
-      console.log(data);
+     console.log(data);
     });
   }
 
   getUserChallenges() {
     this.userService.getUserChallenges(this.activeParameter).subscribe((data: UserChallengesModel[]) => {
       this.userChallengesList$ = Observable.of(data);
-      console.log(data);
+     // console.log(data);
 
     });
   }

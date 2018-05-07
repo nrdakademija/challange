@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../../components/login/login.component';
 import { Router } from '@angular/router';
+import { UserModel } from '../../models/users/user.model';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,13 +11,18 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  currentUser: UserModel;
+  users: UserModel[] = [];
+
+  constructor(private userService: UserService, private router: Router) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
 
   ngOnInit() {
   }
 
   logIn() {
-    console.log("bla");
+
   }
 
   openRegister() {

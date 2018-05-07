@@ -19,7 +19,7 @@ export class ChallengeComponent implements OnInit {
 
 
   constructor(private router: Router,
-    private challengeService: ChallengeService){}
+    private challengeService: ChallengeService) {}
 
   ngOnInit() {
      // this.loading = true;

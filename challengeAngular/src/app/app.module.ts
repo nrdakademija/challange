@@ -31,6 +31,7 @@ import { ChallengeDetailsComponent } from './components/challenge/details/challe
 import { UserComponent } from './components/userList/user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ChallengeCalendarComponent } from './components/calendar/challengeCalendar.component';
+import { AuthGuard } from './services/guards/auth.guard';
 
 
 
@@ -67,6 +68,7 @@ import { ChallengeCalendarComponent } from './components/calendar/challengeCalen
     UserService,
     ChallengeService,
     AuthenticationService,
+    AuthGuard,
     NgbPaginationConfig
   ],
   bootstrap: [AppComponent]
