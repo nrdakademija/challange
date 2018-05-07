@@ -78,7 +78,16 @@ namespace challenge.Web.Controllers.users
             var tokenString = tokenHandler.WriteToken(token);
 
             // return basic user info (without password) and token to store client side
-            return Ok(user);
+            return Ok(new { Id = user.Id,
+                   Username = user.Username,
+                   FullName = user.FullName,
+                   ImgUrl = user.ImgUrl,
+                   Level = user.Level,
+                   Points = user.Points,
+                   UsersChallenges = user.UsersChallenges,
+                   Token = tokenString
+                  
+            });
         }
 
 
