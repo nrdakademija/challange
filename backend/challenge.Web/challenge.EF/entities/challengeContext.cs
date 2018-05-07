@@ -150,6 +150,10 @@ namespace challenge.EF.entities
                     .HasColumnName("username")
                     .HasMaxLength(255)
                     .IsUnicode(false);
+
+                entity.Property(e => e.PasswordHash).HasColumnName("passwordHash");
+
+                entity.Property(e => e.PasswordSalt).HasColumnName("passwordSalt");
             });
 
             modelBuilder.Entity<UsersChallenges>(entity =>

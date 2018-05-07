@@ -28,6 +28,7 @@ namespace challenge.Web.Controllers.users
             _usersService = usersService;
         }
         // GET api/values
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult GetUsers()
         {

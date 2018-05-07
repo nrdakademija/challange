@@ -106,4 +106,10 @@ INSERT INTO dbo.users_challenges(user_id,challenge_id,state,startDate, endDate)
 VALUES(2,3,2,'2018-01-01','2018-01-21')
 INSERT INTO dbo.users_challenges(user_id,challenge_id,state,startDate, endDate)
 VALUES(2,2,1,'2018-04-20','2018-04-30')
+
+ALTER TABLE [dbo].[users]
+    ADD [passwordHash] varbinary(1024) DEFAULT(0) NOT NULL,
+        [passwordSalt] varbinary(1024) DEFAULT(0) NOT NULL;
+
 */
+

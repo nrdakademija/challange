@@ -43,7 +43,7 @@ export class RegisterComponent {
     `<loginForm></loginForm>`;
   }
 
-  submitForm(value: any): void {debugger;
+  submitForm(value: any): void {
     console.log(this.router.url);
     this.user.fullName = value.fullName;
     this.user.username = value.username;

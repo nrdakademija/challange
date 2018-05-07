@@ -7,8 +7,8 @@ import { SubCategoryModel } from '../../models/subcategories/subcategories.model
 import { CategoryModel } from '../../models/categories/categories.model';
 
 @Component({
-    templateUrl: './challenge.component.html',
-    styleUrls: ['./challenge.component.css']
+  templateUrl: './challenge.component.html',
+  styleUrls: ['./challenge.component.css']
 })
 export class ChallengeComponent implements OnInit {
   // loading = false;
@@ -19,21 +19,21 @@ export class ChallengeComponent implements OnInit {
 
 
   constructor(private router: Router,
-    private challengeService: ChallengeService) {}
+    private challengeService: ChallengeService) { }
 
   ngOnInit() {
-     // this.loading = true;
+    // this.loading = true;
 
-      this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
-          this.challenges$ = Observable.of(data);
-         // this.loading = false;
-      });
-      this.challengeService.getChallengeSubCategories().subscribe((data: SubCategoryModel[]) => {
-        this.subCategories$ = Observable.of(data);
-      });
-      this.challengeService.getChallengeCategories().subscribe((data: CategoryModel[]) => {
-        this.categories$ = Observable.of(data);
-      });
+    this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
+      this.challenges$ = Observable.of(data);
+      // this.loading = false;
+    });
+    this.challengeService.getChallengeSubCategories().subscribe((data: SubCategoryModel[]) => {
+      this.subCategories$ = Observable.of(data);
+    });
+    this.challengeService.getChallengeCategories().subscribe((data: CategoryModel[]) => {
+      this.categories$ = Observable.of(data);
+    });
   }
 
   routeToChallenge(id) {
@@ -42,5 +42,13 @@ export class ChallengeComponent implements OnInit {
   filterByCategory() {
 
   }
+
+  public isAuthenticated(): boolean {
+    if (!localStorage.getItem('currentUser')) {
+      return false;
+    }
+    return true;
+  }
+
 }
 

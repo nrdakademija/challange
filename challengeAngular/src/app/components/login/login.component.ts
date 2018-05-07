@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { UserModel } from '../../models/users/user.model';
 import { AuthenticationService } from '../../services/authentication.service';
@@ -7,7 +7,10 @@ import { Observable } from 'rxjs/';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
 import { AlertService } from '../../services/alert.service';
+import { ModalDirective } from 'ngx-bootstrap/modal';
+import Swal from 'sweetalert2';
 
+declare var $: any;
 @Component({
   selector: 'loginForm',
   templateUrl: './login.component.html',
@@ -21,6 +24,7 @@ export class LoginComponent implements OnInit {
   us: UserModel;
   loading = false;
   returnUrl: string;
+  @ViewChild('loginModal') public modal: ModalDirective;
 
   constructor(formBuilder: FormBuilder, public http: Http,
     private authenticationService: AuthenticationService,
@@ -42,11 +46,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    // reset login status
-    this.authenticationService.logout();
 
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   submitForm(value: any) {
@@ -54,15 +54,25 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(value.username, value.password)
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
+          Swal({
+            title: 'Login successful!',
+            type: 'success'
+          });
+         $('#loginModal').modal('hide');
+          this.router.navigate(['']);
         },
-        error => {
-          this.alertService.error(error._body);
-          this.loading = false;
-        });
+          (err) => {
+            this.alertService.error(err._body);
+            this.loading = false;
+          });
   }
 
-  logout() { }
+  public logout(): void {
+    // Remove tokens and expiry time from localStorage
+    this.authenticationService.logout();
+    // Go back to the home route
+    this.router.navigate(['/']);
+
+  }
 
 }
-

@@ -30,6 +30,7 @@ export class ChallengeDetailsComponent implements OnInit {
 
   challengeInfo: ChallengeModel = new ChallengeModel();
   obj: UserChallengesModel = new UserChallengesModel();
+  user_Id;
   activeParameter: any;
   usersList$: Observable<UserModel[]>;
   subCategories$: Observable<SubCategoryModel[]>;
@@ -40,6 +41,9 @@ export class ChallengeDetailsComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit() {
+    this.isAuthenticated();
+    let local = JSON.parse(localStorage.getItem('currentUser'));
+    this.user_Id = local.id;
     this.activeRoute.params.subscribe((params: Params) => {
       this.activeParameter = params['id'];
     });
@@ -61,9 +65,7 @@ export class ChallengeDetailsComponent implements OnInit {
     });
 
   }
-// TO DO GET USERS ID after he's logged in
-  userId = 1;
-  startChallenge(challengeId) {
+  startChallenge(challengeId) { console.log(this.user_Id);debugger;
 
     Swal({
       title: 'Are you ready for a challenge?',
@@ -76,7 +78,7 @@ export class ChallengeDetailsComponent implements OnInit {
       if (result.value) {
         // Add challenge to users challenges
         this.obj = {
-          userId: this.userId,
+          userId: this.user_Id,
           challengeId: challengeId,
           startDate: new Date(2018, 5, 23),
           endDate: new Date(2018, 5, 23),
@@ -84,8 +86,7 @@ export class ChallengeDetailsComponent implements OnInit {
           user: null
         };
         this.messageRnd = Math.floor(Math.random() * 10);
-        this.userId = 1; debugger;
-        this.userService.acceptChallenge(this.userId, this.obj).subscribe((response) => {
+        this.userService.acceptChallenge(this.user_Id, this.obj).subscribe((response) => {
           Swal(
             `${this.succcesMessages[this.messageRnd]}`
           );
@@ -94,6 +95,13 @@ export class ChallengeDetailsComponent implements OnInit {
 
       }
     });
+  }
+
+  public isAuthenticated(): boolean {
+    if (!localStorage.getItem('currentUser')) {
+      return false;
+    }
+    return true;
   }
 
 }

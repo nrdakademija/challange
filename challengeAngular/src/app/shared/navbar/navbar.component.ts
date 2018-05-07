@@ -14,11 +14,13 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  logIn() {debugger;
-  }
-
-  openRegister() {
-    this.router.navigate(['register']);
+  public isAuthenticated(): boolean {
+    // Check whether the current time is past the
+    // Access Token's expiry time
+    if (!localStorage.getItem('currentUser')) {
+      return false;
+    }
+    return true;
   }
 
 }

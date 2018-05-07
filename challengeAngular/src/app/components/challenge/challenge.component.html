@@ -6,7 +6,7 @@
     <div  style="margin-left: 50px; margin-right: 50px;">
         <div class="row">
             <div class="col-sm-2">
-                <button class="challenge btn btn-primary" data-toggle="modal" data-target="#challengeModal">Add challenge</button>
+                <button class="challenge btn btn-primary" data-toggle="modal" *ngIf="isAuthenticated()" data-target="#challengeModal">Add challenge</button>
             </div>
             <!--<div class="col">
                 <select class="form-control bs-component">
@@ -39,7 +39,7 @@
                                         <b>
                                            <i class="fas fa-clock"></i> {{ch.daysNeeded}} days </b>
                                         <br>
-                                        <i class="fas fa-user"></i> Completed by {{ch.completedBy}} challengers 
+                                        <i class="fas fa-user"></i> Completed by {{ch.completedBy}} challengers
                                 </div>
                             </div>
                             <img class="rounded mx-auto d-block image" src="{{ch.imgUrl}}" (click)="routeToChallenge(ch.id)" style="background-size: cover; height: 190px; width: 220px">
