@@ -61,8 +61,14 @@ export class ChallengeCalendarComponent implements OnInit {
       }
     },
     eventClick: this.alertOnEventClick,
-    events: [
-    ]
+    events: {
+      data: function() {
+        this.loadInfo(this.user_Id);
+          // return {
+          //     id: id
+          // };
+      }
+  },
   };
 
   ngOnInit() {
@@ -83,7 +89,7 @@ export class ChallengeCalendarComponent implements OnInit {
       this.userChallenges.forEach(ch => {
         var obj = {
           id: ch.challengeId,
-          title: 'plz work'.toString(),
+          title: ch.challengeId.toString(),
           start: ch.startDate,
           end: ch.endDate
         };
@@ -97,11 +103,18 @@ export class ChallengeCalendarComponent implements OnInit {
   }
 
   alertOnEventClick(obj, jsEvent, view) {
+    localStorage.setItem('ob', obj.id);
     swal({
-      title: obj.title,
-
+      title: obj.title + obj.id.toString(),
+    }).then((result) => {
+      if (result.value) {
+        let redirect = this.redirectToChallenge(1);
+      }
     });
-    this.router.navigate(['/challenges/' + obj.id]);
+  }
+
+  redirectToChallenge(id) {
+    this.router.navigate(['challenge/' + id]);
   }
 
   onCalendarInit(initialized: boolean) {
