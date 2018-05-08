@@ -9,6 +9,6 @@ export class UserModel {
     imgUrl: String;
     email: String;
     points: number;
-    level: Number;
+    level: number;
     challenges: ChallengeModel[];
 }

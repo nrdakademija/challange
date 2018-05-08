@@ -1,42 +1,24 @@
-<div class="container content">
+<div class="container content jumbotron">
   <div class="row">
     <div class="col-md-3">
-      <img class="img" src="https://www.gravatar.com/avatar/{{grav}}?d=https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png"
+      <img class="img" style="margin: auto; display: block"  src="https://www.gravatar.com/avatar/{{grav}}?d=https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png"
       />
+      <h3 style="color: whitesmoke; margin-top: 5px; text-align: center">Level {{user.level}}</h3>
+      <div class="progress">
+        <div id="progressBar" class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+          <div style="color: white; text-align: left; margin-left: 5px;"><b>{{user.points}} / {{user.level * 100}} XP</b></div>
+
+        </div>
+      </div>
     </div>
 
     <div class="col-md-9">
-
-      <div class="row">
-        <div class="col-sm-3 col-6 bs-component">
-          <h4 class="label text-muted text-right">Username</h4>
-        </div>
-        <div class="col">
-          <h4 class="label " style="color: whitesmoke">{{user.username}}</h4>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-3 col-6 bs-component">
-          <h4 class="label text-muted text-right">XP</h4>
-        </div>
-        <div class="col">
-          <ngb-progressbar type="success" [value]="getPoints(user.points)"></ngb-progressbar>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-3 col-6 bs-component">
-          <h4 class="label text-muted text-right">Level</h4>
-        </div>
-        <div class="col">
-          <p>
-
-          </p>
-        </div>
-      </div>
+    
+          <h3 style="color: whitesmoke; margin-left: 20px; margin-top: 5px;">{{user.fullName}}</h3>
+          <i><h5 style=" margin-left: 23px; margin-top: 5px;">{{user.username}}</h5> </i>
     </div>
   </div>
+  <hr class="my-4">
   <br/>
 
   <!--<div class="row">
@@ -72,7 +54,7 @@
     challenge: ChallengeModel[];
     user: UserModel[];-->
   <div class="row">
-    <h4>Accepted challeges</h4>
+    <h4 style="margin-left: 10px;">Accepted challeges</h4>
   </div>
   <div class="row">
 

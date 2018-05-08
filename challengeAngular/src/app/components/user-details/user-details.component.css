@@ -1,5 +1,5 @@
 .container {
-  margin-top: 80px;
+  margin-top: 75px;
 }
 
 .ngb-progressbar {
@@ -8,9 +8,14 @@
 
 .img {
   border-radius: 50%;
-  height: 180px;
+  height: 220px;
+  width: 220px;
 }
-
+.progress {
+  height: 20px;
+  background-color: #363636;
+}
+.progress .sr-only { position: relative; }
 h2 {
   margin-left: 5%;
 }
