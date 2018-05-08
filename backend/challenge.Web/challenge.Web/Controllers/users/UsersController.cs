@@ -36,7 +36,7 @@ namespace challenge.Web.Controllers.users
             return Ok(users);
 
         }
-
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public IActionResult GetUserById(int id)
         {
