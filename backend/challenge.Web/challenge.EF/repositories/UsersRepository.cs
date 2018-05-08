@@ -67,7 +67,7 @@ namespace challenge.EF.repositories
                 Password = user.Password,
                 ImgUrl = MD5Hash(user.Email),
                 Points = user.Points,
-                Level = user.Level,
+                Level = user.Points/500 + 1,
                 PasswordHash = user.PasswordHash,
                 PasswordSalt = user.PasswordSalt
             };
