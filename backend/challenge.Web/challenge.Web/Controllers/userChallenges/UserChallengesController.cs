@@ -16,6 +16,7 @@ namespace challenge.Web.Controllers.userChallenges
             _service = service;
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]//grąžina vartotojo priimtus iššūkius
         public IActionResult GetUserChallengesById(int id)
         {
