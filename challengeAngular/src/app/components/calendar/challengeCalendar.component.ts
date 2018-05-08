@@ -108,7 +108,6 @@ export class ChallengeCalendarComponent implements OnInit {
       title: obj.title + obj.id.toString(),
     }).then((result) => {
       if (result.value) {
-        let redirect = this.redirectToChallenge(1);
       }
     });
   }

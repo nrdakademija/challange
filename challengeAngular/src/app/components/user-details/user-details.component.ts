@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/timer';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/take';
 import 'rxjs/add/observable/of';
 import { NgxCarousel } from 'ngx-carousel';
 import { UserService } from '../../services/user.service';
@@ -30,8 +33,10 @@ export class UserDetailsComponent implements OnInit {
   public carouselTileItems: Array<any>;
   public carouselTile: NgxCarousel;
 
+  countDown;
+  counter = 6434;
+  tick = 1000;
   ngOnInit() {
-
     this.activateRoute.params.subscribe((params: Params) => {
       this.activeParameter = params['id'];
     });
@@ -42,20 +47,25 @@ export class UserDetailsComponent implements OnInit {
     this.challengeService.getChallengeSubCategories().subscribe((data: SubCategoryModel[]) => {
       this.subCategories$ = Observable.of(data);
     });
-    
   }
 
   getUserInfo() {
     this.userService.getUserById(this.activeParameter).subscribe(data => {
       this.user = data;
-      document.getElementById("progressBar").style.width = this.user.points / this.user.level*100 + "%";
+      document.getElementById('progressBar').style.width = this.user.points / this.user.level * 100 + '%';
     });
-    
   }
 
   getUserChallenges() {
     this.userService.getUserChallenges(this.activeParameter).subscribe((data: UserChallengesModel[]) => {
       this.userChallengesList$ = Observable.of(data);
+      let date = data[0].endDate;
+      var d = Date.parse(date.toString());
+      console.log( d);
+      this.counter = 20;
+      this.countDown = Observable.timer(0, this.tick)
+      .take( d)
+      .map(() => --d);
     });
   }
 

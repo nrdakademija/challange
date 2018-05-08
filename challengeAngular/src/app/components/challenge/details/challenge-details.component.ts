@@ -92,10 +92,11 @@ export class ChallengeDetailsComponent implements OnInit {
         };
         this.messageRnd = Math.floor(Math.random() * 10);
         this.userService.acceptChallenge(this.user_Id, this.obj).subscribe((response) => {
-          Swal(
-            `${this.succcesMessages[this.messageRnd]}`
-          );
-          this.router.navigate(['user/userId']); //<---navigate to user where he can see his challenges
+          Swal({
+            title: `${this.succcesMessages[this.messageRnd]}`,
+            type: 'success'
+          });
+        //  this.router.navigate(['user/userId']); //<---navigate to user where he can see his challenges
         });
 
       }

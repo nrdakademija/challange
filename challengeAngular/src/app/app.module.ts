@@ -34,6 +34,7 @@ import { ChallengeCalendarComponent } from './components/calendar/challengeCalen
 import { AuthGuard } from './services/guards/auth.guard';
 import { Alert } from 'selenium-webdriver';
 import { AlertService } from './services/alert.service';
+import { FormatTimePipe } from './pipes/countdown.pipe';
 
 
 
@@ -48,6 +49,7 @@ import { AlertService } from './services/alert.service';
     NavbarComponent,
     FooterComponent,
     ChallengeCategoriesFilterPipe,
+    FormatTimePipe,
     AddChallengeComponent,
     ChallengeDetailsComponent,
     UserComponent,
