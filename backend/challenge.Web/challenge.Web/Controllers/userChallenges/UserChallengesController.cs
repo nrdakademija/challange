@@ -53,21 +53,18 @@ namespace challenge.Web.Controllers.userChallenges
         }
 
 
-        //[HttpDelete("{id}")]
-        //public IActionResult DeleteUserChallenge(int userId, int challengeId)
-        //{
-        //    try
-        //    {
-        //        var challenge = ChallengeService.GetChallengeById(challengeId);
-        //        if (challenge == null) return NotFound($"challenge with id {challengeId} not found");
-        //        _service.DeleteEmployee(id);
-        //        return new NoContentResult();
-        //    }
-        //    catch (Exception err)
-        //    {
-        //        Console.WriteLine(err);
-        //    }
-        //    return BadRequest();
-        //}
+        [HttpDelete("{id}")]
+        public IActionResult DeleteUserChallenge(int id, [FromQuery] int userId)
+        {
+            try
+            {
+                _service.DeleteUserChallenge(id, userId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return BadRequest();
+        }
     }
 }

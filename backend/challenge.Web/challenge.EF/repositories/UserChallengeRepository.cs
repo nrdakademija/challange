@@ -46,6 +46,12 @@ namespace challenge.EF.repositories
             challengeContext.UsersChallenges.Add(userCh);
             challengeContext.SaveChanges();
         }
+        public void DeleteUserChallenge(int id, int userId)
+        {
+            var ch = challengeContext.UsersChallenges.SingleOrDefault(p => p.ChallengeId == id && p.UserId == userId);
+            challengeContext.Remove(ch);
+            challengeContext.SaveChanges();
+        }
 
         public challengeContext challengeContext
         {

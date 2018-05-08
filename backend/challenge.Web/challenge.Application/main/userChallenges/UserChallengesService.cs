@@ -33,5 +33,10 @@ namespace challenge.Application.main.userChallenges
                _repository.AcceptChallenge(challengeDto);
 
         }
+
+        public void DeleteUserChallenge(int id, int userId)
+        {
+            _repository.DeleteUserChallenge(id, userId);
+        }
     }
 }
