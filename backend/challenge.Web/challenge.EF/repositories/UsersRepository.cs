@@ -65,7 +65,7 @@ namespace challenge.EF.repositories
                 Username = user.Username,
                 Email = user.Email,
                 Password = user.Password,
-                ImgUrl = MD5Hash(user.Email),
+                ImgUrl = "https://www.gravatar.com/avatar/" + MD5Hash(user.Email).ToString() + "?d=https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png",
                 Points = user.Points,
                 Level = user.Level,
                 PasswordHash = user.PasswordHash,

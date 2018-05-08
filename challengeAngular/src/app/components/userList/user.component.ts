@@ -21,6 +21,7 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.userService.getUsersList().subscribe((data: UserModel[]) => {
       this.users$ = Observable.of(data);
+      
       console.log(data);
       this.sortedUsers$ = data;
       this.sortedUsers$.sort(this.compare);
