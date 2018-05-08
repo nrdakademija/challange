@@ -1,10 +1,12 @@
 ﻿using System;
 using challenge.Application.main.userChallenges;
 using challenge.Application.main.userChallenges.dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace challenge.Web.Controllers.userChallenges
 {
+    [Authorize]
     [Route("/[controller]")]
     public class UserChallengesController : Controller
     {
@@ -28,6 +30,25 @@ namespace challenge.Web.Controllers.userChallenges
             {
                 Console.WriteLine(ex);
             }
+            return BadRequest();
+        }
+
+
+        [HttpPost("{userId}")]
+        public IActionResult AcceptChallenge(int userId, [FromBody] UserChallengesDto challenge)
+        {
+            if (challenge == null) return NotFound();
+            try
+            {
+                _service.AcceptChallenge(challenge);
+                string newUri = Url.Link("GetChallenges", new { id = challenge.ChallengeId });
+                return Created(newUri, challenge);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
             return BadRequest();
         }
 

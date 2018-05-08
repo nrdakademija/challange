@@ -42,14 +42,18 @@ export class ChallengeDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.isAuthenticated();
-    let local = JSON.parse(localStorage.getItem('currentUser'));
-    this.user_Id = local.id;
+    if (localStorage.getItem('currentUser')) {
+      let local = JSON.parse(localStorage.getItem('currentUser'));
+      this.user_Id = local.id;
+    } else {
+      this.user_Id = 0;
+    }
     this.activeRoute.params.subscribe((params: Params) => {
       this.activeParameter = params['id'];
     });
     if (this.activeParameter) {
       this.challengeService.getChallengeById(this.activeParameter).subscribe((response: ChallengeModel) => {
-        this.challengeInfo = response; console.log(response);
+        this.challengeInfo = response;
 
       });
     }
@@ -65,7 +69,8 @@ export class ChallengeDetailsComponent implements OnInit {
     });
 
   }
-  startChallenge(challengeId) { console.log(this.user_Id);debugger;
+  startChallenge(challengeId) {
+    console.log(this.user_Id); debugger;
 
     Swal({
       title: 'Are you ready for a challenge?',

@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    localStorage.removeItem('currentUser');
   }
 
   public isAuthenticated(): boolean {

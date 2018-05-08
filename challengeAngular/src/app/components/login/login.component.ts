@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     if (localStorage.getItem('jwt')) {
       this.authenticated = true;
       // If the jwt key value exists, we’ll know the user is logged in, so we’ll get their profile.
-      this.user = JSON.parse(localStorage.getItem('user'));
+      this.user = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     this.loginForm = formBuilder.group({
