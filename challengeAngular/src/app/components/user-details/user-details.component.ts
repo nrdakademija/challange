@@ -27,8 +27,6 @@ export class UserDetailsComponent implements OnInit {
   userChallengesList$: Observable<UserChallengesModel[]>;
   subCategories$: Observable<SubCategoryModel[]>;
   user: UserModel = new UserModel;
-  md5 = new Md5();
-  grav = '';
   public carouselTileItems: Array<any>;
   public carouselTile: NgxCarousel;
 
@@ -51,10 +49,8 @@ export class UserDetailsComponent implements OnInit {
     this.userService.getUserById(this.activeParameter).subscribe(data => {
       this.user = data;
       document.getElementById("progressBar").style.width = this.user.points / this.user.level*100 + "%";
-      this.grav = (this.md5.appendStr(data.email.toString()).end()).toString();
     });
     
-    console.log(this.user.points);
   }
 
   getUserChallenges() {
