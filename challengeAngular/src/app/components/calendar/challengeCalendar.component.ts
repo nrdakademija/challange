@@ -34,12 +34,12 @@ export class ChallengeCalendarComponent implements OnInit {
   calendarChallenges: ChallengeModel[] = new Array<ChallengeModel>();
   title = 'app';
 
-  constructor(private router: Router, private userService: UserService, private challengeService: ChallengeService) {}
+  constructor(private router: Router, private userService: UserService, private challengeService: ChallengeService) { }
   id = 1;
   userChallenges$: Observable<UserChallengesModel[]>;
   challengesList$: Observable<ChallengeModel[]>;
   challenges: ChallengeModel[] = new Array<ChallengeModel>();
-
+  user_Id;
   // KALENDORIUI
   userChallenges: UserChallengesModel[];
   calendarEvents: Event[] = [];
@@ -66,15 +66,20 @@ export class ChallengeCalendarComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.loadInfo();
+    if (localStorage.getItem('currentUser')) {
+      let local = JSON.parse(localStorage.getItem('currentUser'));
+      this.user_Id = local.id;
+      this.loadInfo(this.user_Id);
+    } else {
+      this.user_Id = 0;
+    }
   }
 
 
 
-  loadInfo() {
-    this.userService.getChallengesByUserId(2).then(data => {
+  loadInfo(id) {
+    this.userService.getChallengesByUserId(id).then(data => {
       this.userChallenges = data;
-      console.log(data);
       this.userChallenges.forEach(ch => {
         var obj = {
           id: ch.challengeId,
@@ -85,7 +90,9 @@ export class ChallengeCalendarComponent implements OnInit {
         this.calendarEvents.push(obj);
       });
       this.calendarOptions.events = this.calendarEvents;
-      $('#myCalendar').fullCalendar('renderEvents', this.calendarEvents, true);
+    //  $('#myCalendar').fullCalendar( 'addEventSource', this.calendarEvents );
+     $('#myCalendar').fullCalendar('renderEvents', this.calendarEvents, true);
+//  $('#myCalendar').fullCalendar( 'refetchEvents' );
     });
   }
 
