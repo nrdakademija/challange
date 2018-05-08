@@ -59,16 +59,15 @@ export class UserDetailsComponent implements OnInit {
   getUserChallenges() {
     this.userService.getUserChallenges(this.activeParameter).subscribe((data: UserChallengesModel[]) => {
       this.userChallengesList$ = Observable.of(data);
-      let date = data[0].endDate;
-      var d = Date.parse(date.toString());
-      console.log( d);
-      this.counter = 20;
+      const date = Date.parse(data[0].endDate.toString());
+      const nowDate = 	new Date().getTime();
+      const dateDiff = date - nowDate;
+      this.counter = dateDiff;
       this.countDown = Observable.timer(0, this.tick)
-      .take( d)
-      .map(() => --d);
+        .take(this.counter)
+        .map(() => --this.counter);
     });
   }
-
 
   public carouselTileLoad(evt: any) {
 

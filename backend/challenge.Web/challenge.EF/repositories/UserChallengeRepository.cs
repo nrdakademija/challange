@@ -34,14 +34,13 @@ namespace challenge.EF.repositories
 
         public void AcceptChallenge(UsersChallenges challenge)
         {
-           
-                var userCh = new UsersChallenges()
-                {
-                    UserId = challenge.UserId,
-                    ChallengeId = challenge.ChallengeId,
-                    StartDate = DateTime.Now,
-                    EndDate = DateTime.Now,
-                    Challenge = challenge.Challenge
+            var userCh = new UsersChallenges()
+            {
+                UserId = challenge.UserId,
+                ChallengeId = challenge.ChallengeId,
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                Challenge = challenge.Challenge
                 };
             challengeContext.UsersChallenges.Add(userCh);
             challengeContext.SaveChanges();
