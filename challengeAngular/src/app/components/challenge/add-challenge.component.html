@@ -27,15 +27,15 @@
 
                 <div class="form-group" [class.has-danger]="daysNeeded.invalid && triedToSave">
                   <label>Challenge duration</label>
-                  <input #daysNeeded="ngModel" style="width: 440px;" class="form-control" type="number" min="1" name="daysNeeded" required [(ngModel)]="challengeInfo.daysNeeded"
+                  <input #daysNeeded="ngModel" class="form-control" type="number" min="1" name="daysNeeded" required [(ngModel)]="challengeInfo.daysNeeded"
                   />
                   <small *ngIf="daysNeeded.hasError('required') && daysNeeded.touched && triedToSave" class="form-text text-muted text-danger">
                     Needed days is required </small>
                 </div>
 
                 <div class="form-group" [class.has-danger]="Reward.invalid && triedToSave">
-                  <label>Rewards</label>
-                  <input #Reward="ngModel" style="width: 440px;" class="form-control" type="number" min="1" name="Reward" required [(ngModel)]="challengeInfo.reward"
+                  <label>Reward</label>
+                  <input #Reward="ngModel" class="form-control" type="number" min="1" name="Reward" required [(ngModel)]="challengeInfo.reward"
                     ngbTooltip="How rewarding do you think your challenge is?" />
                   <small *ngIf="Reward.hasError('required') && Reward.touched && triedToSave" class="form-text text-muted text-danger"> Reward is required </small>
                 </div>
