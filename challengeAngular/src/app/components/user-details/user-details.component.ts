@@ -72,6 +72,7 @@ export class UserDetailsComponent implements OnInit {
       const nowDate = new Date().getTime();
       const dateDiff = date - nowDate;
       this.counter = dateDiff;
+      console.log(dateDiff);
       this.countDown = Observable.timer(0, this.tick)
         .take(this.counter)
         .map(() => --this.counter);
