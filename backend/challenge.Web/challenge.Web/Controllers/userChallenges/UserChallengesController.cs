@@ -53,9 +53,9 @@ namespace challenge.Web.Controllers.userChallenges
             return BadRequest();
         }
 
-
+        [AllowAnonymous]
         [HttpDelete("{id}")]
-        public IActionResult DeleteUserChallenge(int id/*, [FromQuery] int userId*/)
+        public IActionResult DeleteUserChallenge(int id, [FromQuery] int userId)
         {
             try
             {

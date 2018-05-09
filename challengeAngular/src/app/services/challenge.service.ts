@@ -54,9 +54,10 @@ export class ChallengeService {
       .map((res: Response) => res.json() as ChallengeModel)
       .catch((error: any) => Observable.throw(error));
   }
-  deleteUserChallenge(challengeId, userId): Observable<UserChallengesModel[]> {
-    return this.http.delete('http://localhost:59372/userChallenges/'+ challengeId+ '?userId='+ userId)
-      .map((res: Response) => res.json() as UserChallengesModel)
+  deleteUserChallenge(challengeId, userId):any {
+    console.log("paskutinis id= " + challengeId+",user =   "+userId);
+    return this.http.delete('http://localhost:59372/userChallenges'+'/'+ challengeId + '?userId='+ userId)
+      .map((res: Response) => res.json() as any)
       .catch((error: any) => Observable.throw(error));
   }
 

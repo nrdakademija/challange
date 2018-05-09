@@ -27,6 +27,7 @@ export class UserDetailsComponent implements OnInit {
     private challengeService: ChallengeService) { }
 
   activeParameter: any;
+  ifOwner:boolean;
   userChallengesList$: Observable<UserChallengesModel[]>;
   subCategories$: Observable<SubCategoryModel[]>;
   user: UserModel = new UserModel;
@@ -47,6 +48,7 @@ export class UserDetailsComponent implements OnInit {
     this.challengeService.getChallengeSubCategories().subscribe((data: SubCategoryModel[]) => {
       this.subCategories$ = Observable.of(data);
     });
+    this.checkIfOwner();
   }
 
   getUserInfo() {
@@ -79,6 +81,12 @@ export class UserDetailsComponent implements OnInit {
     }
 
   }
+  checkIfOwner(){
+    if(this.activeParameter === this.user.id){
+      this.ifOwner=true;
+    }
+    this.ifOwner=false;
+  }
 
   getPoints(p) {
     return p * 100 / (p + 50);
@@ -87,7 +95,10 @@ export class UserDetailsComponent implements OnInit {
   redirectToChallenge(id) {
     this.router.navigate(['challenge/' + id]);
   }
-  deleteUserChallenge(id){debugger;
-    this.challengeService.deleteUserChallenge(id, this.user.id);
+  deleteUserChallenge(id){
+    this.challengeService.deleteUserChallenge(id, this.user.id)
+    .subscribe((res)=>
+      console.log(res)
+    );
   }
 }
