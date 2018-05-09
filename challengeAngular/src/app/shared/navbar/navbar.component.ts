@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../../components/login/login.component';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,10 +10,10 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
-    localStorage.removeItem('currentUser');
   }
 
   public isAuthenticated(): boolean {
@@ -22,6 +23,10 @@ export class NavbarComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  logout() {
+   this.authenticationService.logout();
   }
 
 }

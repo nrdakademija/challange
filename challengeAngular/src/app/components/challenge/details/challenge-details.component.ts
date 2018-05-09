@@ -53,7 +53,7 @@ export class ChallengeDetailsComponent implements OnInit {
     });
     if (this.activeParameter) {
       this.challengeService.getChallengeById(this.activeParameter).subscribe((response: ChallengeModel) => {
-        this.challengeInfo = response;
+        this.challengeInfo = response;debugger;
 
       });
     }
@@ -89,7 +89,7 @@ export class ChallengeDetailsComponent implements OnInit {
           endDate: new Date(2018, 5, 23),
           challenge: null,
           user: null
-        };
+        };debugger;
         this.messageRnd = Math.floor(Math.random() * 10);
         this.userService.acceptChallenge(this.user_Id, this.obj).subscribe((response) => {
           Swal({

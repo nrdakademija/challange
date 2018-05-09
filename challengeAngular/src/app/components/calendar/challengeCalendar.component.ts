@@ -61,63 +61,53 @@ export class ChallengeCalendarComponent implements OnInit {
       }
     },
     eventClick: this.alertOnEventClick,
-    events: {
-      data: function() {
-        this.loadInfo(this.user_Id);
-          // return {
-          //     id: id
-          // };
-      }
-  },
-  };
+    events: []
+};
 
-  ngOnInit() {
-    if (localStorage.getItem('currentUser')) {
-      let local = JSON.parse(localStorage.getItem('currentUser'));
-      this.user_Id = local.id;
-      this.loadInfo(this.user_Id);
-    } else {
-      this.user_Id = 0;
+ngOnInit() {
+  if (localStorage.getItem('currentUser')) {
+    let local = JSON.parse(localStorage.getItem('currentUser'));
+    this.user_Id = local.id;
+    this.loadInfo(this.user_Id);
+  }
+}
+
+
+
+loadInfo(id) {debugger;
+  this.userService.getChallengesByUserId(id).then(data => {
+    this.userChallenges = data;
+    this.userChallenges.forEach(ch => {
+      var obj = {
+        id: ch.challengeId,
+        title: ch.challengeId.toString(),
+        start: ch.startDate,
+        end: ch.endDate
+      };
+      this.calendarEvents.push(obj);
+    }); debugger;
+    this.calendarOptions.events = this.calendarEvents;
+    $('#myCalendar').fullCalendar('renderEvents', this.calendarEvents, true);
+  });
+}
+
+alertOnEventClick(obj, jsEvent, view) {
+  localStorage.setItem('ob', obj.id);
+  swal({
+    title: obj.title + obj.id.toString(),
+  }).then((result) => {
+    if (result.value) {
     }
-  }
+  });
+}
 
+redirectToChallenge(id) {
+  this.router.navigate(['challenge/' + id]);
+}
 
-
-  loadInfo(id) {
-    this.userService.getChallengesByUserId(id).then(data => {
-      this.userChallenges = data;
-      this.userChallenges.forEach(ch => {
-        var obj = {
-          id: ch.challengeId,
-          title: ch.challengeId.toString(),
-          start: ch.startDate,
-          end: ch.endDate
-        };
-        this.calendarEvents.push(obj);
-      });
-      this.calendarOptions.events = this.calendarEvents;
-    //  $('#myCalendar').fullCalendar( 'addEventSource', this.calendarEvents );
-     $('#myCalendar').fullCalendar('renderEvents', this.calendarEvents, true);
-//  $('#myCalendar').fullCalendar( 'refetchEvents' );
-    });
-  }
-
-  alertOnEventClick(obj, jsEvent, view) {
-    localStorage.setItem('ob', obj.id);
-    swal({
-      title: obj.title + obj.id.toString(),
-    }).then((result) => {
-      if (result.value) {
-      }
-    });
-  }
-
-  redirectToChallenge(id) {
-    this.router.navigate(['challenge/' + id]);
-  }
-
-  onCalendarInit(initialized: boolean) {
-    console.log('Calendar initialized');
-  }
+onCalendarInit(initialized: boolean) {
+  this.loadInfo(this.user_Id);
+  $('#myCalendar').fullCalendar('refetchEvents');
+}
 
 }

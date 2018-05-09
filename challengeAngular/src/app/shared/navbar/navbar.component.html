@@ -25,7 +25,7 @@
 
       <ul class="nav navbar-nav ml-auto">
           <li class="nav-item">
-          <button class="btn btn-secondary" *ngIf="isAuthenticated()">Log Out</button>
+          <button class="btn btn-secondary" *ngIf="isAuthenticated()" (click)="logout()">Log Out</button>
         </li>
         <li class="nav-item">
           <button class="btn btn-secondary" data-toggle="modal" *ngIf="!isAuthenticated()" data-target="#loginModal">Log in</button>
