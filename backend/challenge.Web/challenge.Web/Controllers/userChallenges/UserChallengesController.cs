@@ -59,7 +59,7 @@ namespace challenge.Web.Controllers.userChallenges
         {
             try
             {
-                /*_service.DeleteUserChallenge(id, userId);*/
+                _service.DeleteUserChallenge(id, userId);
             }
             catch (Exception ex)
             {

@@ -109,6 +109,7 @@ export class UserDetailsComponent implements OnInit {
       .subscribe((res) =>
         console.log(res)
       );
+      this.router.navigate(['user/' + this.user.id]);
   }
 
   checkIfDone(endDate) {
