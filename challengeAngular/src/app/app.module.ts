@@ -1,5 +1,3 @@
-
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CalendarModule } from 'ap-angular2-fullcalendar';
@@ -36,6 +34,7 @@ import { Alert } from 'selenium-webdriver';
 import { AlertService } from './services/alert.service';
 import { FormatTimePipe } from './pipes/countdown.pipe';
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator.directive';
+import { ChallengeFilterComponent } from './components/challenge/filter/challenge-filter.component';
 
 
 
@@ -56,6 +55,7 @@ import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator
     UserComponent,
     UserDetailsComponent,
     ChallengeCalendarComponent,
+    ChallengeFilterComponent,
     ConfirmEqualValidatorDirective
   ],
   imports: [
