@@ -40,6 +40,7 @@ export class UserDetailsComponent implements OnInit {
   counter = 6434;
   tick = 1000;
   ngOnInit() {
+
     if (localStorage.getItem('currentUser')) {
       let localUser = JSON.parse(localStorage.getItem('currentUser'));
       this.localUser = localUser.id;
@@ -112,14 +113,21 @@ export class UserDetailsComponent implements OnInit {
     this.router.navigate(['user/' + this.user.id]);
   }
 
-  checkIfDone(endDate, challengeId, user) {
+  checkIfDone(endDate, challengeId, user, state) {
+    debugger;
     const challengeDate = Date.parse(endDate.toString());
     const nowDate = new Date().getTime();
-    if (challengeDate < nowDate) {
+    if (challengeDate < nowDate && state === 0) {
       this.done = 'DONE';
-      this.userService.updateUserChallenge(this.user, challengeId, user);
-    }  else {
+      this.userService.updateUserChallenge(challengeId, this.localUser, user).subscribe((res) =>
+        console.log(res)
+      );
+    } else {
       this.done = 'ONGOING';
+    }
+
+    if (state === 1) {
+      this.done = 'DONE';
     }
 
     return this.done;

@@ -9,5 +9,6 @@ namespace challenge.Application.main.userChallenges
         IEnumerable<UserChallengesDto> GetUserChallengesById(int id);
         void AcceptChallenge(UserChallengesDto challenge);
         void DeleteUserChallenge(int id, int userId);
+        void UpdateUserChallenge(int id, int userId, UserChallengesDto item);
     }
 }

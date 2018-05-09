@@ -67,5 +67,21 @@ namespace challenge.Web.Controllers.userChallenges
             }
             return BadRequest();
         }
+
+        [AllowAnonymous]
+        [HttpPut("{id}")]
+        public IActionResult UpdateUserChallenge(int id, [FromQuery] int userId, [FromBody] UserChallengesDto challenge)
+        {
+            try
+            {
+                _service.UpdateUserChallenge(id, userId, challenge);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return BadRequest();
+        }
     }
 }

@@ -8,6 +8,9 @@ namespace challenge.EF.repositories
         List<UsersChallenges> GetUserChallengesById(int id);
         void AcceptChallenge(UsersChallenges challengeDto);
         void DeleteUserChallenge(int id, int userId);
+        void UpdateUserChallenge(int id, int userId);
+
+        UsersChallenges GetUserChallengeById(int id, int userId);
     }
     
 }

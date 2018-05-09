@@ -61,6 +61,24 @@ namespace challenge.EF.repositories
             challengeContext.SaveChanges();
         }
 
+        public void UpdateUserChallenge(int id, int userId)
+        {
+            var oldChallenge = GetUserChallengeById(id, userId);
+            if (oldChallenge.State == 0)
+            {
+                oldChallenge.State = 1;
+            }
+            
+            challengeContext.SaveChanges();
+        }
+
+        public UsersChallenges GetUserChallengeById(int id, int userId)
+        {
+            var userChallange = challengeContext.UsersChallenges.Where(p => id == p.ChallengeId && userId == p.UserId).Single();
+
+            return userChallange;
+        }
+
         public challengeContext challengeContext
         {
             get { return Context as challengeContext; }

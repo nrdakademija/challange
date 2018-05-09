@@ -85,6 +85,7 @@ export class ChallengeDetailsComponent implements OnInit {
         this.obj = {
           userId: this.user_Id,
           challengeId: challengeId,
+          state: 0,
           startDate: new Date(2018, 5, 23),
           endDate: new Date(2018, 5, 23),
           challenge: null,

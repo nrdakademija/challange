@@ -61,6 +61,7 @@
   <div class="row">
 
     <div *ngFor="let ch of userChallengesList$ | async; let ind = index;">
+        <div >{{checkIfDone(ch.endDate, ch.challengeId, ch, ch.state)}} </div>
       <div class="card border-success just-box" style="height: 300px;width: 220px">
         <a href="javascript:;">
           <div class="shadow">
@@ -93,8 +94,6 @@
           <button *ngIf="ifOwner" size="xSmall" style="margin-left: 10px;"type="button" class="btn btn-danger" (click)="deleteUserChallenge(ch.challenge.id)">Delete</button>
         </div>
       </div>
-      <div >{{checkIfDone(ch.endDate, ch.challengeId, ch.user)}} </div>
-
     </div>
   </div>
 </div>

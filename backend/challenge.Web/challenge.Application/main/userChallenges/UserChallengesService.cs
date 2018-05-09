@@ -34,6 +34,13 @@ namespace challenge.Application.main.userChallenges
 
         }
 
+        public void UpdateUserChallenge(int id, int userId, UserChallengesDto item)
+        {
+            var challenge = _mapper.Map<UsersChallenges>(item);
+            _repository.UpdateUserChallenge(id, userId);
+
+        }
+
         public void DeleteUserChallenge(int id, int userId)
         {
             _repository.DeleteUserChallenge(id, userId);
