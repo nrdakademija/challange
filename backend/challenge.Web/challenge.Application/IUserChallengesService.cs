@@ -7,7 +7,7 @@ namespace challenge.Application.main.userChallenges
     public interface IUserChallengesService
     {
         IEnumerable<UserChallengesDto> GetUserChallengesById(int id);
-        void AcceptChallenge(UserChallengesDto challenge);
+        void PostAcceptChallenge(int id, int userId);
         void DeleteUserChallenge(int id, int userId);
     }
 }

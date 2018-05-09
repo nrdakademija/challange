@@ -32,24 +32,18 @@ namespace challenge.EF.repositories
         }
 
 
-        public void AcceptChallenge(UsersChallenges challenge)
+        public void PostAcceptChallenge(int id, int userId)
         {
-          
-            //var daysNeeded = challengeContext.UsersChallenges
-            //    .FromSql("SELECT challenges.daysNeeded FROM users_challenges INNER JOIN challenges ON users_challenges.challenge_id = challenges.id")
-            //    .Where(p => p.ChallengeId == challenge.ChallengeId).FirstOrDefault();
-
-            //Console.WriteLine(daysNeeded);
-            //DateTime today = DateTime.Parse(DateTime.Now.ToString());
-            //DateTime endDate = today.AddDays(Convert.ToInt32(daysNeeded));
-
+            var chal = challengeContext.Challenges.SingleOrDefault(p => p.Id == id);
+            var user = challengeContext.Users.SingleOrDefault(p => p.Id == userId);
             var userCh = new UsersChallenges()
             {
-                UserId = challenge.UserId,
-                ChallengeId = challenge.ChallengeId,
+                UserId = userId,
+                ChallengeId = id,
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
-                Challenge = challenge.Challenge
+                Challenge = chal,
+                User = user
                 };
             challengeContext.UsersChallenges.Add(userCh);
             challengeContext.SaveChanges();
