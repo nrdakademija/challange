@@ -48,6 +48,8 @@ export class UserService {
       .catch((error: any) => Observable.throw(error));
   }
 
+
+
   getChallengesByUserId(id): Promise<UserChallengesModel[]> {
     return this.http.get(this.urlUserChallenges + id)
       .toPromise()

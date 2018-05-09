@@ -10,11 +10,13 @@ import { AuthenticationService } from '../../services/authentication.service';
 })
 export class NavbarComponent implements OnInit {
 
+  user;
   constructor(private router: Router,
     private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }
+
 
   public isAuthenticated(): boolean {
     // Check whether the current time is past the
@@ -22,7 +24,12 @@ export class NavbarComponent implements OnInit {
     if (!localStorage.getItem('currentUser')) {
       return false;
     }
+    this.user = JSON.parse( localStorage.getItem('currentUser'));
     return true;
+  }
+
+  navigateToUserProfile(id) {
+    this.router.navigate(['user/' + id]);
   }
 
   logout() {
