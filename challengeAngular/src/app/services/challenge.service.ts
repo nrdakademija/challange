@@ -54,13 +54,13 @@ export class ChallengeService {
       .map((res: Response) => res.json() as ChallengeModel)
       .catch((error: any) => Observable.throw(error));
   }
-  deleteUserChallenge(challengeId, userId):any {
-    console.log("paskutinis id= " + challengeId+",user =   "+userId);
-    return this.http.delete('http://localhost:59372/userChallenges'+'/'+ challengeId + '?userId='+ userId)
+
+  deleteUserChallenge(challengeId, userId): any {
+    console.log("paskutinis id= " + challengeId + ",user =   " + userId);
+    return this.http.delete('http://localhost:59372/userChallenges' + '/' + challengeId + '?userId=' + userId)
       .map((res: Response) => res.json() as any)
       .catch((error: any) => Observable.throw(error));
   }
-
 
   //Challenge categories
   getChallengeCategories(): Observable<CategoryModel[]> {
