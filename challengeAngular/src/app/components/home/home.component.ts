@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
   challengesGrouped: ChallengeModel[];
   subCategories$: Observable<SubCategoryModel[]>;
 
-
   public carouselTileItems: Array<any>;
   public carouselTile: NgxCarousel;
 
@@ -44,9 +43,6 @@ export class HomeComponent implements OnInit {
       this.challengesGrouped = data;
       this.challengesGrouped.sort(this.compare);
     });
-
-
-
 
     this.carouselTileItems = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
@@ -68,7 +64,7 @@ export class HomeComponent implements OnInit {
 
   public carouselTileLoad(evt: any) {
 
-    const len = this.carouselTileItems.length
+    const len = this.carouselTileItems.length;
     if (len <= 30) {
       for (let i = len; i < len + 10; i++) {
         this.carouselTileItems.push(i);

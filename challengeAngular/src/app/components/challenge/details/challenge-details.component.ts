@@ -53,8 +53,7 @@ export class ChallengeDetailsComponent implements OnInit {
     });
     if (this.activeParameter) {
       this.challengeService.getChallengeById(this.activeParameter).subscribe((response: ChallengeModel) => {
-        this.challengeInfo = response; debugger;
-
+        this.challengeInfo = response;
       });
     }
     else {
@@ -72,14 +71,14 @@ export class ChallengeDetailsComponent implements OnInit {
   startChallenge(challengeId) {
     console.log(this.user_Id);
     this.challengeService.acceptChallenge(challengeId, this.user_Id)
-    .subscribe(res =>
-      //this.toastr.success('Employee added', 'Success!');
-      this.router.navigate(['/challenges']));
+      .subscribe(res =>
+        //this.toastr.success('Employee added', 'Success!');
+        this.router.navigate(['/challenges']));
 
 
-      /*(res) =>
-      console.log(res)
-    );*/
+    /*(res) =>
+    console.log(res)
+  );*/
   }
 
   public isAuthenticated(): boolean {

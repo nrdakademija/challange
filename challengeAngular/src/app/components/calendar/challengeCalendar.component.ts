@@ -51,7 +51,6 @@ export class ChallengeCalendarComponent implements OnInit {
       center: '',
       right: 'today prev,next'
     },
-    //  fixedWeekCount: false,
     defaultDate: Date.now(),
     editable: false,
     eventLimit: true, // allow "more" link when too many events
@@ -62,52 +61,52 @@ export class ChallengeCalendarComponent implements OnInit {
     },
     eventClick: this.alertOnEventClick,
     events: []
-};
+  };
 
-ngOnInit() {
-  if (localStorage.getItem('currentUser')) {
-    let local = JSON.parse(localStorage.getItem('currentUser'));
-    this.user_Id = local.id;
-    this.loadInfo(this.user_Id);
-  }
-}
-
-
-
-loadInfo(id) {debugger;
-  this.userService.getChallengesByUserId(id).then(data => {
-    this.userChallenges = data;
-    this.userChallenges.forEach(ch => {
-      var obj = {
-        id: ch.challengeId,
-        title: ch.challengeId.toString(),
-        start: ch.startDate,
-        end: ch.endDate
-      };
-      this.calendarEvents.push(obj);
-    }); debugger;
-    this.calendarOptions.events = this.calendarEvents;
-    $('#myCalendar').fullCalendar('renderEvents', this.calendarEvents, true);
-  });
-}
-
-alertOnEventClick(obj, jsEvent, view) {
-  localStorage.setItem('ob', obj.id);
-  swal({
-    title: obj.title + obj.id.toString(),
-  }).then((result) => {
-    if (result.value) {
+  ngOnInit() {
+    if (localStorage.getItem('currentUser')) {
+      const local = JSON.parse(localStorage.getItem('currentUser'));
+      this.user_Id = local.id;
+      this.loadInfo(this.user_Id);
     }
-  });
-}
+  }
 
-redirectToChallenge(id) {
-  this.router.navigate(['challenge/' + id]);
-}
 
-onCalendarInit(initialized: boolean) {
-  this.loadInfo(this.user_Id);
-  $('#myCalendar').fullCalendar('refetchEvents');
-}
+
+  loadInfo(id) {
+    this.userService.getChallengesByUserId(id).then(data => {
+      this.userChallenges = data;
+      this.userChallenges.forEach(ch => {
+        const obj = {
+          id: ch.challengeId,
+          title: ch.challengeId.toString(),
+          start: ch.startDate,
+          end: ch.endDate
+        };
+        this.calendarEvents.push(obj);
+      });
+      this.calendarOptions.events = this.calendarEvents;
+      $('#myCalendar').fullCalendar('renderEvents', this.calendarEvents, true);
+    });
+  }
+
+  alertOnEventClick(obj, jsEvent, view) {
+    localStorage.setItem('ob', obj.id);
+    swal({
+      title: obj.title + obj.id.toString(),
+    }).then((result) => {
+      if (result.value) {
+      }
+    });
+  }
+
+  redirectToChallenge(id) {
+    this.router.navigate(['challenge/' + id]);
+  }
+
+  onCalendarInit(initialized: boolean) {
+    this.loadInfo(this.user_Id);
+    $('#myCalendar').fullCalendar('refetchEvents');
+  }
 
 }

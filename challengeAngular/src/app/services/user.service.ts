@@ -16,12 +16,11 @@ export class UserService {
   urlUserChallenges = 'http://localhost:59372/userchallenges/';
 
   constructor(private http: Http) { }
-
   private jwt() {
     // create authorization header with jwt token
-    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser && currentUser.token) {
-      let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+      const headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
       return new RequestOptions({ headers: headers });
     }
   }
@@ -65,10 +64,6 @@ export class UserService {
       .catch((error: any) => Observable.throw(error));
   }
 
-  delete(id: string) {
-    return this.http.delete(this.url + '/users/' + id, this.jwt());
-  }
-
   updateUser(user): Observable<UserModel> {
     return this.http.put(this.url + '/' + user.id, user, this.jwt())
       .map((res: Response) => res.json() as UserModel)
@@ -99,6 +94,5 @@ export class UserService {
       .map((res: Response) => res.json() as any)
       .catch((error: any) => Observable.throw(error));
   }
-
 
 }

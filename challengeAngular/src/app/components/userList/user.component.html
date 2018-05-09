@@ -17,7 +17,7 @@
         <div class="user">
           <ul id="jogadores" *ngFor="let u of sortedUsers$; let i=index" (click)="routeToUser(u.id)">
             <li class="user" *ngIf="i<=5">
-              <img class="gravatar" src="{{u.imgUrl}}"/>
+              <img class="gravatar" src="{{u.imgUrl}}" />
               <div class="progressBar">
                 <span class="user" [ngStyle]="{ 'height': getPoints(i, sortedUsers$[0].points) , 'background': getRandomColor()}">
                   <b>{{u.points}}</b>
@@ -48,7 +48,7 @@
         <tr *ngFor="let u of sortedUsers$; let i=index;" (click)="routeToUser(u.id)">
           <td>{{i+1}}</td>
           <td>
-            <img class="gravatar" style="width: 35px; height: 35px; margin-right: 10px;" src="{{u.imgUrl}}"/>{{u.username}}
+            <img class="gravatar" style="width: 35px; height: 35px; margin-right: 10px;" src="{{u.imgUrl}}" />{{u.username}}
           </td>
           <td>
             {{u.points}}

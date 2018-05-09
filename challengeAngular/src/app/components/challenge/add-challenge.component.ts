@@ -41,7 +41,6 @@ export class AddChallengeComponent implements OnInit {
     });
   }
 
-  // TO DO filter subCategories according to chosen category
   getSubCategoriesList() {
     this.challengeService.getChallengeSubCategories().subscribe((response: CategoryModel[]) => {
       this.subCategoriesList$ = Observable.of(response);
@@ -50,7 +49,7 @@ export class AddChallengeComponent implements OnInit {
 
   isImageUrl(url) {
     if (url.endsWith('.jpg') || url.endsWith('.jpeg') || url.endsWith('.png')) {
-       return this.isPhoto = true;
+      return this.isPhoto = true;
     } else {
       return this.isPhoto = false;
     }
@@ -58,27 +57,26 @@ export class AddChallengeComponent implements OnInit {
 
   checkIfSubcategorySelected(value) {
     if (value === 'default') {
-        this.subcategorySelectedError = true;
+      this.subcategorySelectedError = true;
     } else {
-        this.subcategorySelectedError = false;
+      this.subcategorySelectedError = false;
     }
-}
-
+  }
 
   save(form: NgForm, event) {
     this.challengeInfo.category = 2;
     if (form.valid) {
       this.triedToSave = false;
-        this.challengeService.postChallenge(this.challengeInfo).subscribe((response) => {
-          Swal('Yaaay!', 'Successfull', 'success');
-          event.close('createLabel');
-          this.router.navigate(['/challenges']);
-          event.close('createLabel');
-        });
+      this.challengeService.postChallenge(this.challengeInfo).subscribe((response) => {
+        Swal('Yaaay!', 'Successfull', 'success');
+        event.close('createLabel');
+        this.router.navigate(['/challenges']);
+        event.close('createLabel');
+      });
     } else {
-    this.checkIfSubcategorySelected(form.value['subcategory']);
+      this.checkIfSubcategorySelected(form.value['subcategory']);
       this.triedToSave = true;
-    //  form.getControl().clearValidators();
+      //  form.getControl().clearValidators();
       Swal('Ooop!', 'Error', 'error');
 
     }

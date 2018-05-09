@@ -21,15 +21,13 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.userService.getUsersList().subscribe((data: UserModel[]) => {
       this.users$ = Observable.of(data);
-      
-      console.log(data);
       this.sortedUsers$ = data;
       this.sortedUsers$.sort(this.compare);
     });
   }
 
   public getRandomColor() {
-    let letters = '0123456789ABCDEF'.split('');
+    const letters = '0123456789ABCDEF'.split('');
     let color = '#';
     for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
@@ -52,16 +50,7 @@ export class UserComponent implements OnInit {
   }
 
   getPoints(id, max) {
-    let x = this.sortedUsers$[id].points * 100 / (max + 100);
+    const x = this.sortedUsers$[id].points * 100 / (max + 100);
     return x + '%';
   }
-
-
-
-
-
-  // progress stats
-
-
-
 }

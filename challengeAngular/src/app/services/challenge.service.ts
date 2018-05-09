@@ -56,23 +56,19 @@ export class ChallengeService {
   }
 
   deleteUserChallenge(challengeId, userId): any {
-    console.log("paskutinis id= " + challengeId + ",user =   " + userId);
     return this.http.delete('http://localhost:59372/userChallenges' + '/' + challengeId + '?userId=' + userId)
       .map((res: Response) => res.json() as any)
       .catch((error: any) => Observable.throw(error));
   }
-  
-  acceptChallenge(challengeId, userId): any{
-    console.log("chId= " + challengeId +"  usId=" +userId);
-    return this.http.post('http://localhost:59372/userChallenges' + '/' + challengeId +'?userId='+ userId,'')
+
+  acceptChallenge(challengeId, userId): any {
+    console.log('chId= ' + challengeId + '  usId=' + userId);
+    return this.http.post('http://localhost:59372/userChallenges' + '/' + challengeId + '?userId=' + userId, '')
       .map((res: Response) => res.json() as any)
       .catch((error: any) => Observable.throw(error));
-      /*
-            .map((res: Response) => res.json() as any[])
-            .catch((error: any) => Observable.throw(error));*/
   }
 
-  //Challenge categories
+  // Challenge categories
   getChallengeCategories(): Observable<CategoryModel[]> {
     return this.http.get(this.categoriesUrl)
       .map((res: Response) => res.json() as CategoryModel[])
@@ -86,7 +82,7 @@ export class ChallengeService {
   }
 
 
-  //Challenge subcategories
+  // Challenge subcategories
   getChallengeSubCategories(): Observable<SubCategoryModel[]> {
     return this.http.get(this.subcategoriesUrl)
       .map((res: Response) => res.json() as SubCategoryModel[])

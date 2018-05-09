@@ -14,7 +14,6 @@ import { ChallengeService } from '../../services/challenge.service';
 import { SubCategoryModel } from '../../models/subcategories/subcategories.model';
 
 @Component({
-  //  selector: 'app-user-details',
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.css']
 })
@@ -42,7 +41,7 @@ export class UserDetailsComponent implements OnInit {
   ngOnInit() {
 
     if (localStorage.getItem('currentUser')) {
-      let localUser = JSON.parse(localStorage.getItem('currentUser'));
+      const localUser = JSON.parse(localStorage.getItem('currentUser'));
       this.localUser = localUser.id;
     }
     this.activateRoute.params.subscribe((params: Params) => {
@@ -69,7 +68,7 @@ export class UserDetailsComponent implements OnInit {
   getUserChallenges() {
     this.userService.getUserChallenges(this.activeParameter).subscribe((data: UserChallengesModel[]) => {
       this.userChallengesList$ = Observable.of(data);
-      const date = Date.parse(data[0].endDate.toString());
+      const date = Date.parse(data[3].endDate.toString());
       const nowDate = new Date().getTime();
       const dateDiff = date - nowDate;
       this.counter = dateDiff;
@@ -92,8 +91,7 @@ export class UserDetailsComponent implements OnInit {
   checkIfOwner() {
     if (parseInt(this.activeParameter, 10) === this.localUser) {
       this.ifOwner = true;
-    }
-    else {
+    } else {
       this.ifOwner = false;
     }
   }
@@ -114,7 +112,6 @@ export class UserDetailsComponent implements OnInit {
   }
 
   checkIfDone(endDate, challengeId, user, state) {
-    debugger;
     const challengeDate = Date.parse(endDate.toString());
     const nowDate = new Date().getTime();
     if (challengeDate < nowDate && state === 0) {
