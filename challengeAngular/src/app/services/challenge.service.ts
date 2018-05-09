@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { CategoryModel } from '../models/categories/categories.model';
 import { SubCategoryModel } from '../models/subcategories/subcategories.model';
+import { UserChallengesModel } from '../models/userChallenges/userchallenges.model';
 
 @Injectable()
 export class ChallengeService {
@@ -51,6 +52,11 @@ export class ChallengeService {
   deleteChallenge(id): Observable<ChallengeModel[]> {
     return this.http.delete(this.url + '/' + id)
       .map((res: Response) => res.json() as ChallengeModel)
+      .catch((error: any) => Observable.throw(error));
+  }
+  deleteUserChallenge(challengeId, userId): Observable<UserChallengesModel[]> {
+    return this.http.delete('http://localhost:59372/userChallenges/'+ challengeId+ '?userId='+ userId)
+      .map((res: Response) => res.json() as UserChallengesModel)
       .catch((error: any) => Observable.throw(error));
   }
 

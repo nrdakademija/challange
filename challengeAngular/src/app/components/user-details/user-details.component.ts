@@ -87,4 +87,7 @@ export class UserDetailsComponent implements OnInit {
   redirectToChallenge(id) {
     this.router.navigate(['challenge/' + id]);
   }
+  deleteUserChallenge(id){debugger;
+    this.challengeService.deleteUserChallenge(id, this.user.id);
+  }
 }
