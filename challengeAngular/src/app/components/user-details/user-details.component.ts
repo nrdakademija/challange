@@ -26,8 +26,9 @@ export class UserDetailsComponent implements OnInit {
     private router: Router,
     private challengeService: ChallengeService) { }
 
+  done = '';
   activeParameter: any;
-  ifOwner:boolean;
+  ifOwner: boolean;
   userChallengesList$: Observable<UserChallengesModel[]>;
   subCategories$: Observable<SubCategoryModel[]>;
   user: UserModel = new UserModel;
@@ -62,7 +63,7 @@ export class UserDetailsComponent implements OnInit {
     this.userService.getUserChallenges(this.activeParameter).subscribe((data: UserChallengesModel[]) => {
       this.userChallengesList$ = Observable.of(data);
       const date = Date.parse(data[0].endDate.toString());
-      const nowDate = 	new Date().getTime();
+      const nowDate = new Date().getTime();
       const dateDiff = date - nowDate;
       this.counter = dateDiff;
       this.countDown = Observable.timer(0, this.tick)
@@ -81,11 +82,11 @@ export class UserDetailsComponent implements OnInit {
     }
 
   }
-  checkIfOwner(){
-    if(this.activeParameter === this.user.id){
-      this.ifOwner=true;
+  checkIfOwner() {
+    if (this.activeParameter === this.user.id) {
+      this.ifOwner = true;
     }
-    this.ifOwner=false;
+    this.ifOwner = false;
   }
 
   getPoints(p) {
@@ -95,10 +96,22 @@ export class UserDetailsComponent implements OnInit {
   redirectToChallenge(id) {
     this.router.navigate(['challenge/' + id]);
   }
-  deleteUserChallenge(id){
+  deleteUserChallenge(id) {
     this.challengeService.deleteUserChallenge(id, this.user.id)
-    .subscribe((res)=>
-      console.log(res)
-    );
+      .subscribe((res) =>
+        console.log(res)
+      );
+  }
+
+  checkIfDone(endDate) {
+    const challengeDate = Date.parse(endDate.toString());
+    const nowDate = new Date().getTime();
+    if (challengeDate < nowDate) {
+      this.done = 'DONE';
+    }  else {
+      this.done = 'ONGOING';
+    }
+
+    return this.done;
   }
 }
