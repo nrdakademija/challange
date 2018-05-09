@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row jumbotron">
       <div class=" top col bs-component">
         <h2 class="text-primary">All users</h2>
       </div>
@@ -40,17 +40,21 @@
 
       <table class="table">
         <tr>
-          <th>PLACE</th>
+          <th style="width: 20px;">PLACE</th>
           <th>USER</th>
           <th>EXP</th>
+          <th>LEVEL</th>
         </tr>
         <tr *ngFor="let u of sortedUsers$; let i=index;" (click)="routeToUser(u.id)">
           <td>{{i+1}}</td>
           <td>
-            <img class="gravatar" src="{{u.imgUrl}}"/> {{u.username}}
+            <img class="gravatar" style="width: 35px; height: 35px; margin-right: 10px;" src="{{u.imgUrl}}"/>{{u.username}}
           </td>
           <td>
             {{u.points}}
+          </td>
+          <td>
+            {{u.level}}
           </td>
         </tr>
       </table>
