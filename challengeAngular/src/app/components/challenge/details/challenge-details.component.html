@@ -5,7 +5,7 @@
             <div class="col-sm-9 bs-component">
                 <h1 class="text-primary">{{challengeInfo.title}}</h1>
             </div>
-            <div class="col-sm-3 bs-component text-right"><h1>{{challengeInfo.id}}</h1>
+            <div class="col-sm-3 bs-component text-right">
                 <button class="btn btn-outline-success" (click)="startChallenge(challengeInfo.id)" *ngIf="isAuthenticated()">Accept challenge</button>
             </div>
         </div>

@@ -6,7 +6,7 @@ namespace challenge.EF.repositories
     public interface IUserChallengeRepository
     {
         List<UsersChallenges> GetUserChallengesById(int id);
-        void PostAcceptChallenge(int id, int userId);
+        UsersChallenges PostAcceptChallenge(int id, int userId);
         void DeleteUserChallenge(int id, int userId);
     }
     

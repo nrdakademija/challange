@@ -27,9 +27,11 @@ namespace challenge.Application.main.userChallenges
             return listDto;
         }
 
-        public void PostAcceptChallenge(int id, int userId)
+        public UserChallengesDto PostAcceptChallenge(int id, int userId)
         {
-            _repository.PostAcceptChallenge(id, userId);
+            var ch = _repository.PostAcceptChallenge(id, userId);
+            var chDto = _mapper.Map<UserChallengesDto>(ch);
+            return chDto;
 
         }
 

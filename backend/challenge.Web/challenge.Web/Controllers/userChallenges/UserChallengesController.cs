@@ -40,8 +40,8 @@ namespace challenge.Web.Controllers.userChallenges
         {
             try
             {
-                _service.PostAcceptChallenge(id, userId);
-                return Ok();
+                var ch = _service.PostAcceptChallenge(id, userId);
+                return Created("http://localhost:59372/challenge/" + id, ch);
             }
             catch (Exception ex)
             {

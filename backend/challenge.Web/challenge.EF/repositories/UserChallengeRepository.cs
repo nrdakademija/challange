@@ -32,7 +32,7 @@ namespace challenge.EF.repositories
         }
 
 
-        public void PostAcceptChallenge(int id, int userId)
+        public UsersChallenges PostAcceptChallenge(int id, int userId)
         {
             var chal = challengeContext.Challenges.SingleOrDefault(p => p.Id == id);
             var user = challengeContext.Users.SingleOrDefault(p => p.Id == userId);
@@ -47,6 +47,7 @@ namespace challenge.EF.repositories
                 };
             challengeContext.UsersChallenges.Add(userCh);
             challengeContext.SaveChanges();
+            return challengeContext.UsersChallenges.SingleOrDefault(p => p.UserId == userId && p.ChallengeId == id);
         }
         public void DeleteUserChallenge(int id, int userId)
         {
