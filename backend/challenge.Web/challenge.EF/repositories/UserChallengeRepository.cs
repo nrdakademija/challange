@@ -34,6 +34,15 @@ namespace challenge.EF.repositories
 
         public void AcceptChallenge(UsersChallenges challenge)
         {
+          
+            //var daysNeeded = challengeContext.UsersChallenges
+            //    .FromSql("SELECT challenges.daysNeeded FROM users_challenges INNER JOIN challenges ON users_challenges.challenge_id = challenges.id")
+            //    .Where(p => p.ChallengeId == challenge.ChallengeId).FirstOrDefault();
+
+            //Console.WriteLine(daysNeeded);
+            //DateTime today = DateTime.Parse(DateTime.Now.ToString());
+            //DateTime endDate = today.AddDays(Convert.ToInt32(daysNeeded));
+
             var userCh = new UsersChallenges()
             {
                 UserId = challenge.UserId,

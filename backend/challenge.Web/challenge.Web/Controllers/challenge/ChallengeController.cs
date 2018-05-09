@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using challenge.Application.main.challenges;
 using challenge.Application.main.challenges.dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace challenge.Web.Controllers.challenge
 {
+    [Authorize]
     [Route("/[controller]")]
     public class ChallengeController : Controller
     {
@@ -17,6 +19,7 @@ namespace challenge.Web.Controllers.challenge
             _challengeService = challengeService;
         }
         // GET api/values
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult GetChallenges()
         {
@@ -33,7 +36,7 @@ namespace challenge.Web.Controllers.challenge
             }
             return BadRequest();
         }
-
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public IActionResult GetChallengesById(int id)
         {
@@ -51,7 +54,7 @@ namespace challenge.Web.Controllers.challenge
             return BadRequest();
 
         }
-
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult PostChallenge([FromBody] ChallengeDto challenge)
         {
