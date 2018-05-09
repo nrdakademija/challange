@@ -35,6 +35,7 @@ import { AuthGuard } from './services/guards/auth.guard';
 import { Alert } from 'selenium-webdriver';
 import { AlertService } from './services/alert.service';
 import { FormatTimePipe } from './pipes/countdown.pipe';
+import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator.directive';
 
 
 
@@ -54,7 +55,8 @@ import { FormatTimePipe } from './pipes/countdown.pipe';
     ChallengeDetailsComponent,
     UserComponent,
     UserDetailsComponent,
-    ChallengeCalendarComponent
+    ChallengeCalendarComponent,
+    ConfirmEqualValidatorDirective
   ],
   imports: [
     BrowserModule,
