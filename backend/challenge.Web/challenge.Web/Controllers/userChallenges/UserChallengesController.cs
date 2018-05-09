@@ -34,16 +34,14 @@ namespace challenge.Web.Controllers.userChallenges
             return BadRequest();
         }
 
-
-        [HttpPost("{userId}")]
-        public IActionResult AcceptChallenge(int userId, [FromBody] UserChallengesDto challenge)
+        [AllowAnonymous]
+        [HttpPost("{id}")]
+        public IActionResult PostAcceptChallenge(int id, [FromQuery]int userId)
         {
-            if (challenge == null) return NotFound();
             try
             {
-                _service.AcceptChallenge(challenge);
-                string newUri = Url.Link("GetChallenges", new { id = challenge.ChallengeId });
-                return Created(newUri, challenge);
+                var ch = _service.PostAcceptChallenge(id, userId);
+                return Created("http://localhost:59372/challenge/" + id, ch);
             }
             catch (Exception ex)
             {

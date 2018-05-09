@@ -46,13 +46,6 @@ export class UserService {
       });
   }
 
-  acceptChallenge(userId, data): Observable<UserChallengesModel> {
-    return this.http.post(this.urlUserChallenges + userId, data, this.jwt())
-      .map((res: Response) => res.json() as UserChallengesModel)
-      .catch((error: any) => Observable.throw(error));
-  }
-
-
   // Single user by id
   getUserById(id): Observable<UserModel> {
     return this.http.get(this.url + '/' + id)

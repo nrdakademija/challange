@@ -53,7 +53,7 @@ export class ChallengeDetailsComponent implements OnInit {
     });
     if (this.activeParameter) {
       this.challengeService.getChallengeById(this.activeParameter).subscribe((response: ChallengeModel) => {
-        this.challengeInfo = response;debugger;
+        this.challengeInfo = response; debugger;
 
       });
     }
@@ -70,6 +70,7 @@ export class ChallengeDetailsComponent implements OnInit {
 
   }
   startChallenge(challengeId) {
+<<<<<<< HEAD
     console.log(this.user_Id); debugger;
 
     Swal({
@@ -102,6 +103,18 @@ export class ChallengeDetailsComponent implements OnInit {
 
       }
     });
+=======
+    console.log(this.user_Id);
+    this.challengeService.acceptChallenge(challengeId, this.user_Id)
+    .subscribe(res => 
+      //this.toastr.success('Employee added', 'Success!');
+      this.router.navigate(['/challenges']));
+      
+      
+      /*(res) =>
+      console.log(res)
+    );*/
+>>>>>>> 5f7bda880e677dbfd42ccd270a2ab3dc940eec9e
   }
 
   public isAuthenticated(): boolean {
