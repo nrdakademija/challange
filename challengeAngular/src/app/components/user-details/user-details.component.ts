@@ -32,7 +32,7 @@ export class UserDetailsComponent implements OnInit {
   userChallengesList$: Observable<UserChallengesModel[]>;
   subCategories$: Observable<SubCategoryModel[]>;
   user: UserModel = new UserModel;
-  localUser:any;
+  localUser: any;
   public carouselTileItems: Array<any>;
   public carouselTile: NgxCarousel;
 
@@ -40,7 +40,7 @@ export class UserDetailsComponent implements OnInit {
   counter = 6434;
   tick = 1000;
   ngOnInit() {
-    if(localStorage.getItem('currentUser')){
+    if (localStorage.getItem('currentUser')) {
       let localUser = JSON.parse(localStorage.getItem('currentUser'));
       this.localUser = localUser.id;
     }
@@ -54,13 +54,13 @@ export class UserDetailsComponent implements OnInit {
     this.challengeService.getChallengeSubCategories().subscribe((data: SubCategoryModel[]) => {
       this.subCategories$ = Observable.of(data);
     });
-    
+
     this.checkIfOwner();
   }
 
   getUserInfo() {
     this.userService.getUserById(this.activeParameter).subscribe(data => {
-      this.user = data;      
+      this.user = data;
       document.getElementById('progressBar').style.width = this.user.points / this.user.level * 100 + '%';
     });
   }
@@ -88,12 +88,12 @@ export class UserDetailsComponent implements OnInit {
     }
 
   }
-  checkIfOwner(){
-    if(parseInt(this.activeParameter,10) === this.localUser){
-      this.ifOwner=true;
+  checkIfOwner() {
+    if (parseInt(this.activeParameter, 10) === this.localUser) {
+      this.ifOwner = true;
     }
-    else{
-      this.ifOwner=false;
+    else {
+      this.ifOwner = false;
     }
   }
 
@@ -109,18 +109,20 @@ export class UserDetailsComponent implements OnInit {
       .subscribe((res) =>
         console.log(res)
       );
-      this.router.navigate(['user/' + this.user.id]);
+    this.router.navigate(['user/' + this.user.id]);
   }
 
-  checkIfDone(endDate) {
+  checkIfDone(endDate, challengeId, user) {
     const challengeDate = Date.parse(endDate.toString());
     const nowDate = new Date().getTime();
     if (challengeDate < nowDate) {
       this.done = 'DONE';
+      this.userService.updateUserChallenge(this.user, challengeId, user);
     }  else {
       this.done = 'ONGOING';
     }
 
     return this.done;
   }
+
 }

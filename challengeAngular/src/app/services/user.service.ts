@@ -32,23 +32,11 @@ export class UserService {
       .map((response: Response) => response.json());
   }
 
-  /* getById(_id: string) {
-     return this.http.get(this.url + '/users/' + _id, this.jwt()).map((response: Response) => response.json());
- }
-
-
-
-
- }*/
-
-
   getUsersList(): Observable<UserModel[]> {
     return this.http.get(this.url)
       .map((res: Response) => res.json() as UserModel[])
       .catch((error: any) => Observable.throw(error));
   }
-
-
 
   getChallengesByUserId(id): Promise<UserChallengesModel[]> {
     return this.http.get(this.urlUserChallenges + id)
@@ -113,8 +101,11 @@ export class UserService {
       .catch((error: any) => Observable.throw(error));
   }
 
-  // TO DO
-  authenticateUser() { }
+  updateUserChallenge(challengeId, userId, user): any {
+    return this.http.put('http://localhost:59372/userChallenges' + '/' + challengeId + '?userId=' + userId, user)
+      .map((res: Response) => res.json() as any)
+      .catch((error: any) => Observable.throw(error));
+  }
 
 
 }
