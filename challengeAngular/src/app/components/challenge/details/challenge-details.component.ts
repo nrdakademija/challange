@@ -70,51 +70,16 @@ export class ChallengeDetailsComponent implements OnInit {
 
   }
   startChallenge(challengeId) {
-<<<<<<< HEAD
-    console.log(this.user_Id); debugger;
-
-    Swal({
-      title: 'Are you ready for a challenge?',
-      type: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, let\'s go!'
-    }).then((result) => {
-      if (result.value) {
-        // Add challenge to users challenges
-        this.obj = {
-          userId: this.user_Id,
-          challengeId: challengeId,
-          state: 0,
-          startDate: new Date(2018, 5, 23),
-          endDate: new Date(2018, 5, 23),
-          challenge: null,
-          user: null
-        };debugger;
-        this.messageRnd = Math.floor(Math.random() * 10);
-        this.userService.acceptChallenge(this.user_Id, this.obj).subscribe((response) => {
-          Swal({
-            title: `${this.succcesMessages[this.messageRnd]}`,
-            type: 'success'
-          });
-        //  this.router.navigate(['user/userId']); //<---navigate to user where he can see his challenges
-        });
-
-      }
-    });
-=======
     console.log(this.user_Id);
     this.challengeService.acceptChallenge(challengeId, this.user_Id)
-    .subscribe(res => 
+    .subscribe(res =>
       //this.toastr.success('Employee added', 'Success!');
       this.router.navigate(['/challenges']));
-      
-      
+
+
       /*(res) =>
       console.log(res)
     );*/
->>>>>>> 5f7bda880e677dbfd42ccd270a2ab3dc940eec9e
   }
 
   public isAuthenticated(): boolean {
