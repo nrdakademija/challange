@@ -12,7 +12,7 @@ export class ChallengeCategoriesFilterPipe implements PipeTransform {
     }
 
     if (typeFilter) {
-      return items.filter(i => i.type === typeFilter);
+      return items.filter(i => i.subcategory === typeFilter);
     }
 
     return items;

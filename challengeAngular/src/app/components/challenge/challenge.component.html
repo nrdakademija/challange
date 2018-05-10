@@ -2,12 +2,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
         crossorigin="anonymous">
 </head>
+
 <div class="content">
     <div  style="margin-left: 50px; margin-right: 50px;">
         <div class="row">
             <div class="col-sm-2">
                 <button class="challenge btn btn-primary" data-toggle="modal" *ngIf="isAuthenticated()" data-target="#challengeModal">Add challenge</button>
             </div>
+            
             <!--<div class="col">
                 <select class="form-control bs-component">
                     <option>Choose category</option>
@@ -24,8 +26,9 @@
             </div>-->
 
         </div>
+        <app-filter  [subcategories$]="subCategories$" (filterEvent)=setSubcategory($event)></app-filter>
         <div class="row">
-            <div *ngFor="let ch of challenges$ | async; let ind = index;">
+            <div *ngFor="let ch of challenges$ | async | challengeFilter: typeSubcategory; let ind = index;">
                 <div class="card border-success just-box" style="height: 260px;width: 220px">
                     <a href="javascript:;">
                         <div class="shadow">
