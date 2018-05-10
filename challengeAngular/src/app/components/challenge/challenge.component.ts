@@ -15,7 +15,9 @@ export class ChallengeComponent implements OnInit {
   page = 4;
   challenges$: Observable<ChallengeModel[]>;
   subCategories$: Observable<SubCategoryModel[]>;
+  subCategories: SubCategoryModel[];
   categories$: Observable<CategoryModel[]>;
+  typeSubcategory: number;
 
 
   constructor(private router: Router,
@@ -49,6 +51,10 @@ export class ChallengeComponent implements OnInit {
     }
     return true;
   }
+
+  setSubcategory(typeId) {
+    this.typeSubcategory = typeId;
+}
 
 }
 
