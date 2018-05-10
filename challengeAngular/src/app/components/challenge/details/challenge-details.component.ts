@@ -12,6 +12,7 @@ import { Title } from '@angular/platform-browser';
 import { debug } from 'util';
 import { UserChallengesModel } from '../../../models/userChallenges/userchallenges.model';
 
+
 @Component({
   styleUrls: ['./challenge-details.component.css'],
   templateUrl: './challenge-details.component.html'
@@ -29,7 +30,8 @@ export class ChallengeDetailsComponent implements OnInit {
   constructor(private router: Router,
     private challengeService: ChallengeService,
     private activeRoute: ActivatedRoute,
-    private userService: UserService) { }
+    private userService: UserService
+) { }
 
   ngOnInit() {
     this.isAuthenticated();
@@ -60,8 +62,15 @@ export class ChallengeDetailsComponent implements OnInit {
   }
   startChallenge(challengeId) {
     this.challengeService.acceptChallenge(challengeId, this.user_Id)
-      .subscribe(res =>
-        this.router.navigate(['/challenges']));
+      .subscribe(res =>{
+        
+      this.router.navigate(['/challenges'])
+    });
+    Swal({
+      title: 'Challenge accepted!',
+      text: 'Good luck!',
+      type: 'success'
+    });
     this.accept = 'Accepted';
   }
   // Check if user has already taken the challenge

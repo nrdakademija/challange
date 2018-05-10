@@ -5,7 +5,7 @@ import { SubCategoryModel } from '../../../models/subcategories/subcategories.mo
 @Component({
   selector: 'app-filter',
   template: `
-  <div class="container">
+  <div class="container" style="margin-top: 5px">
     <button type="button" class="btn btn-primary"
     (click)="setSubcategory()"> All</button>
     <button *ngFor="let t of subcategories$ | async" type="button" class="btn btn-primary mr-1"

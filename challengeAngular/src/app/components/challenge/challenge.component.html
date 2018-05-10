@@ -6,25 +6,9 @@
 <div class="content">
     <div  style="margin-left: 50px; margin-right: 50px;">
         <div class="row">
-            <div class="col-sm-2">
-                <button class="challenge btn btn-primary" data-toggle="modal" *ngIf="isAuthenticated()" data-target="#challengeModal">Add challenge</button>
+            <div class="col bs-component text-right">
+                <button class="challenge btn btn-outline-primary" data-toggle="modal" *ngIf="isAuthenticated()" data-target="#challengeModal">Add new challenge</button>
             </div>
-            
-            <!--<div class="col">
-                <select class="form-control bs-component">
-                    <option>Choose category</option>
-                    <div *ngFor="let cat of categories$ | async; let ind = index;">
-                        <option>{{cat.title}}</option>
-                    </div>
-                </select>
-                <select class="form-control bs-component">
-                        <option>Choose subcategory</option>
-                        <div *ngFor="let subcat of subCategories$ | async; let ind = index;">
-                            <option>{{subcat.title}}</option>
-                        </div>
-                    </select>
-            </div>-->
-
         </div>
         <app-filter  [subcategories$]="subCategories$" (filterEvent)=setSubcategory($event)></app-filter>
         <div class="row">
