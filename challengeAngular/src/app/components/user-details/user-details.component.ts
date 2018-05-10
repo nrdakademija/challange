@@ -68,11 +68,10 @@ export class UserDetailsComponent implements OnInit {
   getUserChallenges() {
     this.userService.getUserChallenges(this.activeParameter).subscribe((data: UserChallengesModel[]) => {
       this.userChallengesList$ = Observable.of(data);
-      const date = Date.parse(data[3].endDate.toString());
+      const date = Date.parse(data[0].endDate.toString());
       const nowDate = new Date().getTime();
       const dateDiff = date - nowDate;
       this.counter = dateDiff;
-      console.log(dateDiff);
       this.countDown = Observable.timer(0, this.tick)
         .take(this.counter)
         .map(() => --this.counter);
