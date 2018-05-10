@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnChanges } from '@angular/core';
 import { Observable } from 'rxjs/';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { ChallengeModel } from '../../models/challenges/challenge.model';

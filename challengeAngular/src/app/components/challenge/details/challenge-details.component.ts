@@ -27,7 +27,7 @@ export class ChallengeDetailsComponent implements OnInit {
     'Go for it now. The future is promised to no one!', 'The more things you do, the more you can do!', 'You have to make it happen!'];
 
   messageRnd = 0;
-
+  accept = 'Accept challenge';
   challengeInfo: ChallengeModel = new ChallengeModel();
   obj: UserChallengesModel = new UserChallengesModel();
   user_Id;
@@ -74,11 +74,7 @@ export class ChallengeDetailsComponent implements OnInit {
       .subscribe(res =>
         //this.toastr.success('Employee added', 'Success!');
         this.router.navigate(['/challenges']));
-
-
-    /*(res) =>
-    console.log(res)
-  );*/
+        this.accept = 'Accepted';
   }
 
   public isAuthenticated(): boolean {

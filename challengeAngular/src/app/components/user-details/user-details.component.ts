@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
 import 'rxjs/add/operator/map';
@@ -24,6 +24,7 @@ export class UserDetailsComponent implements OnInit {
     private userService: UserService,
     private activateRoute: ActivatedRoute,
     private router: Router,
+    private cd: ChangeDetectorRef,
     private challengeService: ChallengeService) { }
 
   done = '';
@@ -125,8 +126,8 @@ export class UserDetailsComponent implements OnInit {
           'success'
         );
       }
+      this.router.navigate(['user/' + this.user.id]);
     });
-    this.router.navigate(['user/' + this.user.id]);
   }
 
   checkIfDone(endDate, challengeId, user, state) {
