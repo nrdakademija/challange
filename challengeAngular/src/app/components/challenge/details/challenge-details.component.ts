@@ -18,15 +18,6 @@ import { UserChallengesModel } from '../../../models/userChallenges/userchalleng
 })
 
 export class ChallengeDetailsComponent implements OnInit {
-
-  // success message shown to user after he accepts the challenge
-  succcesMessages = ['Only you can change your life', 'It always seems impossible until it\'s done!',
-    'Never give up!', 'If you can dream it you can do it!',
-    'Set your goals high and don\'t stop till you get there!',
-    'What you do today can improve all your tomorrows!', 'Aim for the moon. If you miss, you may hit a star!',
-    'Go for it now. The future is promised to no one!', 'The more things you do, the more you can do!', 'You have to make it happen!'];
-
-  messageRnd = 0;
   accept = 'Accept challenge';
   challengeInfo: ChallengeModel = new ChallengeModel();
   obj: UserChallengesModel = new UserChallengesModel();
@@ -43,7 +34,7 @@ export class ChallengeDetailsComponent implements OnInit {
   ngOnInit() {
     this.isAuthenticated();
     if (localStorage.getItem('currentUser')) {
-      let local = JSON.parse(localStorage.getItem('currentUser'));
+      const local = JSON.parse(localStorage.getItem('currentUser'));
       this.user_Id = local.id;
     } else {
       this.user_Id = 0;
@@ -55,8 +46,7 @@ export class ChallengeDetailsComponent implements OnInit {
       this.challengeService.getChallengeById(this.activeParameter).subscribe((response: ChallengeModel) => {
         this.challengeInfo = response;
       });
-    }
-    else {
+    } else {
       //  this.challengeInfo = new ChallengeModel();
     }
 
@@ -69,12 +59,16 @@ export class ChallengeDetailsComponent implements OnInit {
 
   }
   startChallenge(challengeId) {
-    console.log(this.user_Id);
     this.challengeService.acceptChallenge(challengeId, this.user_Id)
       .subscribe(res =>
-        //this.toastr.success('Employee added', 'Success!');
         this.router.navigate(['/challenges']));
-        this.accept = 'Accepted';
+    this.accept = 'Accepted';
+  }
+  // Check if user has already taken the challenge
+  checkIfTaken(challengeId) {
+    if (this.user_Id) {
+      this.userService.getChallengeByUserIdChallengeId(challengeId, this.user_Id);
+    }
   }
 
   public isAuthenticated(): boolean {

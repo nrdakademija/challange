@@ -8,18 +8,12 @@
     <div style="height: 150px"></div>
     <div class="row">
       <div class="col-6">
-        <h1 align="center" style="color: whitesmoke">Challenge yourself</h1>
+        <h1 align="center" style="color: whitesmoke" [(ngModel)]="succcesMessages[messageRnd]" ngDefaultControl > {{succcesMessages[messageRnd]}}</h1>
       </div>
       <div class="col"></div>
       <div class="col"></div>
     </div>
-    <div class="row">
-      <div class="col-6">
-        <h1 align="center" style="color: whitesmoke">Improve</h1>
-      </div>
-      <div class="col"></div>
-      <div class="col"></div>
-    </div>
+
   </div>
 
 
@@ -43,7 +37,7 @@
                   <b>
                      <i class="fas fa-clock"></i> {{ch.daysNeeded}} days </b>
                   <br>
-                  <i class="fas fa-user"></i> Completed by {{ch.completedBy}} challengers 
+                  <i class="fas fa-user"></i> Completed by {{ch.completedBy}} challengers
                   </div>
                 </div>
                 <img class="rounded mx-auto d-block image" src="{{ch.imgUrl}}" (click)="redirectToChallenge(ch.id)" style="background-size: cover; height: 100%; width: 100%">

@@ -11,7 +11,6 @@ import { ChallengeModel } from '../models/challenges/challenge.model';
 
 @Injectable()
 export class UserService {
-
   url = 'http://localhost:59372/users';
   urlUserChallenges = 'http://localhost:59372/userchallenges/';
 
@@ -91,6 +90,12 @@ export class UserService {
 
   updateUserChallenge(challengeId, userId, user): any {
     return this.http.put('http://localhost:59372/userChallenges' + '/' + challengeId + '?userId=' + userId, user)
+      .map((res: Response) => res.json() as any)
+      .catch((error: any) => Observable.throw(error));
+  }
+
+  getChallengeByUserIdChallengeId(challengeId, userId): any {
+    return this.http.get('http://localhost:59372/userChallenges' + '/' + challengeId + '?userId=' + userId, '')
       .map((res: Response) => res.json() as any)
       .catch((error: any) => Observable.throw(error));
   }

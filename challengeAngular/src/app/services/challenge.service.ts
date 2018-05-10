@@ -62,7 +62,6 @@ export class ChallengeService {
   }
 
   acceptChallenge(challengeId, userId): any {
-    console.log('chId= ' + challengeId + '  usId=' + userId);
     return this.http.post('http://localhost:59372/userChallenges' + '/' + challengeId + '?userId=' + userId, '')
       .map((res: Response) => res.json() as any)
       .catch((error: any) => Observable.throw(error));

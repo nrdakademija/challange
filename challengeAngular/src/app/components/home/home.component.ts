@@ -30,7 +30,16 @@ export class HomeComponent implements OnInit {
   public carouselTileItems: Array<any>;
   public carouselTile: NgxCarousel;
 
+  // success message shown to user after he accepts the challenge
+  succcesMessages = ['Only you can change your life', 'It always seems impossible until it\'s done!',
+    'Never give up!', 'If you can dream it you can do it!',
+    'Set your goals high and don\'t stop till you get there!',
+    'What you do today can improve all your tomorrows!', 'Aim for the moon. If you miss, you may hit a star!',
+    'Go for it now. The future is promised to no one!', 'The more things you do, the more you can do!', 'You have to make it happen!'];
+
+  messageRnd = 0;
   ngOnInit() {
+    this.messageRnd = Math.floor(Math.random() * 10);
     this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
       this.challenges$ = Observable.of(data);
     });
