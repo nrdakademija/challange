@@ -47,6 +47,14 @@ export class ChallengeDetailsComponent implements OnInit {
     if (this.activeParameter) {
       this.challengeService.getChallengeById(this.activeParameter).subscribe((response: ChallengeModel) => {
         this.challengeInfo = response;
+        if (this.isAuthenticated())
+        {
+          if (this.checkIfTaken(this.challengeInfo.id) != undefined)
+          {
+              this.accept = "Accepted";
+          }
+
+        }
       });
     } else {
       //  this.challengeInfo = new ChallengeModel();
@@ -76,10 +84,17 @@ export class ChallengeDetailsComponent implements OnInit {
   // Check if user has already taken the challenge
   checkIfTaken(challengeId) {
     if (this.user_Id) {
-      this.userService.getChallengeByUserIdChallengeId(challengeId, this.user_Id);
+      return this.userService.getChallengeByUserIdChallengeId(challengeId, this.user_Id);
     }
   }
-
+  Disabled()
+  {
+    if (this.accept === "Accepted")
+    {
+      return true;
+    } 
+    else return false;
+  }
   public isAuthenticated(): boolean {
     if (!localStorage.getItem('currentUser')) {
       return false;
