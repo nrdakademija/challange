@@ -64,6 +64,7 @@ export class AddChallengeComponent implements OnInit {
   }
 
   save(form: NgForm, event) {
+    console.log(this.challengeInfo);
     this.challengeInfo.category = 2;
     if (form.valid) {
       this.triedToSave = false;

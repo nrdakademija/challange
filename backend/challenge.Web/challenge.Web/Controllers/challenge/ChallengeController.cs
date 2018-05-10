@@ -62,6 +62,7 @@ namespace challenge.Web.Controllers.challenge
                 return BadRequest(ModelState);
             try
             {
+                challenge.CreatedAt = DateTime.Today;
                 _challengeService.PostChallenge(challenge);
                 string newUri = Url.Link("GetChallenges", new { id = challenge.Id });
                 return Created(newUri, challenge);
