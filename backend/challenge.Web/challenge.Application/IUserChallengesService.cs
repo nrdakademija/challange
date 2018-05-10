@@ -10,5 +10,7 @@ namespace challenge.Application.main.userChallenges
         UserChallengesDto PostAcceptChallenge(int id, int userId);
         void DeleteUserChallenge(int id, int userId);
         void UpdateUserChallenge(int id, int userId, UserChallengesDto item);
+
+        UserChallengesDto GetUserChallengesByIdChallengeId(int id, int userId);
     }
 }

@@ -95,7 +95,7 @@ export class UserService {
   }
 
   getChallengeByUserIdChallengeId(challengeId, userId): any {
-    return this.http.get('http://localhost:59372/userChallenges' + '/' + challengeId + '?userId=' + userId, '')
+    return this.http.get('http://localhost:59372/userChallenges' + '/' + challengeId + 'userId=' + userId, '')
       .map((res: Response) => res.json() as any)
       .catch((error: any) => Observable.throw(error));
   }

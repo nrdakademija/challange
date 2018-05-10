@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 import { Title } from '@angular/platform-browser';
 import { debug } from 'util';
 import { UserChallengesModel } from '../../../models/userChallenges/userchallenges.model';
+import { isEmpty } from 'rxjs/operator/isEmpty';
 
 
 @Component({
@@ -47,14 +48,9 @@ export class ChallengeDetailsComponent implements OnInit {
     if (this.activeParameter) {
       this.challengeService.getChallengeById(this.activeParameter).subscribe((response: ChallengeModel) => {
         this.challengeInfo = response;
-        if (this.isAuthenticated())
-        {
-          if (this.checkIfTaken(this.challengeInfo.id) != undefined)
-          {
-              this.accept = "Accepted";
-          }
+        this.checkIfTaken(this.challengeInfo.id);
 
-        }
+
       });
     } else {
       //  this.challengeInfo = new ChallengeModel();
@@ -84,12 +80,16 @@ export class ChallengeDetailsComponent implements OnInit {
   // Check if user has already taken the challenge
   checkIfTaken(challengeId) {
     if (this.user_Id) {
-      return this.userService.getChallengeByUserIdChallengeId(challengeId, this.user_Id);
+      this.userService.getChallengeByUserIdChallengeId(challengeId, this.user_Id).subscribe((res: UserChallengesModel) =>
+      {
+        if(res['userId'] == this.user_Id) this.accept = "Accepted";
+        
+      });
     }
   }
   Disabled()
   {
-    if (this.accept === "Accepted")
+    if (this.accept == "Accepted")
     {
       return true;
     } 

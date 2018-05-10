@@ -35,6 +35,24 @@ namespace challenge.Web.Controllers.userChallenges
         }
 
         [AllowAnonymous]
+        [HttpGet("{id}userId={userId}")]
+        public IActionResult GetUserChallengesById(int id, int userId)
+        {
+            try
+            {
+                var userChallenge = _service.GetUserChallengesByIdChallengeId(id, userId);
+                if (userChallenge == null)
+                    return NotFound();
+                return Ok(userChallenge);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return BadRequest();
+        }
+
+        [AllowAnonymous]
         [HttpPost("{id}")]
         public IActionResult PostAcceptChallenge(int id, [FromQuery]int userId)
         {
@@ -58,6 +76,7 @@ namespace challenge.Web.Controllers.userChallenges
             try
             {
                 _service.DeleteUserChallenge(id, userId);
+                return Ok();
             }
             catch (Exception ex)
             {

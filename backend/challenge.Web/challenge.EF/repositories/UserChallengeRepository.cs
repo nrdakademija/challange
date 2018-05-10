@@ -55,7 +55,8 @@ namespace challenge.EF.repositories
         public void DeleteUserChallenge(int id, int userId)
         {
             var ch = ChallengeContext.UsersChallenges.SingleOrDefault(p => p.ChallengeId == id && p.UserId == userId);
-            int taskai = (ch.Challenge.Reward/10);
+            var challenge = ChallengeContext.Challenges.SingleOrDefault(p => p.Id == id);
+            int taskai = (challenge.Reward/10);
             var usr = ChallengeContext.Users.SingleOrDefault(p => p.Id == userId);
             if(usr.Points - taskai >= 0)
             {
@@ -65,7 +66,7 @@ namespace challenge.EF.repositories
             {
                 usr.Points = 0;
             }
-            ChallengeContext.Remove(ch);
+            ChallengeContext.UsersChallenges.Remove(ch);
             ChallengeContext.SaveChanges();
         }
 
