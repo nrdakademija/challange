@@ -69,10 +69,9 @@ export class AddChallengeComponent implements OnInit {
     if (form.valid) {
       this.triedToSave = false;
       this.challengeService.postChallenge(this.challengeInfo).subscribe((response) => {
-        Swal('Yaaay!', 'Successfull', 'success');
-        event.close('createLabel');
+        Swal('Success!', 'Challenge added', 'success');
         this.router.navigate(['/challenges']);
-        event.close('createLabel');
+        window.location.reload();
       });
     } else {
       this.checkIfSubcategorySelected(form.value['subcategory']);
