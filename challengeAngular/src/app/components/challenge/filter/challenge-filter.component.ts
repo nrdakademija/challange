@@ -6,17 +6,22 @@ import { CategoryModel } from '../../../models/categories/categories.model';
 @Component({
   selector: 'app-filter',
   template: `
-  <div class="container">
-    <button type="button" class="btn btn-primary"
-    (click)="setCategory(0)"> All</button>
-    <button *ngFor="let t of categories$ | async" type="button" class="btn btn-primary mr-1"
-    (click)="setCategory(t.id)">{{t.title}}</button>
-</div>
-  <div class="container">
-    <button type="button" class="btn btn-primary"
-    (click)="setSubcategory(0)"> All</button>
-    <button *ngFor="let t of subcategories$ | async" type="button" class="btn btn-primary mr-1"
-    (click)="setSubcategory(t.id)">{{t.title}}</button>
+  <div>
+    <div>
+      Category
+      <button type="radio" class="btn btn-primary"
+      (click)="setCategory(0)"> All</button>
+      <button *ngFor="let t of categories$ | async" type="radio" class="btn btn-primary mr-1"
+      (click)="setCategory(t.id)">{{t.title}}</button>
+
+
+    <div style="margin-top: 10px;">
+      Subcategory
+      <button type="button" class="btn btn-primary"
+      (click)="setSubcategory(0)"> All</button>
+      <button *ngFor="let t of subcategories$ | async" type="button" class="btn btn-primary mr-1"
+      (click)="setSubcategory(t.id)">{{t.title}}</button>
+  </div>
 </div>
     `
 })
