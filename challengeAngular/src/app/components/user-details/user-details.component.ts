@@ -13,6 +13,7 @@ import { UserChallengesModel } from '../../models/userChallenges/userchallenges.
 import { ChallengeService } from '../../services/challenge.service';
 import { SubCategoryModel } from '../../models/subcategories/subcategories.model';
 import swal from 'sweetalert2';
+import { count } from 'rxjs/operators';
 
 @Component({
   templateUrl: './user-details.component.html',
@@ -58,6 +59,7 @@ export class UserDetailsComponent implements OnInit {
     });
 
     this.checkIfOwner();
+    console.log(this.userChallengesList$.toArray());
   }
 
   getUserInfo() {
@@ -80,15 +82,17 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
-  timeLeft(givenDate:any){
-    const date = Date.parse(givenDate.toString());
-      const nowDate = new Date().getTime();
-      const dateDiff = date - nowDate;
-      this.counter = dateDiff;
-      this.countDown = Observable.timer(0, this.tick)
-        .take(this.counter)
-        .map(() => --this.counter);
+  daysLeft(ch:UserChallengesModel){
+    var date1 = Date.parse(ch.endDate.toString());
+    var date2 = new Date().getTime();
+    if(date2>date1){
+      var timeDiff = Math.abs(date2 - date1);
+      var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+      return diffDays;
+    }
+    return null;
   }
+ 
 
   checkIfOwner() {
     if (parseInt(this.activeParameter, 10) === this.localUser) {
