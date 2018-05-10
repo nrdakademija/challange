@@ -16,8 +16,35 @@ namespace challenge.EF.repositories
         {
             return challengeContext.ChallengeSubcategories
               .ToList();
-
         }
+
+        public void PostSubcategory(ChallengeSubcategories subcat)
+        {
+            challengeContext.ChallengeSubcategories.Add(subcat);
+            challengeContext.SaveChanges();
+        }
+
+        public void DeleteSubcategory(int id)
+        {
+            var ch = challengeContext.ChallengeSubcategories.SingleOrDefault(p => p.Id == id );
+            challengeContext.Remove(ch);
+            challengeContext.SaveChanges();
+        }
+
+        public void UpdateSubcategory(int id, ChallengeSubcategories subcategory)
+        {
+            var old = GetSubcategoryById(id);
+            old.Title = subcategory.Title;
+            challengeContext.SaveChanges();
+        }
+
+        public ChallengeSubcategories GetSubcategoryById(int id)
+        {
+            var sub = challengeContext.ChallengeSubcategories.Where(p => id == p.Id).Single();
+
+            return sub;
+        }
+
         public challengeContext challengeContext
         {
             get { return Context as challengeContext; }
