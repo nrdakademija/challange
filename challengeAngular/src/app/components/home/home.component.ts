@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   currentRate = 3.14;
   challenges$: Observable<ChallengeModel[]>;
   challengesGrouped: ChallengeModel[];
+  challengesByDate: ChallengeModel[];
   subCategories$: Observable<SubCategoryModel[]>;
 
   public carouselTileItems: Array<any>;
@@ -50,7 +51,9 @@ export class HomeComponent implements OnInit {
 
     this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
       this.challengesGrouped = data;
+      this.challengesByDate = data;
       this.challengesGrouped.sort(this.compare);
+      this.challengesByDate.sort(this.compareByDate);
     });
 
     this.carouselTileItems = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
@@ -91,6 +94,16 @@ export class HomeComponent implements OnInit {
       return 1;
     }
     if (a.completedBy > b.completedBy) {
+      return -1;
+    }
+    return 0;
+  }
+
+  compareByDate(a, b) {
+    if (a.createdAt < b.createdAt) {
+      return 1;
+    }
+    if (a.createdAt > b.createdAt) {
       return -1;
     }
     return 0;

@@ -43,7 +43,6 @@ import { AdminService } from './services/admin.service';
 import { SubcategoryDetailsComponent } from './components/admin/subcategory-details/subcategory-details.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

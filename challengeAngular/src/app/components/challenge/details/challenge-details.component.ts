@@ -31,7 +31,7 @@ export class ChallengeDetailsComponent implements OnInit {
     private challengeService: ChallengeService,
     private activeRoute: ActivatedRoute,
     private userService: UserService
-) { }
+  ) { }
 
   ngOnInit() {
     this.isAuthenticated();
@@ -62,10 +62,10 @@ export class ChallengeDetailsComponent implements OnInit {
   }
   startChallenge(challengeId) {
     this.challengeService.acceptChallenge(challengeId, this.user_Id)
-      .subscribe(res =>{
-        
-      this.router.navigate(['/challenges'])
-    });
+      .subscribe(res => {
+        console.log(res);
+        this.router.navigate(['/challenges']);
+      });
     Swal({
       title: 'Challenge accepted!',
       text: 'Good luck!',

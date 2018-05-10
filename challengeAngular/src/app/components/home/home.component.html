@@ -23,7 +23,7 @@
       <h2 class="text-primary" style="color: whitesmoke">Newest challenges</h2>
 
       <ngx-carousel [inputs]="carouselTile" (carouselLoad)="carouselTileLoad($event)">
-        <ngx-tile NgxCarouselItem *ngFor="let ch of challenges$ | async">
+        <ngx-tile NgxCarouselItem *ngFor="let ch of challengesByDate">
           <div class="card border-success">
             <a href="javascript:;">
               <div class="shadow" style="height: 160px">
