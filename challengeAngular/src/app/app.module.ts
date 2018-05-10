@@ -1,13 +1,16 @@
+import { MatDialogModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CalendarModule } from 'ap-angular2-fullcalendar';
-import {NgbModule, NgbRatingConfig, NgbPaginationConfig, NgbProgressbarConfig,NgbDatepickerConfig,
-   NgbDateStruct, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbModule, NgbRatingConfig, NgbPaginationConfig, NgbProgressbarConfig, NgbDatepickerConfig,
+  NgbDateStruct, NgbTooltipConfig
+} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NgxCarouselModule } from 'ngx-carousel';
 import 'hammerjs';
-import {Md5} from 'ts-md5/dist/md5';
+import { Md5 } from 'ts-md5/dist/md5';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -36,6 +39,8 @@ import { FormatTimePipe } from './pipes/countdown.pipe';
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator.directive';
 import { ChallengeFilterComponent } from './components/challenge/filter/challenge-filter.component';
 import { AdminComponent } from './components/admin/admin.compponent';
+import { AdminService } from './services/admin.service';
+import { SubcategoryDetailsComponent } from './components/admin/subcategory-details/subcategory-details.component';
 
 
 
@@ -58,7 +63,8 @@ import { AdminComponent } from './components/admin/admin.compponent';
     ChallengeCalendarComponent,
     ChallengeFilterComponent,
     ConfirmEqualValidatorDirective,
-    AdminComponent
+    AdminComponent,
+    SubcategoryDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +84,8 @@ import { AdminComponent } from './components/admin/admin.compponent';
     AuthenticationService,
     AuthGuard,
     NgbPaginationConfig,
-    AlertService
+    AlertService,
+    AdminService
   ],
   bootstrap: [AppComponent]
 })

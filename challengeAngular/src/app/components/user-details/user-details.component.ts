@@ -82,17 +82,17 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
-  daysLeft(ch:UserChallengesModel){
-    var date1 = Date.parse(ch.endDate.toString());
-    var date2 = new Date().getTime();
-    if(date2>date1){
-      var timeDiff = Math.abs(date2 - date1);
-      var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+  daysLeft(ch: UserChallengesModel) {
+    const date1 = Date.parse(ch.endDate.toString());
+    const date2 = new Date().getTime();
+    if (date2 > date1) {
+      const timeDiff = Math.abs(date2 - date1);
+      let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
       return diffDays;
     }
     return null;
   }
- 
+
 
   checkIfOwner() {
     if (parseInt(this.activeParameter, 10) === this.localUser) {
