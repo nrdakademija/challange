@@ -51,9 +51,13 @@ export class HomeComponent implements OnInit {
 
     this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
       this.challengesGrouped = data;
-      this.challengesByDate = data;
       this.challengesGrouped.sort(this.compare);
+      
+    });
+    this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
+      this.challengesByDate = data;
       this.challengesByDate.sort(this.compareByDate);
+      
     });
 
     this.carouselTileItems = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
