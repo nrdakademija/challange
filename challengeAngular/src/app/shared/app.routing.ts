@@ -11,6 +11,7 @@ import { UserComponent } from '../components/userList/user.component';
 import { UserDetailsComponent } from '../components/user-details/user-details.component';
 import { ChallengeCalendarComponent } from '../components/calendar/challengeCalendar.component';
 import { AuthGuard } from '../services/guards/auth.guard';
+import { AdminComponent } from '../components/admin/admin.compponent';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { AuthGuard } from '../services/guards/auth.guard';
           { path: 'challenge/:id', component: ChallengeDetailsComponent },
           { path: 'user/:id', component: UserDetailsComponent },
           { path: 'users', component: UserComponent },
+          { path: 'admin', component: AdminComponent },
           { path: 'calendar', component: ChallengeCalendarComponent, canActivate: [AuthGuard]}  ,
 
           // otherwise redirect to home

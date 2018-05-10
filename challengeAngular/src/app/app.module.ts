@@ -35,6 +35,7 @@ import { AlertService } from './services/alert.service';
 import { FormatTimePipe } from './pipes/countdown.pipe';
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator.directive';
 import { ChallengeFilterComponent } from './components/challenge/filter/challenge-filter.component';
+import { AdminComponent } from './components/admin/admin.compponent';
 
 
 
@@ -56,7 +57,8 @@ import { ChallengeFilterComponent } from './components/challenge/filter/challeng
     UserDetailsComponent,
     ChallengeCalendarComponent,
     ChallengeFilterComponent,
-    ConfirmEqualValidatorDirective
+    ConfirmEqualValidatorDirective,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

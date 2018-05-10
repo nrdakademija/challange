@@ -51,17 +51,14 @@ export class ChallengeComponent implements OnInit {
   }
 
   setSubcategory(typeId: number) {
-    if (typeId >= 100)
-    {
+    if (typeId >= 100) {
       typeId -= 100;
-      this.typeSubcategory =  typeId.toString() + this.typeSubcategory.substring(1, this.typeSubcategory.length);
-    }
-    else
-    {
+      this.typeSubcategory = typeId.toString() + this.typeSubcategory.substring(1, this.typeSubcategory.length);
+    } else {
       this.typeSubcategory = this.typeSubcategory.substring(0, 1) + typeId.toString();
     }
     console.log(this.typeSubcategory);
-}
+  }
 
 }
 
