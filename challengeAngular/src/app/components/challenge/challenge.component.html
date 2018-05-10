@@ -26,7 +26,7 @@
             </div>-->
 
         </div>
-        <app-filter  [subcategories$]="subCategories$" (filterEvent)=setSubcategory($event)></app-filter>
+        <app-filter  [subcategories$]="subCategories$" [categories$]="categories$" (filterEvent)=setSubcategory($event)></app-filter>
         <div class="row">
             <div *ngFor="let ch of challenges$ | async | challengeFilter: typeSubcategory; let ind = index;">
                 <div class="card border-success just-box" style="height: 260px;width: 220px">

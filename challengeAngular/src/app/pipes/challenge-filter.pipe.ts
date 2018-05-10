@@ -1,18 +1,31 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Observable } from 'rxjs/';
+import { parse } from 'path';
 
 @Pipe({
   name: 'challengeFilter'
 })
 
 export class ChallengeCategoriesFilterPipe implements PipeTransform {
-  transform(items: Observable<any>, typeFilter: any): any {
+  transform(items: Observable<any>, subcategoryTypeFilter: string): any {
+    console.log(subcategoryTypeFilter);
     if (items == null) {
       return [];
+      
     }
-
-    if (typeFilter) {
-      return items.filter(i => i.subcategory === typeFilter);
+    var cat = parseInt(subcategoryTypeFilter.substring(0, 1));
+    var sub = parseInt(subcategoryTypeFilter.substring(1, subcategoryTypeFilter.length));
+console.log("cat " + cat + " sub " + sub);
+    if (cat && sub) {
+      return items.filter(i => i.subcategory === sub && i.category === cat);
+    }
+    else if (sub)
+    {
+      return items.filter(i => i.subcategory === sub);
+    }
+    else if (cat)
+    {
+      return items.filter(i => i.category === cat);
     }
 
     return items;
