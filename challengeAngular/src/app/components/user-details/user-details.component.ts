@@ -12,6 +12,7 @@ import { Md5 } from 'ts-md5';
 import { UserChallengesModel } from '../../models/userChallenges/userchallenges.model';
 import { ChallengeService } from '../../services/challenge.service';
 import { SubCategoryModel } from '../../models/subcategories/subcategories.model';
+import swal from 'sweetalert2';
 
 @Component({
   templateUrl: './user-details.component.html',
@@ -104,10 +105,27 @@ export class UserDetailsComponent implements OnInit {
     this.router.navigate(['challenge/' + id]);
   }
   deleteUserChallenge(id) {
-    this.challengeService.deleteUserChallenge(id, this.user.id)
-      .subscribe((res) =>
-        console.log(res)
-      );
+    swal({
+      title: 'Are you sure you want to give up?',
+      text: 'You are goin to lose 10% of points you have!',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.value) {
+        this.challengeService.deleteUserChallenge(id, this.user.id)
+          .subscribe((res) =>
+            console.log(res)
+          );
+        swal(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        );
+      }
+    });
     this.router.navigate(['user/' + this.user.id]);
   }
 
