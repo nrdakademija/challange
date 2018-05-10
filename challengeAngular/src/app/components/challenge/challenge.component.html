@@ -5,12 +5,19 @@
 
 <div class="content">
     <div  style="margin-left: 50px; margin-right: 50px;">
-        <div class="row">
-            <div class="col bs-component text-right">
-                <button class="challenge btn btn-outline-primary" data-toggle="modal" *ngIf="isAuthenticated()" data-target="#challengeModal">Add new challenge</button>
+        <div class="row" style="margin-top: 150px; margin-bottom: 15px;">
+            
+            <div class="col-sm-9">
+                    <app-filter  [subcategories$]="subCategories$" [categories$]="categories$" (filterEvent)=setSubcategory($event)></app-filter>
             </div>
+            <div class="col-sm-3">
+                    <button style="position: absolute; bottom: 0;" class="challenge btn btn-primary" data-toggle="modal" *ngIf="isAuthenticated()" data-target="#challengeModal">Add challenge</button>
+                
+            </div>
+
         </div>
-        <app-filter  [subcategories$]="subCategories$" (filterEvent)=setSubcategory($event)></app-filter>
+        
+        
         <div class="row">
             <div *ngFor="let ch of challenges$ | async | challengeFilter: typeSubcategory; let ind = index;">
                 <div class="card border-success just-box" style="height: 260px;width: 220px">

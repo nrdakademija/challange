@@ -19,7 +19,7 @@
             <li class="user" *ngIf="i<5">
               <img class="gravatar" src="{{u.imgUrl}}" />
               <div class="progressBar">
-                <span class="user" [ngStyle]="{ 'height': getPoints(i, sortedUsers$[0].points) , 'background': getRandomColor()}">
+                <span class="user" [ngStyle]="{ 'height': getPoints(i, sortedUsers$[0].points) , 'background': getRandomColor()}" ngDefaultControl>
                   <b>{{u.points}}</b>
                 </span>
               </div>

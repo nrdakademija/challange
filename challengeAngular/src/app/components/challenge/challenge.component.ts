@@ -17,7 +17,8 @@ export class ChallengeComponent implements OnInit {
   subCategories$: Observable<SubCategoryModel[]>;
   subCategories: SubCategoryModel[];
   categories$: Observable<CategoryModel[]>;
-  typeSubcategory: number;
+  typeSubcategory: string = '00';
+  typeCategory: number;
 
 
   constructor(private router: Router,
@@ -41,9 +42,6 @@ export class ChallengeComponent implements OnInit {
   routeToChallenge(id) {
     this.router.navigate(['challenge/' + id]);
   }
-  filterByCategory() {
-
-  }
 
   public isAuthenticated(): boolean {
     if (!localStorage.getItem('currentUser')) {
@@ -52,9 +50,15 @@ export class ChallengeComponent implements OnInit {
     return true;
   }
 
-  setSubcategory(typeId) {
-    this.typeSubcategory = typeId;
-}
+  setSubcategory(typeId: number) {
+    if (typeId >= 100) {
+      typeId -= 100;
+      this.typeSubcategory = typeId.toString() + this.typeSubcategory.substring(1, this.typeSubcategory.length);
+    } else {
+      this.typeSubcategory = this.typeSubcategory.substring(0, 1) + typeId.toString();
+    }
+    console.log(this.typeSubcategory);
+  }
 
 }
 
