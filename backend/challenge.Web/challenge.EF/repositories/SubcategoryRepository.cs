@@ -20,7 +20,7 @@ namespace challenge.EF.repositories
 
         public void PostSubcategory(ChallengeSubcategories subcat)
         {
-            challengeContext.ChallengeSubcategories.Add(subcat);
+            challengeContext.Add(subcat);
             challengeContext.SaveChanges();
         }
 
@@ -33,8 +33,8 @@ namespace challenge.EF.repositories
 
         public void UpdateSubcategory(int id, ChallengeSubcategories subcategory)
         {
-            var old = GetSubcategoryById(id);
-            old.Title = subcategory.Title;
+            var sub = challengeContext.ChallengeSubcategories.Where(p => id == p.Id).Single();
+            sub.Title = subcategory.Title;
             challengeContext.SaveChanges();
         }
 

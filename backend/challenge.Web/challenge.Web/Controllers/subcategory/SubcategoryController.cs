@@ -32,11 +32,10 @@ namespace challenge.Web.Controllers.subcategory
             try
             {
                 _subcategoryService.PostSubcategory(subcategory);
-                string newUri = Url.Link("Get", new { id = subcategory.Id });
-                return Created(newUri, subcategory);
+                return Ok();
 
             }
-            catch (System.Exception)
+            catch (Exception err)
             {
 
             }
@@ -49,8 +48,7 @@ namespace challenge.Web.Controllers.subcategory
             try
             {
                 _subcategoryService.UpdateSubcategory(id, subcategory);
-                string newUri = Url.Link("GetAllEmployees", new { id = subcategory.Id });
-                return Created(newUri, subcategory);
+                return Ok();
 
             }
             catch (Exception ex)

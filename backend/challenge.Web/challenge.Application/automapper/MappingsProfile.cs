@@ -38,6 +38,7 @@ namespace challenge.Application.automapper
 
             CreateMap<ChallengeCategories, CategoryDto>();
             CreateMap<ChallengeSubcategories, SubcategoryDto>();
+            CreateMap<SubcategoryDto, ChallengeSubcategories>();
 
             CreateMap<Challenges, ChallengeDto>().ReverseMap();
 

@@ -26,7 +26,7 @@ namespace challenge.Application.main.subcategories
             return listDto;
         }
 
-        public void PostSubcategory(object item)
+        public void PostSubcategory(SubcategoryDto item)
         {
             var sub = _mapper.Map<ChallengeSubcategories>(item);
             _subcategoryRepository.PostSubcategory(sub);
