@@ -6,13 +6,6 @@ import { CategoryModel } from '../../../models/categories/categories.model';
 @Component({
   selector: 'app-filter',
   template: `
-<<<<<<< HEAD
-  <div class="container" style="margin-top: 5px">
-    <button type="button" class="btn btn-primary"
-    (click)="setSubcategory()"> All</button>
-    <button *ngFor="let t of subcategories$ | async" type="button" class="btn btn-primary mr-1"
-    (click)="setSubcategory(t.id)">{{t.title}}</button>
-=======
   <div>
     <div>
       Category
@@ -29,7 +22,6 @@ import { CategoryModel } from '../../../models/categories/categories.model';
       <button *ngFor="let t of subcategories$ | async" type="button" class="btn btn-primary mr-1"
       (click)="setSubcategory(t.id)">{{t.title}}</button>
   </div>
->>>>>>> af63ce64376fcd82bfa1e5ecb070665cc265282b
 </div>
     `
 })

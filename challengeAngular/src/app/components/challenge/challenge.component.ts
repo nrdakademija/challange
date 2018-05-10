@@ -11,8 +11,7 @@ import { CategoryModel } from '../../models/categories/categories.model';
   styleUrls: ['./challenge.component.css']
 })
 export class ChallengeComponent implements OnInit {
-  // loading = false;
-  page = 4;
+
   challenges$: Observable<ChallengeModel[]>;
   subCategories$: Observable<SubCategoryModel[]>;
   subCategories: SubCategoryModel[];
@@ -25,11 +24,9 @@ export class ChallengeComponent implements OnInit {
     private challengeService: ChallengeService) { }
 
   ngOnInit() {
-    // this.loading = true;
 
     this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
       this.challenges$ = Observable.of(data);
-      // this.loading = false;
     });
     this.challengeService.getChallengeSubCategories().subscribe((data: SubCategoryModel[]) => {
       this.subCategories$ = Observable.of(data);

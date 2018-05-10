@@ -80,16 +80,16 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
-  public carouselTileLoad(evt: any) {
-
-    const len = this.carouselTileItems.length;
-    if (len <= 30) {
-      for (let i = len; i < len + 10; i++) {
-        this.carouselTileItems.push(i);
-      }
-    }
-
+  timeLeft(givenDate:any){
+    const date = Date.parse(givenDate.toString());
+      const nowDate = new Date().getTime();
+      const dateDiff = date - nowDate;
+      this.counter = dateDiff;
+      this.countDown = Observable.timer(0, this.tick)
+        .take(this.counter)
+        .map(() => --this.counter);
   }
+
   checkIfOwner() {
     if (parseInt(this.activeParameter, 10) === this.localUser) {
       this.ifOwner = true;
