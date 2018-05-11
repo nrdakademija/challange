@@ -32,9 +32,9 @@
   </div>
   <div class="row">
     <div *ngFor="let ch of userChallengesList$ | async; let ind = index;">
-      <div>{{checkIfDone(ch.endDate, ch.challengeId, ch, ch.state)}}
+      <div>
         <p *ngIf="daysLeft(ch)!=null">Days left: {{daysLeft(ch)}}</p>
-        <p *ngIf="daysLeft(ch)==null"></p>
+        <p *ngIf="daysLeft(ch)==null">{{checkIfDone(ch.endDate, ch.challengeId, ch, ch.state)}}</p>
       </div>
       <div class="card border-success just-box" style="height: 300px;width: 220px">
         <a href="javascript:;">
