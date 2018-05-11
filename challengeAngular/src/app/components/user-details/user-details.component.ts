@@ -59,13 +59,14 @@ export class UserDetailsComponent implements OnInit {
     });
 
     this.checkIfOwner();
-    console.log(this.userChallengesList$.toArray());
+    //console.log(this.userChallengesList$.toArray());
   }
 
   getUserInfo() {
     this.userService.getUserById(this.activeParameter).subscribe(data => {
       this.user = data;
-      document.getElementById('progressBar').style.width = this.user.points / this.user.level * 100 + '%';
+      document.getElementById('progressBar').style.width = (this.user.points / (this.user.level * 100)) * 100 + '%';
+      
     });
   }
 
