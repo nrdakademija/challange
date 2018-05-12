@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/';
-import { Http, Response } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { ChallengeModel } from '../models/challenges/challenge.model';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -16,6 +16,14 @@ export class ChallengeService {
   subcategoriesUrl = 'http://localhost:59372/subcategory';
 
   constructor(private http: Http) { }
+  private jwt() {
+    // create authorization header with jwt token
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser && currentUser.token) {
+      const headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+      return new RequestOptions({ headers: headers });
+    }
+  }
 
   // Challenges
   getChallengeList(): Observable<ChallengeModel[]> {
@@ -37,7 +45,7 @@ export class ChallengeService {
   }
 
   postChallenge(data): Observable<ChallengeModel> {
-    return this.http.post(this.url, data)
+    return this.http.post(this.url, data, this.jwt())
       .map((res: Response) => res.json() as ChallengeModel)
       .catch((error: any) => Observable.throw(error));
   }
@@ -62,7 +70,7 @@ export class ChallengeService {
   }
 
   acceptChallenge(challengeId, userId): any {
-    return this.http.post('http://localhost:59372/userChallenges' + '/' + challengeId + '?userId=' + userId, '')
+    return this.http.post('http://localhost:59372/userChallenges' + '/' + challengeId + '?userId=' + userId, '',  this.jwt())
       .map((res: Response) => res.json() as any)
       .catch((error: any) => Observable.throw(error));
   }

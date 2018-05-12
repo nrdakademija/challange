@@ -83,7 +83,7 @@ export class UserService {
   }
 
   getUserChallenges(id): Observable<UserChallengesModel[]> {
-    return this.http.get(this.urlUserChallenges + id)
+    return this.http.get(this.urlUserChallenges + id, this.jwt())
       .map((res: Response) => res.json() as UserChallengesModel[])
       .catch((error: any) => Observable.throw(error));
   }

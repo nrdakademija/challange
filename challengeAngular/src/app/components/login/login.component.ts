@@ -34,9 +34,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private alertService: AlertService
   ) {
-    if (localStorage.getItem('jwt')) {
+    if (localStorage.getItem('currentUser')) {
       this.authenticated = true;
-      // If the jwt key value exists, we’ll know the user is logged in, so we’ll get their profile.
       this.user = JSON.parse(localStorage.getItem('currentUser'));
     }
 
