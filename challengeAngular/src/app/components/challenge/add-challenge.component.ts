@@ -7,7 +7,10 @@ import { Router } from '@angular/router';
 import { CategoryModel } from '../../models/categories/categories.model';
 import { SubCategoryModel } from '../../models/subcategories/subcategories.model';
 import Swal from 'sweetalert2';
+import { AlertService } from '../../services/alert.service';
+import { ModalDirective } from 'ngx-bootstrap/modal/modal.directive';
 
+declare var $: any;
 @Component({
   selector: 'app-add-challenge',
   templateUrl: 'add-challenge.component.html',
@@ -23,10 +26,10 @@ export class AddChallengeComponent implements OnInit {
   triedToSave = false;
   subcategorySelectedError = false;
 
-  constructor(private challengeService: ChallengeService, private router: Router) {
+  constructor(private challengeService: ChallengeService, private router: Router, private alertService: AlertService) {
   }
 
-  @ViewChild('completeModal') completeModal: ElementRef;
+  @ViewChild('challengeModal') public modal: ModalDirective;
 
   ngOnInit() {
 
@@ -65,23 +68,24 @@ export class AddChallengeComponent implements OnInit {
 
   save(form: NgForm, event) {
     console.log(this.challengeInfo);
-    this.challengeInfo.category = 2;
+    this.challengeInfo.category = 2; // user added challenges go to userCreated category
     if (form.valid) {
       this.triedToSave = false;
-      this.challengeService.postChallenge(this.challengeInfo).subscribe((response) => {
-        Swal('Success!', 'Challenge added', 'success');
-        this.router.navigate(['/challenges']);
-        window.location.reload();
-      });
-    } else {
-      this.checkIfSubcategorySelected(form.value['subcategory']);
-      this.triedToSave = true;
-      //  form.getControl().clearValidators();
-      Swal('Ooop!', 'Error', 'error');
-
+      this.challengeService.postChallenge(this.challengeInfo)
+        .subscribe(
+          data => {
+            Swal({
+              title: 'Succesfully added!',
+              type: 'success'
+            });
+            $('#challengeModal').modal('hide');
+            this.router.navigate(['']);
+          },
+          (err) => {
+            this.alertService.error(err._body);
+          });
     }
   }
-
 
 
 }
