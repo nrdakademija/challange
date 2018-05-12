@@ -18,6 +18,9 @@
           <a class="nav-link" a routerLink="calendar" *ngIf="isAuthenticated()" >Calendar</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" a routerLink="admin" *ngIf="isAdmin && isAuthenticated() " >Admin panel</a>
+          </li>
+        <li class="nav-item">
           <a class="nav-link" a [routerLink]="['/about']">About</a>
         </li>
 

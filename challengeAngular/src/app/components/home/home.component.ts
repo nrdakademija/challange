@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
   currentRate = 3.14;
+  isAdmin = false;
   challenges$: Observable<ChallengeModel[]>;
   challengesGrouped: ChallengeModel[];
   challengesByDate: ChallengeModel[];
@@ -40,6 +41,10 @@ export class HomeComponent implements OnInit {
 
   messageRnd = 0;
   ngOnInit() {
+    if (localStorage.getItem('currentUser')) {
+      const localUser = JSON.parse(localStorage.getItem('currentUser'));
+      this.isAdmin = localUser.isAdmin;
+    }
     this.messageRnd = Math.floor(Math.random() * 10);
     this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
       this.challenges$ = Observable.of(data);
@@ -52,12 +57,11 @@ export class HomeComponent implements OnInit {
     this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
       this.challengesGrouped = data;
       this.challengesGrouped.sort(this.compare);
-      
     });
     this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
       this.challengesByDate = data;
       this.challengesByDate.sort(this.compareByDate);
-      
+
     });
 
     this.carouselTileItems = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];

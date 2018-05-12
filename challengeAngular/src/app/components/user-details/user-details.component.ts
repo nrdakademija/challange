@@ -66,7 +66,7 @@ export class UserDetailsComponent implements OnInit {
     this.userService.getUserById(this.activeParameter).subscribe(data => {
       this.user = data;
       document.getElementById('progressBar').style.width = (this.user.points / (this.user.level * 100)) * 100 + '%';
-      
+
     });
   }
 
