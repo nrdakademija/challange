@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
   us: UserModel;
   loading = false;
   returnUrl: string;
+  logError = false;
+  error;
   @ViewChild('loginModal') public modal: ModalDirective;
 
   constructor(formBuilder: FormBuilder, public http: Http,
@@ -63,6 +65,7 @@ export class LoginComponent implements OnInit {
         },
           (err) => {
             this.alertService.error(err._body);
+            this.logError = true;
             this.loading = false;
           });
   }
