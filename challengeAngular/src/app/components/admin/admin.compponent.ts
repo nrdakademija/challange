@@ -32,7 +32,21 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  editSubcategory(id) {
+  async editSubcategory(id, title) {
+    const { value: name } = await swal({
+      title: 'What subcategory you want to change it to?',
+      input: 'text',
+      inputPlaceholder: title,
+      inputValue: title,
+      showCancelButton: true,
+      inputValidator: (value) => {
+        return !value && 'You need to write something!'
+      }
+    });
+
+    if (name) {
+      swal({ type: 'success', title: title });
+    }
 
   }
 

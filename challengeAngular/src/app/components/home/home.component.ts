@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     if (localStorage.getItem('currentUser')) {
       const localUser = JSON.parse(localStorage.getItem('currentUser'));
-      this.isAdmin = localUser.isAdmin;
+      this.isAdmin = true;
     }
     this.messageRnd = Math.floor(Math.random() * 10);
     this.challengeService.getChallengeList().subscribe((data: ChallengeModel[]) => {
