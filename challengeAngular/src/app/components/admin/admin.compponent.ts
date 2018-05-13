@@ -32,25 +32,60 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  async editSubcategory(id, title) {
-    const { value: name } = await swal({
+  editSubcategory(id, title) {
+    swal({
       title: 'What subcategory you want to change it to?',
       input: 'text',
       inputPlaceholder: title,
       inputValue: title,
       showCancelButton: true,
       inputValidator: (value) => {
-        return !value && 'You need to write something!'
+        return !value && 'You need to write something!';
+      }
+    }).then((result) => {
+      if (result.value) {
+        const obj = {
+          id: id,
+          title: result.value
+        };
+        this.adminService.updateSubcategory(id, obj)
+          .subscribe((res) =>
+            console.log(res)
+          );
+        swal(
+          'Udated!',
+          'Your sub has been updated.',
+          'success'
+        );
       }
     });
-
-    if (name) {
-      swal({ type: 'success', title: title });
-    }
-
   }
 
   addSubcategory() {
+    swal({
+      title: 'What subcategory you want to add?',
+      input: 'text',
+      inputPlaceholder: 'Title',
+      showCancelButton: true,
+      inputValidator: (value) => {
+        return !value && 'You need to write something!';
+      }
+    }).then((result) => {
+      if (result.value) {
+        const obj = {
+          title: result.value
+        };
+        this.adminService.saveSubcategory(obj)
+          .subscribe((res) =>
+            console.log(res)
+          );
+        swal(
+          'Added!',
+          'Your sub has been added.',
+          'success'
+        );
+      }
+    });
   }
 
   deleteSubcategory(id) {

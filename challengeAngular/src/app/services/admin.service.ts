@@ -10,8 +10,8 @@ import { SubCategoryModel } from '../models/subcategories/subcategories.model';
 @Injectable()
 export class AdminService {
 
-  http: any;
-  constructor() { }
+
+  constructor(private http: Http) { }
 
   saveSubcategory(item): Observable<SubCategoryModel> {
     return this.http.post('http://localhost:59372/Subcategory', item)
@@ -19,9 +19,9 @@ export class AdminService {
         .catch((error: any) => Observable.throw(error));
 }
 
-  updateSubcategory(sub): Observable<SubCategoryModel> {
-    return this.http.put('http://localhost:59372/Subcategory' + '/' + sub.id, sub)
-      .map((res: Response) => res.json() as SubCategoryModel[])
+  updateSubcategory(id, sub): Observable<SubCategoryModel> {
+    return this.http.put('http://localhost:59372/Subcategory' + '/' + id, sub)
+      .map((res: Response) => res.json() as SubCategoryModel)
       .catch((error: any) => Observable.throw(error));
   }
 
